@@ -59,9 +59,9 @@ export default function ConsumerSupplyType({ consumerType, setConsumerType, supp
     return (
         <div>
 
-            <form className='mt-2 mb-2'>
+            <form className='mt-1 mb-1'>
                 <div className='flex justify-between'>
-                    <p className='p-2'><label>Consumer Type:&nbsp;
+                    <p className='p-1'><label>Consumer Type:&nbsp;
                         <select className="mb-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none text-gray-700 font-light w-full md:w-12/12 bg-white"
                             id={consumer_type.name}
@@ -72,7 +72,7 @@ export default function ConsumerSupplyType({ consumerType, setConsumerType, supp
                                 <option key={consumer.id} value={consumer.label}>{consumer.label}</option>
                             ))}
                         </select></label></p>
-                    <p className='p-2'><label>Supply Type:&nbsp;
+                    <p className='p-1'><label>Supply Type:&nbsp;
                         <select className="bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white" id={supply_type.name}
                             value={supplyType} onChange={(e) => setSupplyType(e.target.value)}>

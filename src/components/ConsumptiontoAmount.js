@@ -2,8 +2,8 @@ import React from 'react';
 
 
 export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
-    totalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
-    ConsumptionKwh, setConsumptionKwh }) {
+     EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,vendingtime, setVendingTime,
+    ConsumptionKwhFirst, setConsumptionKwhFirst, totalAmountLast }) {
 
     return (
         <div>
@@ -15,19 +15,19 @@ export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
                 </p>
                 <p className='p-2'>Is this the first vending of the month?</p>
 
-                <label className='mb-2 p-3'>Yes&nbsp;<input className='w-50 p-2 mb-2 bg-sky-100'
-                    value="yes" name='vended' type="radio" /></label>&nbsp;
-
-                <label>No&nbsp;
-                    <input className='border p-3 mb-2 bg-sky-100'
-                        type="radio" name="vended" />&nbsp;
-                </label><hr />
+                <label className='mb-2 p-3'>Yes&nbsp;<input className='w-50 p-2 mb-2 bg-stone-200'
+          value={vendingtime} name='vended' checked={vendingtime === 'Yes'} type="radio" 
+          onChange={(e) => setVendingTime(e.target.value)} required /></label>&nbsp;
+        <label>No&nbsp;
+          <input className='border p-3 mb-2 bg-sky-100'
+            type="radio" value={vendingtime} name="vended" checked={vendingtime === "No"} onChange={(e) => setVendingTime(e.target.value)}/>&nbsp;
+        </label><hr /><hr />
                 <div className="flex justify-between">
                     <p className='p-2'><label>Consumption (Kwh): </label>
                         <input className="p-1 bg-stone-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-3 text-gray-700 font-light w-full md:w-12/12 bg-white"
-                            id='consumption_kwh' name='consumptionkwh' type="text" value={ConsumptionKwh}
-                            onChange={(e) => setConsumptionKwh(e.target.value)} /></p>
+                            id='consumption_kwh' name='consumptionkwh' type="text" value={ConsumptionKwhFirst}
+                            placeholder='Enter consumption (Kwh)' onChange={(e) => setConsumptionKwhFirst(e.target.value)} /></p>
 
 
                     <p className="p-2"><label>Energy Charge (USD): </label>
@@ -43,7 +43,7 @@ export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
         focus:outline-none mb-3 text-gray-700 font-light w-full md:w-12/12 bg-white"
                             id='gst_energy_charge' name='gstenergycharge' type="text" value={GSTEnergyCharge} /></p>
 
-                    <p className='p-2'><label>Fixed Charge ($/month): </label>
+                    <p className='p-2'><label>Fixed Charge (USD/month): </label>
                         <input className="p-1 bg-stone-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-3 text-gray-700 font-light w-full md:w-12/12 bg-white"
                             id='fixed_charge' name='fixedcharge' type="text" value={FixedChargePerMonth} /></p>
@@ -52,8 +52,8 @@ export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
                     <p className='p-2'><label>Total Amount (USD): </label>
                         <input className="p-1 bg-sky-100 border-b-4 border-black shadow-sm leading-tight 
 focus:outline-none mb-3 text-gray-700 font-light w-full md:w-12/12 bg-white"
-                            id='amount' name='totalamount' value={totalAmount}
-                            placeholder='Enter amount' type="number" required /></p>
+                            id='amount' name='totalamount' value={totalAmountLast}
+                           type="number" required /></p>
 
                 </div>
             </form>
