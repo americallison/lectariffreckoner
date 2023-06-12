@@ -167,7 +167,6 @@ export default function CalculationPage() {
         }
         else if (consumerType === "Social" && totalAmount > 4.13) {
             newConsumptionKwh = 0;
-            alert("A social customer cannot spend more than $4.13. Please choose another customer type (e. g. Residential)")
         }
         else if (consumerType === "Residential" && (supplyType === "Prepaid" ||
             supplyType === "Postpaid") && vendingtime === "Yes" && totalAmount >= 1) {

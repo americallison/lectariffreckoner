@@ -17,17 +17,16 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, vendi
           <input className="w-50 font-medium p-1 border" value={vendingDate} name="vendingdate" type='date' 
             onChange={(e) => setVendingDate(e.target.value)} required />
         </p>
-        <p className='p-2'>Is this the first vending of the month?</p>
 
-        <label className='mb-1 p-3'>Yes&nbsp;<input className='w-50 p-2 mb-2 bg-stone-200'
+        <label className='mb-1 p-3'><input className='w-50 p-2 mb-2 bg-stone-200'
           value={vendingtime} name='vended' checked={vendingtime === 'Yes'} type="radio" 
           onChange={(e) => setVendingTime(e.target.value)} required /></label>&nbsp;
-        <label>No&nbsp;
+        <label>
           <input className='border p-3 mb-1 bg-sky-100'
             type="radio" value={vendingtime} name="vended" checked={vendingtime === "No"} onChange={(e) => setVendingTime(e.target.value)}/>&nbsp;
         </label><hr />
 
-        <div className="flex justify-between">
+        
           <p className='p-1'><label>Total Amount (USD): </label>
             <input className="p-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
@@ -40,8 +39,8 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, vendi
               id='energy_charge' value={EnergyCharge} name='energycharge' type="number"
             /></p>
 
-        </div>
-        <div className='flex justify-between'>
+       
+      
           <p className='p-2'><label>GST (10% of Energy Charge): </label>
             <input className="p-2 bg-stone-200 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
@@ -51,7 +50,7 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, vendi
             <input className="p-2 bg-stone-200 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
               id='fixed_charge' name='fixedcharge' type="text" value={FixedChargePerMonth} /></p>
-        </div>
+        
         <div>
           <p className='p-1'><label>Consumption (Kwh): </label>
             <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
