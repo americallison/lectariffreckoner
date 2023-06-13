@@ -36,6 +36,7 @@ export default function CalculationPage() {
     const [ConsumptionKwh, setConsumptionKwh] = useState(0);
     const [ConsumptionKwhFirst, setConsumptionKwhFirst] = useState(0);
     const [totalAmountLast, setTotalAmountLast] = useState(0);
+    const [SocialEnergyCharge, setSocialEnergyCharge] = useState(0.15)
 
 
     let currentDate = new Date();
