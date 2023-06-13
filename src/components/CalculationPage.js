@@ -81,7 +81,7 @@ export default function CalculationPage() {
         }
 
         setEnergyCharge(newEnergyCharge);
-    }, [consumerType, supplyType]);
+    }, [consumerType, supplyType, totalAmount]);
 
     /* Logic for Energy Charge end */
 
