@@ -250,19 +250,20 @@ export default function CalculationPage() {
     useEffect(() => {
 
         let newtotalAmountLast = 0;
-        let SocialtotalAmount = 0;
+        let newSocialtotalAmount = 0;
 
-        if (consumerType === "Residential" && ConsumptionKwhFirst >= 1 && ConsumptionKwhFirst <= 25 && vendingDate) {
+        if (consumerType === "Residential" && ConsumptionKwhFirst >= 1 && ConsumptionKwhFirst <= 25 && vendingDate
+        && vendingtime === "No") {
             newtotalAmountLast = ConsumptionKwhFirst * (EnergyCharge + GSTEnergyCharge);
-            SocialtotalAmount = socialConsumptionKwh * (SocialEnergyCharge + SocialGSTEnergyCharge);
+            newSocialtotalAmount = socialConsumptionKwh * (SocialEnergyCharge + SocialGSTEnergyCharge);
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
-            SocialtotalAmount = parseFloat(SocialtotalAmount.toFixed(2));
-            setSocialtotalAmount(SocialtotalAmount);
+            newSocialtotalAmount = parseFloat(newSocialtotalAmount.toFixed(2));
+            setSocialtotalAmount(newSocialtotalAmount);
         }
         
         else if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid") &&
             vendingtime === "Yes" && ConsumptionKwhFirst >= 1) {
-            newtotalAmountLast = (ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * EnergyCharge;
+            newtotalAmountLast = (ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) / EnergyCharge;
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
         }
 
