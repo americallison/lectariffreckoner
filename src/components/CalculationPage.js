@@ -67,7 +67,7 @@ export default function CalculationPage() {
 
         let newEnergyCharge = 0;
 
-        if (consumerType === "Residential && totalAmount <= 4.13") {
+        if (consumerType === "Residential" && totalAmount <= 4.13) {
             newEnergyCharge = 0.15;
         }
         if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")) {
