@@ -4,7 +4,7 @@ const currentDateTime = new Date();
 
 
 export default function AmounttoConsumption({ vendingDate, setVendingDate, totalAmount, setTotalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
-  ConsumptionKwh, setConsumptionKwh, CalculateAmount }) {
+  ConsumptionKwh, socialConsumptionKwh, todaysDate}) {
 
 
 
@@ -14,7 +14,7 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, total
 
         <p className='p-1'><label>Last Month Vended: </label>
           <input className="w-50 font-medium p-1 border" value={vendingDate} name="vendingdate" type='date'
-            onChange={(e) => setVendingDate(e.target.value)} required />
+            onChange={(e) => setVendingDate(e.target.value)} max={todaysDate} required />
         </p>
 
         <hr />
@@ -43,15 +43,38 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, total
         focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
             id='gst_energy_charge' name='gstenergycharge' type="text" value={GSTEnergyCharge} /></p>
 
+       
+        {
+        totalAmount <= 4.13 ?
+         
         <div>
+           <div className="flex justify-between">
           <p className='p-1'><label>Consumption (Kwh): </label>
             <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
         focus:outline-none mb-2 w-full md:w-12/12 text-xl"
               id='consumption_kwh' name='consumptionkwh' type="number" value={ConsumptionKwh} /></p>
+                <p className='p-1'><label>Consumption (Kwh) as Social </label>
+            <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
+        focus:outline-none mb-2 w-full md:w-12/12 text-xl"
+              id='consumption_kwh' name='consumptionkwh' type="number" value={socialConsumptionKwh} /></p>
         </div>
-        <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you recharge&nbsp;
+          <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you recharge&nbsp;
           <strong><em>{totalAmount}USD</em></strong>,
-          you will get <strong><em>{ConsumptionKwh}Kwh.</em></strong> </p>
+          you will get <strong><em>{ConsumptionKwh}Kwh as Residential</em></strong></p>
+          <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you recharge&nbsp;
+          <strong><em>{totalAmount}USD</em></strong>,
+          you will get <strong><em>{socialConsumptionKwh}Kwh - Social.</em></strong> </p>
+          </div> : 
+          <div>
+           <p className='p-1'><label>Consumption (Kwh): </label>
+           <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
+       focus:outline-none mb-2 w-full md:w-12/12 text-xl"
+             id='consumption_kwh' name='consumptionkwh' type="number" value={ConsumptionKwh} /></p> 
+         <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you recharge&nbsp;
+         <strong><em>{totalAmount}USD</em></strong>,
+         you will get <strong><em>{ConsumptionKwh}Kwh - Residential</em></strong> </p>
+        </div>
+      }
       </form>
     </div>
 
