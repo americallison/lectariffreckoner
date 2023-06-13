@@ -110,6 +110,12 @@ export default function CalculationPage() {
             newFixedChargePerMonth = monthdifference * 0.15;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
         }
+        else if (consumerType === "Residential" && totalAmount > 4.13 && supplyType === "Postpaid" && yeardifference === 0 &&
+            monthdifference >= 1) {
+            setVendingTime("Yes");
+            newFixedChargePerMonth = monthdifference * 2.48;
+            newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
+            }
         else if (consumerType === "Residential" && supplyType === "Prepaid" && yeardifference === 0 &&
             monthdifference >= 1) {
             setVendingTime("Yes");
