@@ -53,7 +53,7 @@ export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
                 <p className='p-1'><label>Total Amount as Social </label>
             <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
         focus:outline-none mb-2 w-full md:w-12/12 text-xl"
-              id='consumption_kwh' name='consumptionkwh' type="number" value={SocialtotalAmount} /></p>
+              id='total_amount' name='totalamount' type="number" value={SocialtotalAmount} /></p>
         </div>
           <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you need&nbsp;
           <strong><em>{ConsumptionKwhFirst}Kwh</em></strong>,

@@ -255,14 +255,14 @@ export default function CalculationPage() {
         if (consumerType === "Residential" && ConsumptionKwhFirst >= 1 && ConsumptionKwhFirst <= 25 && vendingDate
         && vendingtime === "No") {
             newtotalAmountLast = ConsumptionKwhFirst * (EnergyCharge + GSTEnergyCharge);
-            newSocialtotalAmount = socialConsumptionKwh * (SocialEnergyCharge + SocialGSTEnergyCharge);
+            newSocialtotalAmount = ConsumptionKwhFirst * (SocialEnergyCharge + SocialGSTEnergyCharge);
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
             newSocialtotalAmount = parseFloat(newSocialtotalAmount.toFixed(2));
             setSocialtotalAmount(newSocialtotalAmount);
         }
         
         else if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid") &&
-            vendingtime === "Yes" && ConsumptionKwhFirst >= 1) {
+            vendingtime === "Yes" && ConsumptionKwhFirst > 25) {
             newtotalAmountLast = (ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) / EnergyCharge;
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
         }
