@@ -2,7 +2,7 @@ import React from 'react';
 
 
 export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
-    EnergyCharge, GSTEnergyCharge, FixedChargePerMonth, socialConsumptionKwh,
+    EnergyCharge, GSTEnergyCharge, FixedChargePerMonth, todaysDate,
     ConsumptionKwhFirst, setConsumptionKwhFirst, totalAmountLast, SocialtotalAmount }) {
 
     return (
@@ -10,7 +10,8 @@ export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
             <form>
 
                 <p className='p-2'><label>Last Month Vended: </label>
-                    <input className="w-50 font-medium p-2 border" value={vendingDate} name="vendingdate" type='date' required
+                    <input className="w-50 font-medium p-2 border" value={vendingDate} 
+                    max={todaysDate} name="vendingdate" type='date' required
                         onChange={(e) => setVendingDate(e.target.value)} />
                 </p>
 
