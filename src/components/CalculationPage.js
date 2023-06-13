@@ -25,7 +25,7 @@ const calculation_preference = [
 
 export default function CalculationPage() {
     /*declare variables to be used in calculation */
-    const [consumerType, setConsumerType] = useState("Social");
+    const [consumerType, setConsumerType] = useState("Residential");
     const [supplyType, setSupplyType] = useState("Prepaid");
     const [vendingDate, setVendingDate] = useState(new Date("2023-06-12"));
     const [vendingtime, setVendingTime] = useState("Yes");
@@ -67,10 +67,10 @@ export default function CalculationPage() {
 
         let newEnergyCharge = 0;
 
-        if (consumerType === "Social") {
+        if (consumerType === "Residential && totalAmount <= 4.13") {
             newEnergyCharge = 0.15;
         }
-        else if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")) {
+        if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")) {
             newEnergyCharge = 0.24;
         }
         else if (consumerType === "Non-Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")) {

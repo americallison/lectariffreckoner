@@ -3,29 +3,24 @@ import React, { useState } from 'react';
 
 
 const consumer_type = [
-    {
-        id: 1,
-        label: "Social",
-        value: "social",
-        name: "socialconsumer",
-    },
+  
 
     {
-        id: 2,
+        id: 1,
         label: "Residential",
         value: "residential",
         name: "residentialconsumer",
     },
 
     {
-        id: 3,
+        id: 2,
         label: "Non-Residential",
         value: "non-residential",
         name: "non-residentialconsumer",
     },
 
     {
-        id: 4,
+        id: 3,
         label: "Medium Voltage",
         value: "medium-voltage",
         name: "medium-voltageconsumer",
