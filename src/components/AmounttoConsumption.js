@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 const currentDateTime = new Date();
 
 
-export default function AmounttoConsumption({ vendingDate, setVendingDate, vendingtime,
-  setVendingTime, totalAmount, setTotalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
+export default function AmounttoConsumption({ vendingDate, setVendingDate, totalAmount, setTotalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
   ConsumptionKwh, setConsumptionKwh, CalculateAmount }) {
 
 
@@ -18,13 +17,7 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, vendi
             onChange={(e) => setVendingDate(e.target.value)} required />
         </p>
 
-        <label className='mb-1 p-3'><input className='w-50 p-2 mb-2 bg-stone-200'
-          value={vendingtime} name='vended' checked={vendingtime === 'Yes'} type="radio" 
-          onChange={(e) => setVendingTime(e.target.value)} required /></label>&nbsp;
-        <label>
-          <input className='border p-3 mb-1 bg-sky-100'
-            type="radio" value={vendingtime} name="vended" checked={vendingtime === "No"} onChange={(e) => setVendingTime(e.target.value)}/>&nbsp;
-        </label><hr />
+       <hr />
 
         
           <p className='p-1'><label>Total Amount (USD): </label>

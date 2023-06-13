@@ -2,7 +2,7 @@ import React from 'react';
 
 
 export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
-     EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,vendingtime, setVendingTime,
+     EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
     ConsumptionKwhFirst, setConsumptionKwhFirst, totalAmountLast }) {
 
     return (
@@ -15,13 +15,7 @@ export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
                 </p>
                 <p className='p-2'>Is this the first vending of the month?</p>
 
-                <label className='mb-2 p-3'>Yes&nbsp;<input className='w-50 p-2 mb-2 bg-stone-200'
-          value={vendingtime} name='vended' checked={vendingtime === 'Yes'} type="radio" 
-          onChange={(e) => setVendingTime(e.target.value)} required /></label>&nbsp;
-        <label>No&nbsp;
-          <input className='border p-3 mb-2 bg-sky-100'
-            type="radio" value={vendingtime} name="vended" checked={vendingtime === "No"} onChange={(e) => setVendingTime(e.target.value)}/>&nbsp;
-        </label><hr /><hr />
+               <hr />
                 <div className="flex justify-between">
                     <p className='p-2'><label>Consumption (Kwh): </label>
                         <input className="p-1 bg-stone-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
