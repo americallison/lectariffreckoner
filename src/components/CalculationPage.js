@@ -269,7 +269,7 @@ export default function CalculationPage() {
 
         else if (consumerType === "Non-Residential" && (supplyType === "Prepaid" ||
             supplyType === "Postpaid") && vendingtime === "Yes" && ConsumptionKwhFirst >= 1) {
-            newtotalAmountLast = (ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * EnergyCharge;
+            newtotalAmountLast = ((ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * (EnergyCharge))+FixedChargePerMonth;
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
         }
         else if (consumerType === "Medium Voltage" && vendingtime === "Yes" && ConsumptionKwhFirst >= 1) {
