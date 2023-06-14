@@ -103,45 +103,62 @@ export default function CalculationPage() {
         console.log("Date:", daydifference)
         console.log("Month:", monthdifference)
         console.log("Year:", yeardifference)
+        console.log(vendingtime)
         console.log(totalAmount / (EnergyCharge + GSTEnergyCharge))
-              console.log(Number(totalAmount) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge))
+        console.log(FixedChargePerMonth)
 
         if (yeardifference === 0 && monthdifference < 1) {
             setVendingTime("No");
             newFixedChargePerMonth = 0;
         }
+        else if (consumerType === "Residential" && ConsumptionKwhFirst >=1 && (supplyType === "Prepaid" ||
+        supplyType === "Postpaid") && yeardifference === 0 && monthdifference >= 1 && vendingDate) {
+            setVendingTime("Yes");
+            newFixedChargePerMonth = monthdifference * 2.48;
+            newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
+        }
         else if (consumerType === "Residential" && totalAmount <= 4.13 && (supplyType === "Prepaid" ||
         supplyType === "Postpaid") && yeardifference === 0 && monthdifference >= 1) {
             setVendingTime("Yes");
-            newFixedChargePerMonth = monthdifference * SocialEnergyCharge;
+            newFixedChargePerMonth = monthdifference * 2.48;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
         }
-        else if (consumerType === "Residential" && totalAmount > 4.13 && supplyType === "Prepaid" && yeardifference === 0 && monthdifference >= 1) {
+        else if (consumerType === "Residential" && totalAmount > 4.13 && supplyType === "Prepaid" 
+        && yeardifference === 0 && monthdifference >= 1) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 2.48;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
             }
         
-        else if (consumerType === "Residential" && totalAmount > 4.13 && supplyType === "Postpaid" && yeardifference === 0 &&
+        else if (consumerType === "Residential" && totalAmount > 4.13 && supplyType === "Postpaid" 
+        && yeardifference === 0 &&
             monthdifference >= 1) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 4.47;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
         }
-        else if (consumerType === "Non-Residential" && supplyType === "Prepaid" && yeardifference === 0 &&
+        else if (consumerType === "Residential" && supplyType === "Prepaid" && yeardifference === 0 &&
+        monthdifference > 0) {
+        setVendingTime("Yes");
+        newFixedChargePerMonth = monthdifference * 2.48;
+        newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
+        }
+        else if (consumerType === "Non-Residential" && supplyType === "Prepaid" && 
+        yeardifference === 0 &&
             monthdifference >= 1) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 10;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
         }
-        else if (consumerType === "Non-Residential" && supplyType === "Postpaid" && yeardifference === 0 &&
+        else if (consumerType === "Non-Residential" && supplyType === "Postpaid" && 
+        yeardifference === 0 &&
             monthdifference >= 1) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 12;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
         }
         else if (consumerType === "Medium Voltage" && yeardifference === 0 &&
-            monthdifference >= 1) {
+            monthdifference >= 0) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 50;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
@@ -252,8 +269,8 @@ export default function CalculationPage() {
         let newtotalAmountLast = 0;
         let newSocialtotalAmount = 0;
 
-        if (consumerType === "Residential" && ConsumptionKwhFirst >= 1 && ConsumptionKwhFirst <= 25 && vendingDate
-        && vendingtime === "No") {
+        if (consumerType === "Residential" && ConsumptionKwhFirst >= 1 && ConsumptionKwhFirst <= 25 && 
+        vendingDate && vendingtime === "No") {
             newtotalAmountLast = ConsumptionKwhFirst * (EnergyCharge + GSTEnergyCharge);
             newSocialtotalAmount = ConsumptionKwhFirst * (SocialEnergyCharge + SocialGSTEnergyCharge);
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
@@ -261,9 +278,9 @@ export default function CalculationPage() {
             setSocialtotalAmount(newSocialtotalAmount);
         }
         
-        else if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid") &&
-            vendingtime === "Yes" && ConsumptionKwhFirst > 25) {
-            newtotalAmountLast = ((ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * (EnergyCharge))+FixedChargePerMonth;
+        else if (consumerType === "Residential" && supplyType === "Prepaid" &&
+            vendingtime === "Yes" && ConsumptionKwhFirst >=1 ) {
+            newtotalAmountLast = (ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * (EnergyCharge) + FixedChargePerMonth;
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
         }
 
@@ -340,7 +357,8 @@ export default function CalculationPage() {
                             setVendingTime={setVendingTime} GSTEnergyCharge={GSTEnergyCharge}
                             vendingDate={vendingDate} setVendingDate={setVendingDate}
                             totalAmountLast={totalAmountLast} setTotalAmountLast={setTotalAmountLast}
-                            FixedChargePerMonth={FixedChargePerMonth} SocialtotalAmount={SocialtotalAmount}/>)
+                            FixedChargePerMonth={FixedChargePerMonth} SocialtotalAmount={SocialtotalAmount}
+                            todaysDate={todaysDate}/>)
                 }
             </div>
             <div className="md:w-3/12">
