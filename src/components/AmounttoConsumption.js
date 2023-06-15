@@ -72,7 +72,7 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, total
              id='consumption_kwh' name='consumptionkwh' type="number" value={ConsumptionKwh} /></p> 
          <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you recharge&nbsp;
          <strong><em>{totalAmount}USD</em></strong>,
-         you will get <strong><em>{ConsumptionKwh}Kwh - Residential</em></strong> </p>
+         you will get <strong><em>{ConsumptionKwh}Kwh as {consumerType}</em></strong> </p>
         </div>
       }
       </form>
