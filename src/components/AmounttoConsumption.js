@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+
 const currentDateTime = new Date();
 
 
@@ -19,14 +20,14 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, total
 
         <hr />
 
-
+   
         <p className='p-1'><label>Total Amount (USD): </label>
           <input className="p-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
             id='amount' name='totalamount' value={totalAmount}
             onChange={(e) => setTotalAmount(e.target.value)}
             min="0" placeholder='Enter amount' type="number" required /></p>
-
+    
         <p className="p-1"><label>Energy Charge (USD): </label>
           <input className="p-1 bg-stone-200 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
@@ -46,7 +47,6 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, total
        
         {
         totalAmount <= 4.13 ?
-         
         <div>
            <div className="flex justify-between">
           <p className='p-2'><label>Consumption (Kwh): </label>
@@ -73,7 +73,7 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, total
          <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you recharge&nbsp;
          <strong><em>{totalAmount}USD</em></strong>,
          you will get <strong><em>{ConsumptionKwh}Kwh as {consumerType}</em></strong> </p>
-        </div>
+        </div> 
       }
       </form>
     </div>
