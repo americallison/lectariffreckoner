@@ -2,7 +2,7 @@ import React from 'react';
 
 
 export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
-    EnergyCharge, GSTEnergyCharge, FixedChargePerMonth, todaysDate,
+    EnergyCharge, GSTEnergyCharge, FixedChargePerMonth, todaysDate, consumerType,
     ConsumptionKwhFirst, setConsumptionKwhFirst, totalAmountLast, SocialtotalAmount }) {
 
     return (
@@ -58,7 +58,7 @@ export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
         </div>
           <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you need&nbsp;
           <strong><em>{ConsumptionKwhFirst}Kwh</em></strong>,
-          you must recharge <strong><em>{totalAmountLast}USD as Residential</em></strong></p>
+          you must recharge <strong><em>{totalAmountLast}USD as {consumerType}</em></strong></p>
           <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you need&nbsp;
           <strong><em>{ConsumptionKwhFirst}Kwh</em></strong>,
           you must recharge <strong><em>{SocialtotalAmount}USD as Social.</em></strong> </p>

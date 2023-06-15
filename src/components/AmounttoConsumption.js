@@ -4,7 +4,7 @@ const currentDateTime = new Date();
 
 
 export default function AmounttoConsumption({ vendingDate, setVendingDate, totalAmount, setTotalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
-  ConsumptionKwh, socialConsumptionKwh, todaysDate}) {
+  ConsumptionKwh, socialConsumptionKwh, todaysDate, consumerType}) {
 
 
 
@@ -60,7 +60,7 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, total
         </div>
           <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you recharge&nbsp;
           <strong><em>{totalAmount}USD</em></strong>,
-          you will get <strong><em>{ConsumptionKwh}Kwh as Residential</em></strong></p>
+          you will get <strong><em>{ConsumptionKwh}Kwh as {consumerType}</em></strong></p>
           <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you recharge&nbsp;
           <strong><em>{totalAmount}USD</em></strong>,
           you will get <strong><em>{socialConsumptionKwh}Kwh - Social.</em></strong> </p>

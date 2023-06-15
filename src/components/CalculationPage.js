@@ -358,7 +358,7 @@ export default function CalculationPage() {
                             FixedChargePerMonth={FixedChargePerMonth} vendingtime={vendingtime}
                             setVendingTime={setVendingTime} ConsumptionKwh={ConsumptionKwh}
                             setConsumptionKwh={setConsumptionKwh} socialConsumptionKwh={socialConsumptionKwh}
-                            todaysDate={todaysDate} />) :
+                            todaysDate={todaysDate} consumerType={consumerType}/>) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst}
                             EnergyCharge={EnergyCharge} vendingtime={vendingtime}
@@ -366,7 +366,7 @@ export default function CalculationPage() {
                             vendingDate={vendingDate} setVendingDate={setVendingDate}
                             totalAmountLast={totalAmountLast} setTotalAmountLast={setTotalAmountLast}
                             FixedChargePerMonth={FixedChargePerMonth} SocialtotalAmount={SocialtotalAmount}
-                            todaysDate={todaysDate}/>)
+                            todaysDate={todaysDate} consumerType={consumerType} />)
                 }
             </div>
             <div className="md:w-3/12">
