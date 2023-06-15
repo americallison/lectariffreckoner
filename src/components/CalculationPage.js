@@ -4,6 +4,7 @@ import ConsumptiontoAmount from "./ConsumptiontoAmount";
 import AmounttoConsumption from "./AmounttoConsumption";
 import AmounttoConsumptionTitle from './AmounttoConsumptionTitle';
 import ConsumptiontoAmountTitle from './ConsumptiontoAmountTitle';
+import LEC_LOGO from '../images/lec_logo.jpg';
 
 
 const calculation_preference = [
@@ -13,7 +14,6 @@ const calculation_preference = [
         value: "totalamountus",
         name: "amount_preference",
     },
-
     {
         id: 2,
         label: "Consumption (Kwh)",
@@ -21,7 +21,6 @@ const calculation_preference = [
         name: "consumption_preference",
     },
 ]
-
 
 export default function CalculationPage() {
     /*declare variables to be used in calculation */
@@ -47,9 +46,6 @@ export default function CalculationPage() {
     let newVendingDate = new Date(vendingDate);
     let charge = Number(totalAmount) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
     console.log(charge)
-
-
-
 
     /* change preference type */
     const [preference, setPreference] = useState("Total Amount ($US) - Consumption (Kwh)");
@@ -85,7 +81,6 @@ export default function CalculationPage() {
         }
 
         setEnergyCharge(newEnergyCharge);
-
     }, [consumerType, supplyType, totalAmount]);
 
     /* Logic for Energy Charge end */
@@ -186,23 +181,19 @@ export default function CalculationPage() {
     }, [EnergyCharge, consumerType, supplyType, FixedChargePerMonth]);
     /* Logic for 10% GST end */
 
-
-
     /* Logic for calculating consumption(kwh) from total amount start*/
     useEffect(() => {
 
         let newConsumptionKwh = 0;
         let newSocialConsumptionKwh = 0;
 
-
         if (consumerType === "Residential" && totalAmount <= 4.13 && vendingDate && vendingtime === "Yes") {
             newSocialConsumptionKwh = totalAmount / (SocialEnergyCharge + SocialGSTEnergyCharge);
-            newConsumptionKwh = (totalAmount - (GSTEnergyCharge + FixedChargePerMonth)) / EnergyCharge;
+            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / (EnergyCharge + EnergyCharge/10);
             newSocialConsumptionKwh = parseFloat(newSocialConsumptionKwh.toFixed(2));
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
             setSocialConsumptionKwh(newSocialConsumptionKwh);
         }
-
         else if (consumerType === "Residential" && totalAmount <= 4.13 && vendingDate && vendingtime === "No") {
             newSocialConsumptionKwh = totalAmount / (SocialEnergyCharge + SocialGSTEnergyCharge);
             newConsumptionKwh = totalAmount / (EnergyCharge + GSTEnergyCharge);
@@ -212,16 +203,16 @@ export default function CalculationPage() {
         }
         else if (consumerType === "Residential" && (supplyType === "Prepaid" ||
             supplyType === "Postpaid") && vendingtime === "Yes" && totalAmount >= 1) {
-            newConsumptionKwh = (totalAmount - (GSTEnergyCharge + FixedChargePerMonth)) / EnergyCharge;
+            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / (EnergyCharge + EnergyCharge/10);
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
         }
         else if (consumerType === "Non-Residential" && (supplyType === "Prepaid" ||
             supplyType === "Postpaid") && vendingtime === "Yes" && totalAmount >= 1) {
-            newConsumptionKwh = (totalAmount - (GSTEnergyCharge + FixedChargePerMonth)) / EnergyCharge;
+            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / (EnergyCharge + EnergyCharge/10);
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
         }
         else if (consumerType === "Medium Voltage" && vendingtime === "Yes" && totalAmount >= 1) {
-            newConsumptionKwh = (totalAmount - (GSTEnergyCharge + FixedChargePerMonth)) / EnergyCharge;
+            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / (EnergyCharge + EnergyCharge/10);
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
         }
         else if (consumerType === "Residential" && (supplyType === "Prepaid" ||
@@ -229,7 +220,6 @@ export default function CalculationPage() {
             newConsumptionKwh = (totalAmount / (EnergyCharge + GSTEnergyCharge));
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
         }
-
         else if (consumerType === "Non-Residential" && (supplyType === "Prepaid" ||
             supplyType === "Postpaid") && vendingtime === "No") {
             newConsumptionKwh = (totalAmount / (EnergyCharge + GSTEnergyCharge));
@@ -240,9 +230,8 @@ export default function CalculationPage() {
             newConsumptionKwh = (totalAmount / (EnergyCharge + GSTEnergyCharge));
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
         }
+
         setConsumptionKwh(newConsumptionKwh);
-
-
 
         /* If any of these below dependencies change, consumptionKwh will be recalculated */
     }, [totalAmount, supplyType, consumerType, EnergyCharge, GSTEnergyCharge, preference,
@@ -271,7 +260,8 @@ export default function CalculationPage() {
 
         if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")
             && vendingDate && vendingtime === "No" && ConsumptionKwhFirst <= 25) {
-            newtotalAmountLast = ConsumptionKwhFirst * (EnergyCharge + GSTEnergyCharge);
+            newtotalAmountLast = (ConsumptionKwhFirst * (EnergyCharge + (EnergyCharge/10)) + 
+            (FixedChargePerMonth + (FixedChargePerMonth/10)));
             newSocialtotalAmount = ConsumptionKwhFirst * (SocialEnergyCharge + SocialGSTEnergyCharge);
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
             newSocialtotalAmount = parseFloat(newSocialtotalAmount.toFixed(2));
@@ -279,7 +269,8 @@ export default function CalculationPage() {
         }
         else if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")
             && vendingDate && vendingtime === "Yes" && ConsumptionKwhFirst <= 25) {
-            newtotalAmountLast = (ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * (EnergyCharge) + FixedChargePerMonth;;
+            newtotalAmountLast = (ConsumptionKwhFirst * (EnergyCharge + (EnergyCharge/10)) + 
+            (FixedChargePerMonth + (FixedChargePerMonth/10)));
             newSocialtotalAmount = ConsumptionKwhFirst * (SocialEnergyCharge + SocialGSTEnergyCharge);
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
             newSocialtotalAmount = parseFloat(newSocialtotalAmount.toFixed(2));
@@ -293,17 +284,20 @@ export default function CalculationPage() {
         }
         else if (consumerType === "Residential" && supplyType === "Prepaid" &&
             vendingtime === "Yes" && ConsumptionKwhFirst >= 1) {
-            newtotalAmountLast = (ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * (EnergyCharge) + FixedChargePerMonth;
+            newtotalAmountLast = (ConsumptionKwhFirst * (EnergyCharge + (EnergyCharge/10)) + 
+            (FixedChargePerMonth + (FixedChargePerMonth/10)));
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
         }
 
         else if (consumerType === "Non-Residential" && (supplyType === "Prepaid" ||
             supplyType === "Postpaid") && vendingtime === "Yes" && ConsumptionKwhFirst >= 1) {
-            newtotalAmountLast = ((ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * (EnergyCharge)) + FixedChargePerMonth;
+            newtotalAmountLast = (ConsumptionKwhFirst * (EnergyCharge + (EnergyCharge/10)) + 
+            (FixedChargePerMonth + (FixedChargePerMonth/10)));
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
         }
         else if (consumerType === "Medium Voltage" && vendingtime === "Yes" && ConsumptionKwhFirst >= 1) {
-            newtotalAmountLast = (ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * EnergyCharge;
+            newtotalAmountLast = (ConsumptionKwhFirst * (EnergyCharge + (EnergyCharge/10)) + 
+            (FixedChargePerMonth + (FixedChargePerMonth/10)));
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
         }
 
@@ -329,8 +323,10 @@ export default function CalculationPage() {
         <div className="flex p-2">
             <div className="md:w-3/12"></div>
             <div className="md:w-6/12 w-full">
+                <div className="flex items-center p-4 justify-center">
+                <img src={LEC_LOGO} className="w-auto h-20" alt="LEC Logo" />
+                </div>
                 <h3 className="text-2xl mb-1 text-center container p-1">LEC Tariff Reckoner</h3>
-
                 {
                     preferenceIsActive.isActive && preferenceIsActive.name === 'amount_preference' ?
                         (<AmounttoConsumptionTitle />) : (<ConsumptiontoAmountTitle />)
@@ -339,11 +335,14 @@ export default function CalculationPage() {
 
                 <p className="p-1">
                     <label>Calculation Preference:&nbsp;
-                        <select className="mb-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
-        focus:outline-none text-gray-700 font-light w-full md:w-12/12 bg-white" id={preference.name} value={preference} onChange={handleActivePreference}>
+                        <select className="mb-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight focus:outline-none 
+                        text-gray-700 font-light w-full md:w-12/12 bg-white" id={preference.name} value={preference} 
+                        onChange={handleActivePreference}>
+
                             {calculation_preference.map((preference) => (
                                 <option key={preference.id} value={preference.name}>{preference.label}</option>
                             ))}
+
                         </select>
                     </label>
                 </p>
