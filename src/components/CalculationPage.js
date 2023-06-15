@@ -26,7 +26,7 @@ export default function CalculationPage() {
     /*declare variables to be used in calculation */
     const [consumerType, setConsumerType] = useState("Residential");
     const [supplyType, setSupplyType] = useState("Prepaid");
-    const [vendingDate, setVendingDate] = useState(new Date("2023-06-12"));
+    const [vendingDate, setVendingDate] = useState();
     const [vendingtime, setVendingTime] = useState("Yes");
     const [totalAmount, setTotalAmount] = useState(0);
     const [EnergyCharge, setEnergyCharge] = useState(0);
@@ -205,17 +205,20 @@ export default function CalculationPage() {
             setSocialConsumptionKwh(newSocialConsumptionKwh);
         }
         else if (consumerType === "Residential" && (supplyType === "Prepaid" ||
-            supplyType === "Postpaid") && vendingtime === "Yes" && totalAmount >= 1) {
-            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / (EnergyCharge + EnergyCharge/10);
+            supplyType === "Postpaid") && vendingDate && vendingtime === "Yes" && totalAmount >= 1) {
+            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / 
+            (EnergyCharge + EnergyCharge/10);
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
         }
         else if (consumerType === "Non-Residential" && (supplyType === "Prepaid" ||
-            supplyType === "Postpaid") && vendingtime === "Yes" && totalAmount >= 1) {
-            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / (EnergyCharge + EnergyCharge/10);
+            supplyType === "Postpaid") && vendingtime === "Yes" && vendingDate && totalAmount >= 1) {
+            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / 
+            (EnergyCharge + EnergyCharge/10);
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
         }
-        else if (consumerType === "Medium Voltage" && vendingtime === "Yes" && totalAmount >= 1) {
-            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / (EnergyCharge + EnergyCharge/10);
+        else if (consumerType === "Medium Voltage" && vendingDate && vendingtime === "Yes" && totalAmount >= 1) {
+            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / 
+            (EnergyCharge + EnergyCharge/10);
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
         }
         else if (consumerType === "Residential" && (supplyType === "Prepaid" ||
