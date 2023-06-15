@@ -47,7 +47,7 @@ export default function CalculationPage() {
     let newVendingDate = new Date(vendingDate);
     let charge = Number(totalAmount) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
     console.log(charge)
-   
+
 
 
 
@@ -85,7 +85,7 @@ export default function CalculationPage() {
         }
 
         setEnergyCharge(newEnergyCharge);
-  
+
     }, [consumerType, supplyType, totalAmount]);
 
     /* Logic for Energy Charge end */
@@ -111,47 +111,47 @@ export default function CalculationPage() {
             setVendingTime("No");
             newFixedChargePerMonth = 0;
         }
-        else if (consumerType === "Residential" && ConsumptionKwhFirst >=1 && (supplyType === "Prepaid" ||
-        supplyType === "Postpaid") && yeardifference === 0 && monthdifference >= 1 && vendingDate) {
+        else if (consumerType === "Residential" && ConsumptionKwhFirst >= 1 && (supplyType === "Prepaid" ||
+            supplyType === "Postpaid") && yeardifference === 0 && monthdifference >= 1 && vendingDate) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 2.48;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
         }
         else if (consumerType === "Residential" && totalAmount <= 4.13 && (supplyType === "Prepaid" ||
-        supplyType === "Postpaid") && yeardifference === 0 && monthdifference >= 1) {
+            supplyType === "Postpaid") && yeardifference === 0 && monthdifference >= 1) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 2.48;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
         }
-        else if (consumerType === "Residential" && totalAmount > 4.13 && supplyType === "Prepaid" 
-        && yeardifference === 0 && monthdifference >= 1) {
+        else if (consumerType === "Residential" && totalAmount > 4.13 && supplyType === "Prepaid"
+            && yeardifference === 0 && monthdifference >= 1) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 2.48;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
-            }
-        
-        else if (consumerType === "Residential" && totalAmount > 4.13 && supplyType === "Postpaid" 
-        && yeardifference === 0 &&
+        }
+
+        else if (consumerType === "Residential" && totalAmount > 4.13 && supplyType === "Postpaid"
+            && yeardifference === 0 &&
             monthdifference >= 1) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 4.47;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
         }
         else if (consumerType === "Residential" && supplyType === "Prepaid" && yeardifference === 0 &&
-        monthdifference > 0) {
-        setVendingTime("Yes");
-        newFixedChargePerMonth = monthdifference * 2.48;
-        newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
+            monthdifference > 0) {
+            setVendingTime("Yes");
+            newFixedChargePerMonth = monthdifference * 2.48;
+            newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
         }
-        else if (consumerType === "Non-Residential" && supplyType === "Prepaid" && 
-        yeardifference === 0 &&
+        else if (consumerType === "Non-Residential" && supplyType === "Prepaid" &&
+            yeardifference === 0 &&
             monthdifference >= 1) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 10;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
         }
-        else if (consumerType === "Non-Residential" && supplyType === "Postpaid" && 
-        yeardifference === 0 &&
+        else if (consumerType === "Non-Residential" && supplyType === "Postpaid" &&
+            yeardifference === 0 &&
             monthdifference >= 1) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 12;
@@ -186,8 +186,8 @@ export default function CalculationPage() {
     }, [EnergyCharge, consumerType, supplyType, FixedChargePerMonth]);
     /* Logic for 10% GST end */
 
- 
-  
+
+
     /* Logic for calculating consumption(kwh) from total amount start*/
     useEffect(() => {
 
@@ -203,7 +203,7 @@ export default function CalculationPage() {
             setSocialConsumptionKwh(newSocialConsumptionKwh);
         }
 
-         else if (consumerType === "Residential" && totalAmount <= 4.13 && vendingDate && vendingtime === "No") {
+        else if (consumerType === "Residential" && totalAmount <= 4.13 && vendingDate && vendingtime === "No") {
             newSocialConsumptionKwh = totalAmount / (SocialEnergyCharge + SocialGSTEnergyCharge);
             newConsumptionKwh = totalAmount / (EnergyCharge + GSTEnergyCharge);
             newSocialConsumptionKwh = parseFloat(newSocialConsumptionKwh.toFixed(2));
@@ -211,7 +211,7 @@ export default function CalculationPage() {
             setSocialConsumptionKwh(newSocialConsumptionKwh);
         }
         else if (consumerType === "Residential" && (supplyType === "Prepaid" ||
-            supplyType === "Postpaid") && vendingtime === "Yes" && totalAmount >= 1 ) {
+            supplyType === "Postpaid") && vendingtime === "Yes" && totalAmount >= 1) {
             newConsumptionKwh = (totalAmount - (GSTEnergyCharge + FixedChargePerMonth)) / EnergyCharge;
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
         }
@@ -242,7 +242,7 @@ export default function CalculationPage() {
         }
         setConsumptionKwh(newConsumptionKwh);
 
-       
+
 
         /* If any of these below dependencies change, consumptionKwh will be recalculated */
     }, [totalAmount, supplyType, consumerType, EnergyCharge, GSTEnergyCharge, preference,
@@ -269,37 +269,37 @@ export default function CalculationPage() {
         let newtotalAmountLast = 0;
         let newSocialtotalAmount = 0;
 
-        if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid") 
-     && vendingDate && vendingtime === "No" && ConsumptionKwhFirst <= 25 ) {
+        if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")
+            && vendingDate && vendingtime === "No" && ConsumptionKwhFirst <= 25) {
             newtotalAmountLast = ConsumptionKwhFirst * (EnergyCharge + GSTEnergyCharge);
             newSocialtotalAmount = ConsumptionKwhFirst * (SocialEnergyCharge + SocialGSTEnergyCharge);
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
             newSocialtotalAmount = parseFloat(newSocialtotalAmount.toFixed(2));
             setSocialtotalAmount(newSocialtotalAmount);
         }
-        else if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid") 
-     && vendingDate && vendingtime === "Yes" && ConsumptionKwhFirst <= 25 ) {
+        else if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")
+            && vendingDate && vendingtime === "Yes" && ConsumptionKwhFirst <= 25) {
             newtotalAmountLast = (ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * (EnergyCharge) + FixedChargePerMonth;;
             newSocialtotalAmount = ConsumptionKwhFirst * (SocialEnergyCharge + SocialGSTEnergyCharge);
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
             newSocialtotalAmount = parseFloat(newSocialtotalAmount.toFixed(2));
             setSocialtotalAmount(newSocialtotalAmount);
         }
-        else if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid") 
-        && vendingDate && vendingtime === "No" && ConsumptionKwhFirst > 25 ) {
-               newtotalAmountLast = ConsumptionKwhFirst * (EnergyCharge + GSTEnergyCharge);
-               newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
-               
+        else if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")
+            && vendingDate && vendingtime === "No" && ConsumptionKwhFirst > 25) {
+            newtotalAmountLast = ConsumptionKwhFirst * (EnergyCharge + GSTEnergyCharge);
+            newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
+
         }
         else if (consumerType === "Residential" && supplyType === "Prepaid" &&
-            vendingtime === "Yes" && ConsumptionKwhFirst >=1 ) {
+            vendingtime === "Yes" && ConsumptionKwhFirst >= 1) {
             newtotalAmountLast = (ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * (EnergyCharge) + FixedChargePerMonth;
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
         }
 
         else if (consumerType === "Non-Residential" && (supplyType === "Prepaid" ||
             supplyType === "Postpaid") && vendingtime === "Yes" && ConsumptionKwhFirst >= 1) {
-            newtotalAmountLast = ((ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * (EnergyCharge))+FixedChargePerMonth;
+            newtotalAmountLast = ((ConsumptionKwhFirst - (GSTEnergyCharge + FixedChargePerMonth)) * (EnergyCharge)) + FixedChargePerMonth;
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
         }
         else if (consumerType === "Medium Voltage" && vendingtime === "Yes" && ConsumptionKwhFirst >= 1) {
@@ -358,7 +358,7 @@ export default function CalculationPage() {
                             FixedChargePerMonth={FixedChargePerMonth} vendingtime={vendingtime}
                             setVendingTime={setVendingTime} ConsumptionKwh={ConsumptionKwh}
                             setConsumptionKwh={setConsumptionKwh} socialConsumptionKwh={socialConsumptionKwh}
-                            todaysDate={todaysDate} consumerType={consumerType}/>) :
+                            todaysDate={todaysDate} consumerType={consumerType} />) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst}
                             EnergyCharge={EnergyCharge} vendingtime={vendingtime}
