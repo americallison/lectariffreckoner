@@ -47,11 +47,11 @@ export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
          
         <div>
            <div className="flex justify-between">
-          <p className='p-1'><label>Total Amount (USD): </label>
+          <p className='p-2'><label>Total Amount (USD): </label>
             <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
         focus:outline-none mb-2 w-full md:w-12/12 text-xl"
               id='total_amount' name='totalamount' type="number" value={totalAmountLast} /></p>
-                <p className='p-1'><label>Total Amount as Social </label>
+                <p className='p-2'><label>Total Amount as Social </label>
             <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
         focus:outline-none mb-2 w-full md:w-12/12 text-xl"
               id='total_amount' name='totalamount' type="number" value={SocialtotalAmount} /></p>
@@ -64,7 +64,7 @@ export default function ConsumptiontoAmount({ vendingDate, setVendingDate,
           you must recharge <strong><em>{SocialtotalAmount}USD as Social.</em></strong> </p>
           </div> : 
           <div>
-           <p className='p-1'><label>Total Amount (USD): </label>
+           <p className='p-2'><label>Total Amount (USD): </label>
            <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
        focus:outline-none mb-2 w-full md:w-12/12 text-xl"
              id='consumption_kwh' name='consumptionkwh' type="number" value={totalAmountLast} /></p> 

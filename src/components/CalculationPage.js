@@ -99,6 +99,7 @@ export default function CalculationPage() {
         console.log("Month:", monthdifference)
         console.log("Year:", yeardifference)
         console.log(vendingtime)
+        console.log(vendingDate)
         console.log(totalAmount / (EnergyCharge + GSTEnergyCharge))
         console.log("Social:", ConsumptionKwhFirst * (SocialEnergyCharge + SocialGSTEnergyCharge))
 
@@ -257,6 +258,7 @@ export default function CalculationPage() {
 
         let newtotalAmountLast = 0;
         let newSocialtotalAmount = 0;
+        let totalAmountConsumpNeg = 0;
 
         if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")
             && vendingDate && vendingtime === "No" && ConsumptionKwhFirst <= 25) {
@@ -312,6 +314,9 @@ export default function CalculationPage() {
                 (EnergyCharge + GSTEnergyCharge);
             newtotalAmountLast = parseFloat(newtotalAmountLast.toFixed(2));
         }
+        else if (ConsumptionKwhFirst < 0) {
+            totalAmountConsumpNeg = Math.abs(ConsumptionKwhFirst) * (EnergyCharge + (EnergyCharge/10)) + (newtotalAmountLast * 2);
+        }
         setTotalAmountLast(newtotalAmountLast);
 
         /* If any of these below dependencies change, consumptionKwh will be recalculated */
@@ -322,8 +327,8 @@ export default function CalculationPage() {
     return (
         <div className="flex p-2">
             <div className="md:w-3/12"></div>
-            <div className="md:w-6/12 w-full">
-                <div className="flex items-center p-4 justify-center">
+            <div className="md:w-6/12 w-full shadow rounded p-3">
+                <div className="flex items-center p-3 justify-center">
                 <img src={LEC_LOGO} className="w-auto h-20" alt="LEC Logo" />
                 </div>
                 <h3 className="text-2xl mb-1 text-center container p-1">LEC Tariff Reckoner</h3>
@@ -331,7 +336,7 @@ export default function CalculationPage() {
                     preferenceIsActive.isActive && preferenceIsActive.name === 'amount_preference' ?
                         (<AmounttoConsumptionTitle />) : (<ConsumptiontoAmountTitle />)
                 }
-                <br />
+                
 
                 <p className="p-1">
                     <label>Calculation Preference:&nbsp;

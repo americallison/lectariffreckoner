@@ -49,11 +49,11 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, total
          
         <div>
            <div className="flex justify-between">
-          <p className='p-1'><label>Consumption (Kwh): </label>
+          <p className='p-2'><label>Consumption (Kwh): </label>
             <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
         focus:outline-none mb-2 w-full md:w-12/12 text-xl"
               id='consumption_kwh' name='consumptionkwh' type="number" value={ConsumptionKwh} /></p>
-                <p className='p-1'><label>Consumption (Kwh) as Social </label>
+                <p className='p-2'><label>Consumption (Kwh) as Social </label>
             <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
         focus:outline-none mb-2 w-full md:w-12/12 text-xl"
               id='consumption_kwh' name='consumptionkwh' type="number" value={socialConsumptionKwh} /></p>
@@ -63,10 +63,10 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, total
           you will get <strong><em>{ConsumptionKwh}Kwh as {consumerType}</em></strong></p>
           <p className="m-1 p-2 text-xl font-light bg-yellow-50">If you recharge&nbsp;
           <strong><em>{totalAmount}USD</em></strong>,
-          you will get <strong><em>{socialConsumptionKwh}Kwh - Social.</em></strong> </p>
+          you will get <strong><em>{socialConsumptionKwh}Kwh as Social.</em></strong> </p>
           </div> : 
           <div>
-           <p className='p-1'><label>Consumption (Kwh): </label>
+           <p className='p-2'><label>Consumption (Kwh): </label>
            <input className="p-1 bg-stone-200 border-b-8 font-bold border-black shadow-sm leading-tight 
        focus:outline-none mb-2 w-full md:w-12/12 text-xl"
              id='consumption_kwh' name='consumptionkwh' type="number" value={ConsumptionKwh} /></p> 
