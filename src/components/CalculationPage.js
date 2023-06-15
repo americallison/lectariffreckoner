@@ -41,7 +41,7 @@ export default function CalculationPage() {
 
     const todaysDate = new Date().toISOString().split('T')[0];
     
-
+    let negtotal = parseFloat(Math.abs(ConsumptionKwh) * (EnergyCharge + (EnergyCharge/10)) + (totalAmount * 2)).toFixed(2)
     const SocialEnergyCharge = 0.15;
     const SocialGSTEnergyCharge = SocialEnergyCharge / 10;
     let currentDate = new Date();
@@ -192,7 +192,8 @@ export default function CalculationPage() {
 
         if (consumerType === "Residential" && totalAmount <= 4.13 && vendingDate && vendingtime === "Yes") {
             newSocialConsumptionKwh = totalAmount / (SocialEnergyCharge + SocialGSTEnergyCharge);
-            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / (EnergyCharge + EnergyCharge/10);
+            newConsumptionKwh = (totalAmount - (FixedChargePerMonth + FixedChargePerMonth/10)) / 
+            (EnergyCharge + EnergyCharge/10);
             newSocialConsumptionKwh = parseFloat(newSocialConsumptionKwh.toFixed(2));
             newConsumptionKwh = parseFloat(newConsumptionKwh.toFixed(2));
             setSocialConsumptionKwh(newSocialConsumptionKwh);
@@ -364,7 +365,7 @@ export default function CalculationPage() {
                             FixedChargePerMonth={FixedChargePerMonth} vendingtime={vendingtime}
                             setVendingTime={setVendingTime} ConsumptionKwh={ConsumptionKwh}
                             setConsumptionKwh={setConsumptionKwh} socialConsumptionKwh={socialConsumptionKwh}
-                            todaysDate={todaysDate} consumerType={consumerType} />) :
+                            todaysDate={todaysDate} consumerType={consumerType} negtotal={negtotal}/>) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst}
                             EnergyCharge={EnergyCharge} vendingtime={vendingtime}

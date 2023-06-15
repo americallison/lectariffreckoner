@@ -5,8 +5,8 @@ const currentDateTime = new Date();
 
 
 export default function AmounttoConsumption({ vendingDate, setVendingDate, totalAmount, setTotalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
-  ConsumptionKwh, socialConsumptionKwh, todaysDate, consumerType}) {
-
+  ConsumptionKwh, socialConsumptionKwh, todaysDate, consumerType, negtotal}) {
+  
 
 
   return (
@@ -20,24 +20,24 @@ export default function AmounttoConsumption({ vendingDate, setVendingDate, total
 
         <hr />
 
-   {
-    totalAmount >= 0 && ConsumptionKwh < 0 ?
-   
-        (
-        
-        <p className='p-1'><label>Total Amount (USD): </label>
-          <input className="p-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
-        focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
-            id='amount' name='totalamount' value={parseFloat(Math.abs(ConsumptionKwh) * (EnergyCharge + (EnergyCharge/10)) + (totalAmount * 2)).toFixed(2)}
-            onChange={(e) => setTotalAmount(e.target.value)}
-            min="0" placeholder='Enter amount' type="number" required /></p>) :
-            (<p className='p-1'><label>Total Amount (USD): </label>
+  
+            <p className='p-1'><label>Total Amount (USD): </label>
           <input className="p-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
             id='amount' name='totalamount' value={totalAmount}
             onChange={(e) => setTotalAmount(e.target.value)}
-            min="0" placeholder='Enter amount' type="number" required /></p>) 
-   }
+            min="0" placeholder='Enter amount' type="number" required /></p>
+
+{
+   ConsumptionKwh < 0 ?
+        (
+        <p className='p-1'><label>Rechargable Amount (USD): </label>
+          <input className="p-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
+        focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
+            id='negamount' name='negtotalamount' value={negtotal}
+            min="0" placeholder='Enter amount' type="number" required /></p>) : ""
+          }
+   
         <p className="p-1"><label>Energy Charge (USD): </label>
           <input className="p-1 bg-stone-200 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
