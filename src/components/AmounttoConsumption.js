@@ -36,7 +36,62 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, tot
         name: "AprilMonth",
     },
 
+    {
+      id: 5,
+      label: "May",
+      value: "may",
+      name: "MayMonth",
+  },
   
+  {
+    id: 6,
+    label: "June",
+    value: "june",
+    name: "JuneMonth",
+},
+
+{
+  id: 7,
+  label: "July",
+  value: "july",
+  name: "JulyMonth",
+},
+
+{
+  id: 8,
+  label: "August",
+  value: "august",
+  name: "AugustMonth",
+},
+
+
+{
+  id: 9,
+  label: "September",
+  value: "september",
+  name: "SeptemberMonth",
+},
+
+{
+  id: 10,
+  label: "October",
+  value: "october",
+  name: "OctoberMonth",
+},
+
+{
+  id: 11,
+  label: "November",
+  value: "november",
+  name: "NovemberMonth",
+},
+
+{
+  id: 12,
+  label: "December",
+  value: "december",
+  name: "DecemberMonth",
+},
   ]
 
   return (
@@ -51,7 +106,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, tot
                             onChange={(e) => setVendingMonth(e.target.value)} required>
 
                             {months.map((month) => (
-                                <option key={month.id} value={month.label}>{month.label}</option>
+                                <option key={month.id} value={month.label}>{month.id}</option>
                             ))}
                         </select></label>
         </p>
