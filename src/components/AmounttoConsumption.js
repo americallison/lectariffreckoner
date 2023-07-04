@@ -82,7 +82,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
 },
   ]
 
-  const months = [
+  const years = [
 
     {
         id: 1,

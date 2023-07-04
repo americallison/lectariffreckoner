@@ -363,7 +363,8 @@ export default function CalculationPage() {
                     preferenceIsActive.isActive && preferenceIsActive.name === 'amount_preference' ?
                         (<AmounttoConsumption totalAmount={totalAmount} setTotalAmount={setTotalAmount}
                             EnergyCharge={EnergyCharge} GSTEnergyCharge={GSTEnergyCharge}
-                            vendingDate={vendingDate} setVendingDate={setVendingDate}
+                            vendingMonth={vendingMonth} setVendingMonth={setVendingMonth}
+                            vendingYear={vendingYear} setVendingYear={setVendingYear}
                             FixedChargePerMonth={FixedChargePerMonth} vendingtime={vendingtime}
                             setVendingTime={setVendingTime} ConsumptionKwh={ConsumptionKwh}
                             setConsumptionKwh={setConsumptionKwh} socialConsumptionKwh={socialConsumptionKwh}
