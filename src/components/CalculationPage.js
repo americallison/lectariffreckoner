@@ -26,7 +26,8 @@ export default function CalculationPage() {
     /*declare variables to be used in calculation */
     const [consumerType, setConsumerType] = useState("Residential");
     const [supplyType, setSupplyType] = useState("Prepaid");
-    const [vendingDate, setVendingDate] = useState();
+    const [vendingMonth, setVendingMonth] = useState();
+    const [vendingYear, setVendingYear] = useState();
     const [vendingtime, setVendingTime] = useState("Yes");
     const [totalAmount, setTotalAmount] = useState(0);
     const [EnergyCharge, setEnergyCharge] = useState(0);
