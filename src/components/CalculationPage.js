@@ -75,8 +75,11 @@ export default function CalculationPage() {
 
         let newEnergyCharge = 0;
 
-        if (consumerType === "Residential" && totalAmount < 4.125) {
+        if (consumerType === "Residential" && totalAmount <= 4.125) {
             newEnergyCharge = SocialConsumptionKwh * (0.15+(0.15/10));
+        }
+        else if (consumerType === "Residential") && totalAmount > 4.125) {
+            newEnergyCharge = (0.15+(0.15/10)*25)+(SocialConsumptionKwh-25)*(0.24+(0.24/10))
         }
         else if (consumerType === "Non-Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")) {
             newEnergyCharge = 0.22;
