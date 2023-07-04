@@ -1,21 +1,59 @@
 import React, { useState, useEffect } from 'react';
 
 
-const currentDateTime = new Date();
+export default function AmounttoConsumption({ vendingMonth, setVendingMonth, totalAmount, setTotalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
+  ConsumptionKwh, socialConsumptionKwh, consumerType, negtotal, negconsumption }) {
 
 
-export default function AmounttoConsumption({ vendingDate, setVendingDate, totalAmount, setTotalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
-  ConsumptionKwh, socialConsumptionKwh, todaysDate, consumerType, negtotal, negconsumption }) {
+    const months = [
+  
 
+      {
+          id: 1,
+          label: "January",
+          value: "january",
+          name: "JanuaryMonth",
+      },
+  
+      {
+          id: 2,
+          label: "February",
+          value: "february",
+          name: "FebruaryMonth",
+      },
+  
+      {
+          id: 3,
+          label: "March",
+          value: "march",
+          name: "MarchMonth",
+      },
 
+      {
+        id: 4,
+        label: "April",
+        value: "april",
+        name: "AprilMonth",
+    },
+
+  
+  ]
 
   return (
     <div>
       <form>
 
-        <p className='p-1'><label>Last Month Vended: </label>
-          <input className="w-50 font-medium p-1 border" value={vendingDate} name="vendingdate" type='date'
-            onChange={(e) => setVendingDate(e.target.value)} max={todaysDate} required />
+        <p className='p-1'><label>Last Month Vended: 
+        <select className="mb-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
+        focus:outline-none text-gray-700 font-light w-full md:w-12/12 bg-white"
+                            id={months.name}
+                            value={vendingMonth}
+                            onChange={(e) => setVendingMonth(e.target.value)} required>
+
+                            {months.map((month) => (
+                                <option key={month.id} value={month.label}>{month.label}</option>
+                            ))}
+                        </select></label>
         </p>
 
         <hr />
