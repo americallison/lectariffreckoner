@@ -75,8 +75,8 @@ export default function CalculationPage() {
 
         let newEnergyCharge = 0;
 
-        if (consumerType === "Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")) {
-            newEnergyCharge = 0.24;
+        if (consumerType === "Residential" && totalAmount < 4.125) {
+            newEnergyCharge = SocialConsumptionKwh * (0.15+(0.15/10));
         }
         else if (consumerType === "Non-Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")) {
             newEnergyCharge = 0.22;
@@ -113,7 +113,7 @@ export default function CalculationPage() {
             newFixedChargePerMonth = 0;
         }
         else if (consumerType === "Residential" && ConsumptionKwhFirst >= 1 && (supplyType === "Prepaid" ||
-            supplyType === "Postpaid") && yeardifference === 0 && monthdifference >= 1 && vendingDate) {
+            supplyType === "Postpaid") && yeardifference === 0 && monthdifference >= 1 && vendingMonth) {
             setVendingTime("Yes");
             newFixedChargePerMonth = monthdifference * 2.48;
             newFixedChargePerMonth = parseFloat(newFixedChargePerMonth.toFixed(3));
