@@ -11,56 +11,48 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, tot
       {
           id: 1,
           label: "January",
-          value: "january",
           name: "JanuaryMonth",
       },
   
       {
           id: 2,
           label: "February",
-          value: "february",
           name: "FebruaryMonth",
       },
   
       {
           id: 3,
           label: "March",
-          value: "march",
           name: "MarchMonth",
       },
 
       {
         id: 4,
         label: "April",
-        value: "april",
         name: "AprilMonth",
     },
 
     {
       id: 5,
       label: "May",
-      value: "may",
       name: "MayMonth",
   },
   
   {
     id: 6,
     label: "June",
-    value: "june",
     name: "JuneMonth",
 },
 
 {
   id: 7,
   label: "July",
-  value: "july",
   name: "JulyMonth",
 },
 
 {
   id: 8,
   label: "August",
-  value: "august",
   name: "AugustMonth",
 },
 
@@ -68,28 +60,24 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, tot
 {
   id: 9,
   label: "September",
-  value: "september",
   name: "SeptemberMonth",
 },
 
 {
   id: 10,
   label: "October",
-  value: "october",
   name: "OctoberMonth",
 },
 
 {
   id: 11,
   label: "November",
-  value: "november",
   name: "NovemberMonth",
 },
 
 {
   id: 12,
   label: "December",
-  value: "december",
   name: "DecemberMonth",
 },
   ]
@@ -106,7 +94,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, tot
                             onChange={(e) => setVendingMonth(e.target.value)} required>
 
                             {months.map((month) => (
-                                <option key={month.id} value={month.label}>{month.id}</option>
+                                <option key={month.id} value={month.label}>{month.Label}</option>
                             ))}
                         </select></label>
         </p>
