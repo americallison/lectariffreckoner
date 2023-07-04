@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 
 export default function AmounttoConsumption({ vendingMonth, setVendingMonth, vendingYear, setVendingYear,
-   totalAmount, setTotalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
+   totalAmount, setTotalAmount, EnergyChargeSocial, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
   ConsumptionKwh, socialConsumptionKwh, consumerType, negtotal, negconsumption }) {
 
 
@@ -160,11 +160,25 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                   min="0" placeholder='Enter amount' type="number" required /></p>) : ""
         }
 
-        <p className="p-1"><label>Energy Charge (USD): </label>
+{ totalAmount < 4.13 ?
+(<div>
+<div className="flex">
+        <p className="p-1"><label>Energy Charge Social (USD): </label>
           <input className="p-1 bg-stone-200 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
             id='energy_charge' value={EnergyCharge} name='energycharge' type="number"
           /></p>
+          <p className="p-1"><label>Energy Charge (USD): </label>
+          <input className="p-1 bg-stone-200 border-b-4 border-yellow-300 shadow-sm leading-tight 
+        focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
+            id='energy_charge' value={EnergyCharge} name='energycharge' type="number"
+          /></p></div></div>) : <p className="p-1"><label>Energy Charge (USD): </label>
+          <input className="p-1 bg-stone-200 border-b-4 border-yellow-300 shadow-sm leading-tight 
+        focus:outline-none mb-1 text-gray-700 font-light w-full md:w-12/12 bg-white"
+            id='energy_charge' value={EnergyCharge} name='energycharge' type="number"
+          /></p>
+          
+  }
 
         <p className='p-2'><label>Fixed Charge (USD/month): </label>
           <input className="p-2 bg-stone-200 border-b-4 border-yellow-300 shadow-sm leading-tight 
