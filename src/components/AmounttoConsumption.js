@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 
-export default function AmounttoConsumption({ vendingMonth, setVendingMonth, totalAmount, setTotalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
+export default function AmounttoConsumption({ vendingMonth, setVendingMonth, vendingYear, setVendingYear,
+   totalAmount, setTotalAmount, EnergyCharge, GSTEnergyCharge, FixedChargePerMonth,
   ConsumptionKwh, socialConsumptionKwh, consumerType, negtotal, negconsumption }) {
 
 
     const months = [
-  
 
       {
           id: 1,
@@ -82,10 +82,38 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, tot
 },
   ]
 
+  const months = [
+
+    {
+        id: 1,
+        label: "2023",
+        name: "2023",
+    },
+
+    {
+        id: 2,
+        label: "2023",
+        name: "2023",
+    },
+
+    {
+        id: 3,
+        label: "2023",
+        name: "2023",
+    },
+
+    {
+      id: 4,
+      label: "2023",
+      name: "2023",
+  },
+
+]
+
   return (
     <div>
       <form>
-
+     <div className="flex">
         <p className='p-1'><label>Last Month Vended: 
         <select className="mb-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
         focus:outline-none text-gray-700 font-light w-full md:w-12/12 bg-white"
@@ -94,11 +122,24 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, tot
                             onChange={(e) => setVendingMonth(e.target.value)} required>
 
                             {months.map((month) => (
-                                <option key={month.id} value={month.label}>{month.Label}</option>
+                                <option key={month.id} value={month.label}>{month.label}</option>
                             ))}
                         </select></label>
         </p>
+        <p className='p-1'><label>Last Year Vended: 
+        <select className="mb-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight 
+        focus:outline-none text-gray-700 font-light w-full md:w-12/12 bg-white"
+                            id={years.name}
+                            value={vendingYear}
+                            onChange={(e) => setVendingYear(e.target.value)} required>
 
+                            {years.map((year) => (
+                                <option key={year.id} value={year.label}>{year.label}</option>
+                            ))}
+                        </select></label>
+        </p>
+        
+</div>
         <hr />
 
 
