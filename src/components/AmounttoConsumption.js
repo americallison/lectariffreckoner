@@ -52,7 +52,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
           </div>
           <div className="w-8/12">
             <input className="bg-slate-200 p-2 border-none rounded shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id={totalAmount}
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" min="1" id={totalAmount}
               value={totalAmount} onChange={(e) => setTotalAmount(e.target.value)}
 
             />
@@ -192,8 +192,10 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
             </div>)
         }
 
-<hr /><div className='mt-3'>
-  <button className='bg-[#02073E] text-center text-white w-full p-3 rounded'>Calculate</button>
+<hr />
+
+<div className='mt-3'>
+  <button className='bg-[#02073E] text-center text-white items-center rounded-md p-3 rounded'>Calculate</button>
 </div>
 
 
