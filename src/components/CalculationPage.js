@@ -207,7 +207,7 @@ export default function CalculationPage() {
 
         setEnergyCharge(newEnergyCharge);
         setEnergyChargeSocial(newEnergyChargeSocial);
-    }, [consumerType, supplyType, totalAmount]);
+    }, [consumerType, supplyType, totalAmount, ConsumptionKwhFirst]);
     
     console.log(preferenceIsActive.name, '', ConsumptionKwhFirst)
   

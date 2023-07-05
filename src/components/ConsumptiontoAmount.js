@@ -9,7 +9,7 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, handl
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmitConsumption}>
 
             <div className="flex mb-4">
           <div className="w-1/2 mr-2">
