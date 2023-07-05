@@ -4,14 +4,14 @@ import React, { useState, useEffect } from 'react';
 export default function AmounttoConsumption({ vendingMonth, setVendingMonth, vendingYear, setVendingYear,
   totalAmount, setTotalAmount, EnergyChargeSocial, EnergyCharge, GSTEnergyCharge, GSTEnergyChargeSocial,
   FixedChargePerMonth, SocialFixedChargePerMonth, ConsumptionKwh, socialConsumptionKwh, consumerType, negtotal,
-  negconsumption, months, years
+  negconsumption, handleSubmitAmount, months, years
 }) {
   return (
     <>
       <form onSubmit={handleSubmitAmount}>
         <div className="flex mb-4">
           <div className="w-1/2 mr-2">
-            <label htmlFor="lastVendingMonth" className="block font-medium mb-1">
+            <label htmlFor="lastVendingMonth" className="block mb-1">
               Last Vending Month
             </label>
             <select
@@ -28,7 +28,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
             </select>
           </div>
           <div className="w-1/2 ml-2">
-            <label htmlFor="lastVendingYear" className="block font-medium mb-1">
+            <label htmlFor="lastVendingYear" className="block mb-1">
               Last Vending Year
             </label>
             <select
@@ -193,10 +193,10 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
         }
 
 <hr />
-<div className='flex'>
+<div className='flex justify-center'>
 <div className='mt-3 md:w-4/12'></div>
-<div className='mt-3 md:w-4/12'>
-  <button className='bg-[#02073E] text-center text-white rounded-md p-3 rounded'>Calculate</button>
+<div className='mt-3 md:w-4/12 flex justify-center'>
+  <button className='bg-[#02073E] text-center text-white rounded-md p-3'>Calculate</button>
 </div>
 <div className='mt-3 md:w-4/12'></div>
 </div>

@@ -7,20 +7,7 @@ import ConsumptiontoAmountTitle from './ConsumptiontoAmountTitle';
 import LEC_LOGO from '../images/lec_logo.jpg';
 
 
-const calculation_preference = [
-    {
-        id: 1,
-        label: "Total Amount ($US)",
-        value: "totalamountus",
-        name: "amount_preference",
-    },
-    {
-        id: 2,
-        label: "Consumption (Kwh)",
-        value: "consumption_kwh",
-        name: "consumption_preference",
-    },
-]
+
 
 export default function CalculationPage() {
     /*declare variables to be used in calculation */
@@ -36,7 +23,7 @@ export default function CalculationPage() {
     const [GSTEnergyCharge, setGSTEnergyCharge] = useState('');
     const [EnergyChargeSocial, setEnergyChargeSocial] = useState('');
     const [ConsumptionKwh, setConsumptionKwh] = useState('');
-    const [ConsumptionKwhFirst, setConsumptionKwhFirst] = useState(0);
+    const [ConsumptionKwhFirst, setConsumptionKwhFirst] = useState('');
     const [totalAmountLast, setTotalAmountLast] = useState(0);
     const [socialConsumptionKwh, setSocialConsumptionKwh] = useState('');
     const [SocialtotalAmount, setSocialtotalAmount] = useState('');
@@ -48,6 +35,21 @@ export default function CalculationPage() {
         isActive: true,
         name: 'amount_preference'
     })
+
+    const calculation_preference = [
+        {
+            id: 1,
+            label: "Total Amount ($US)",
+            value: "totalamountus",
+            name: "amount_preference",
+        },
+        {
+            id: 2,
+            label: "Consumption (Kwh)",
+            value: "consumption_kwh",
+            name: "consumption_preference",
+        },
+    ]
 
     const months = [
 
@@ -139,17 +141,7 @@ export default function CalculationPage() {
           name: "2022",
       },
   
-      {
-          id: 3,
-          label: "2021",
-          name: "2021",
-      },
-  
-      {
-        id: 4,
-        label: "2020",
-        name: "2020",
-    },
+   
   
   ]
 
@@ -165,24 +157,45 @@ export default function CalculationPage() {
     }
 
 
+    function handleSubmitAmount(event) {
+        event.preventDefault();
+        
+        
+    }
+
     let SocialFixedChargePerMonth = "-";
    let presentDate = new Date();
 
+   console.log(calculation_preference.label)
+   
     /* Logic for Energy Charge start */
     useEffect(() => {
 
         let newEnergyCharge;
         let newEnergyChargeSocial;
 
-       if (monthNumber == 0 && totalAmount <= 0) {
+       if (monthNumber == 0 && totalAmount < 1 && (preferenceIsActive === "amount_preference" || preferenceIsActive === "consumption_preference")) {
         newEnergyCharge = 0;
         newEnergyChargeSocial = 0;
        }
-        else if (consumerType === "Residential" && totalAmount <= 4.125) {
+        else if (consumerType === "Residential" && totalAmount <= 4.125 && preferenceIsActive === "amount_preference") {
             newEnergyChargeSocial = socialConsumptionKwh * (0.15 + (0.15/10));
         }
-        else if (consumerType === "Residential" && totalAmount > 4.125) {
-            newEnergyCharge = (0.15 + (0.15/10) * 25) + (ConsumptionKwh-25) * (0.24+(0.24/10))
+        else if (consumerType === "Residential" && totalAmount > 4.125 && preferenceIsActive.name === "amount_preference") {
+            newEnergyChargeSocial = (0.15 *1.1 * 25) + ((socialConsumptionKwh - 25) * (0.24 * 1.1))
+            newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(2))
+            newEnergyCharge = (0.15 + (0.15 / 10) * 25) + (ConsumptionKwh - 25) * (0.24 + (0.24 / 10))
+            newEnergyCharge = Number(newEnergyCharge.toFixed(2))
+        }
+        else if (consumerType === "Residential" && ConsumptionKwhFirst <= 25 && preferenceIsActive.name === "consumption_preference") {
+            newEnergyChargeSocial = (ConsumptionKwhFirst * 0.15) 
+            newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(2))
+            
+        }
+        else if (consumerType === "Residential" && ConsumptionKwhFirst > 25 && preference.isActive.name === "consumption_preference") {
+            newEnergyChargeSocial = (25 * 0.15) + (ConsumptionKwhFirst - 25) * (0.24) 
+            newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(2))
+          
         }
         else if (consumerType === "Non-Residential" && (supplyType === "Prepaid" || supplyType === "Postpaid")) {
             newEnergyCharge = 0.22;
@@ -191,10 +204,12 @@ export default function CalculationPage() {
             newEnergyCharge = 0.19;
         }
 
+
         setEnergyCharge(newEnergyCharge);
         setEnergyChargeSocial(newEnergyChargeSocial);
     }, [consumerType, supplyType, totalAmount]);
     
+    console.log(preferenceIsActive.name, '', ConsumptionKwhFirst)
   
 useEffect(() => {
     let newmonthNumber = 0;
@@ -310,9 +325,7 @@ useEffect(() => {
      setGSTEnergyCharge(newGSTEnergyCharge);
     }, [totalAmount, consumerType, vendingMonth, monthNumber])
 
-function handleSubmitAmount(event) {
-    event.preventDefault
-}
+
 
     return (
         <div className="flex p-2">
@@ -328,10 +341,10 @@ function handleSubmitAmount(event) {
                 }
                 
 <div className="flex justify-between mt-2">
-            <div className="w-4/12">
-                    <label className="p-2">Calculation Preference:</label>
+            <div className="md:w-4/12 w-6/12">
+                    <label className="p-2 text-sm md:text">Calculation Preference:</label>
                     </div>
-                    <div className="w-8/12">
+                    <div className="md:w-8/12 w-6/12">
                         <select className="mb-2 bg-slate-200 rounded border-none shadow-sm leading-tight focus:outline-none 
                         text-gray-700 font-light p-2 w-full" id={preference.name} value={preference} 
                         onChange={handleActivePreference}>
@@ -362,7 +375,9 @@ function handleSubmitAmount(event) {
                              months={months} years={years} />) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst}
-                            EnergyCharge={EnergyCharge} vendingtime={vendingtime}
+                            EnergyCharge={EnergyCharge} vendingDate={vendingMonth}
+                            setVendingMonth={setVendingMonth} months={months} years={years}
+                            vendingYear={vendingYear} setVendingYear={setVendingYear}
                             setVendingTime={setVendingTime} GSTEnergyCharge={GSTEnergyCharge}
                             totalAmountLast={totalAmountLast} setTotalAmountLast={setTotalAmountLast}
                             FixedChargePerMonth={FixedChargePerMonth} SocialtotalAmount={SocialtotalAmount}
