@@ -131,13 +131,13 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                   <label className='p-2'>Consumption (KWh):</label>
                 </div>
                 <div className="w-4/12 p-2">
-                <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+                <input className="bg-[96E899] p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyChargeSocial"
               value={socialConsumptionKwh}
             />
                 </div>
                 <div className="w-4/12 p-2">
-                <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+                <input className="bg-[96E899] p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyCharge"
               value={ConsumptionKwh} 
             />
@@ -184,7 +184,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
             <label className='p-2'>10% GST:</label>
           </div>
           <div className="w-8/12">
-            <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+            <input className="bg-[96E899] p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
               value={ConsumptionKwh} 
             />
@@ -193,11 +193,13 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
         }
 
 <hr />
-
-<div className='mt-3'>
+<div className='flex justify-between'>
+<div className='mt-3 md:w-4/12'></div>
+<div className='mt-3 md:w-4/12'>
   <button className='bg-[#02073E] text-center text-white items-center rounded-md p-3 rounded'>Calculate</button>
 </div>
-
+<div className='mt-3 md:w-4/12'></div>
+</div>
 
       </form>
     </>
