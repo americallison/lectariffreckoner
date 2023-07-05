@@ -89,7 +89,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 </div>
               </div>
 
-/* GST */
+
               <div className="flex justify-between">
                 <div className="w-4/12">
                   <label className='p-2'>10% GST</label>
