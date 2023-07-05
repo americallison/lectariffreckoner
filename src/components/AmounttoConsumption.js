@@ -193,7 +193,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
         }
 
 <hr />
-<div className='flex justify-between'>
+<div className='flex justify-center'>
 <div className='mt-3 md:w-4/12'></div>
 <div className='mt-3 md:w-4/12'>
   <button className='bg-[#02073E] text-center text-white items-center rounded-md p-3 rounded'>Calculate</button>
