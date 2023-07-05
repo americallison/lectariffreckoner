@@ -172,8 +172,12 @@ export default function CalculationPage() {
         let newEnergyCharge = 0;
         let newEnergyChargeSocial = 0;
 
-        if (consumerType === "Residential" && totalAmount <= 4.125) {
-            newEnergyChargeSocial = socialConsumptionKwh * (0.15+(0.15/10));
+       if (monthNumber == 0 && totalAmount <= 0) {
+        newEnergyCharge = 0;
+        newEnergyChargeSocial = 0;
+       }
+        else if (consumerType === "Residential" && totalAmount <= 4.125) {
+            newEnergyChargeSocial = socialConsumptionKwh * (0.15 + (0.15/10));
         }
         else if (consumerType === "Residential" && totalAmount > 4.125) {
             newEnergyCharge = (0.15 + (0.15/10) * 25) + (ConsumptionKwh-25) * (0.24+(0.24/10))
@@ -291,7 +295,18 @@ else if (consumerType === "Residential" && supplyType === "Prepaid" && monthNumb
  setFixedChargePerMonth(newFixedChargePerMonth);
 }, [totalAmount, consumerType, vendingMonth, monthNumber])
 
-console.log(FixedChargePerMonth)
+
+/*Logic for 10% GST start */
+useEffect(() => {
+    let newGSTEnergyCharge = 0;
+    let newSocialGSTCharge = 0;
+    
+    if (consumerType === "Residential" && totalAmount < 4.125 ) {
+        newGSTEnergyCharge = 0;
+        newSocialGSTCharge = 0;
+    }
+     setGSTEnergyCharge(newGSTEnergyCharge);
+    }, [totalAmount, consumerType, vendingMonth, monthNumber])
 
     return (
         <div className="flex p-2">
@@ -306,11 +321,13 @@ console.log(FixedChargePerMonth)
                         (<AmounttoConsumptionTitle />) : (<ConsumptiontoAmountTitle />)
                 }
                 
-
-                <p className="p-1">
-                    <label>Calculation Preference:&nbsp;
-                        <select className="mb-1 bg-sky-100 border-b-4 border-yellow-300 shadow-sm leading-tight focus:outline-none 
-                        text-gray-700 font-light w-full md:w-12/12 bg-white" id={preference.name} value={preference} 
+<div className="flex justify-between mt-2">
+            <div className="w-4/12">
+                    <label className="p-2">Calculation Preference:</label>
+                    </div>
+                    <div className="w-8/12">
+                        <select className="mb-2 bg-slate-200 rounded border-none shadow-sm leading-tight focus:outline-none 
+                        text-gray-700 font-light p-2 w-full" id={preference.name} value={preference} 
                         onChange={handleActivePreference}>
 
                             {calculation_preference.map((preference) => (
@@ -318,8 +335,9 @@ console.log(FixedChargePerMonth)
                             ))}
 
                         </select>
-                    </label>
-                </p>
+                    </div>
+                
+                </div>
 
                 <ConsumerSupplyType consumerType={consumerType} setConsumerType={setConsumerType}
                     supplyType={supplyType} setSupplyType={setSupplyType} />
