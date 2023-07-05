@@ -192,8 +192,8 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
             </div>)
         }
 
-<hr /><div className='m-2'>
-  <button className='bg-[#02073E] text-center p-3 rounded'>Calculate</button>
+<hr /><div className='mt-3'>
+  <button className='bg-[#02073E] text-center text-white w-full p-3 rounded'>Calculate</button>
 </div>
 
 
