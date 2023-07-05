@@ -137,24 +137,33 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
 
             />
           </div></div>
+
+          <div className='flex justify-between'>
+          <div className='w-4/12'>
+            <label className='p-2'>Fixed Charge (USD):</label>
+          </div>
+          <div className="w-8/12">
+            <input className="bg-white p-2 border-none rounded shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
+              value={FixedChargePerMonth} 
+            />
+          </div></div>
+
+          <div className='flex justify-between'>
+          <div className='w-4/12'>
+            <label className='p-2'>10% GST:</label>
+          </div>
+          <div className="w-8/12">
+            <input className="bg-white p-2 border-none rounded shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
+              value={GSTEnergyCharge} 
+
+            />
+          </div></div>
             </div>)
         }
 
-      
 
-
-
-        <div className="mb-4">
-          <label htmlFor="gstEnergyCharge" className="block font-medium mb-1">
-            GST Energy Charge
-          </label>
-          <input
-            type="number"
-            id="gstEnergyCharge"
-            value={GSTEnergyCharge}
-            className="w-full border-gray-300 border rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-          />
-        </div>
 
       </form>
     </>
