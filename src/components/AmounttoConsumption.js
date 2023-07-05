@@ -82,7 +82,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                     <label className='p-2'>Energy Charge:</label>
                     </div>
                     <div className="w-8/12">
-                        <input className="bg-slate-200 p-2 border-none rounded shadow-sm leading-tight 
+                        <input className="bg-red-200 p-2 border-none rounded shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
                             value={totalAmount} onChange={(e) => setTotalAmount(e.target.value)}
                            
