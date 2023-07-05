@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 export default function AmounttoConsumption({ vendingMonth, setVendingMonth, vendingYear, setVendingYear,
    totalAmount, setTotalAmount, EnergyChargeSocial, EnergyCharge, GSTEnergyCharge, GSTEnergyChargeSocial,
     FixedChargePerMonth,ConsumptionKwh, socialConsumptionKwh, consumerType, negtotal, 
-    negconsumption, months, years, 
+    negconsumption, months, years
 }) 
   
   {
@@ -59,6 +59,19 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                            
                         />
                         </div></div>
+
+                        {
+                          consumerType === "Residential" ? 
+                          (<>
+                             <div className="flex justify-between">
+                              <div className="w-4/12">
+                                
+                              </div>
+                             </div>
+                          </>) : (<div>
+
+                          </div>)
+                        }
                 
                         <div className='flex justify-between'>
                             <div className='w-4/12'>
@@ -72,18 +85,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                         />
                         </div></div>
 
-      <div className="mb-4">
-        <label htmlFor="energyCharge" className="block font-medium mb-1">
-          Energy Charge
-        </label>
-        <input
-          type="number"
-          id="energyCharge"
-          value={EnergyCharge}
-          className="w-full border-gray-300 border rounded-md px-3 py-2 
-          focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
+
 
       <div className="mb-4">
         <label htmlFor="gstEnergyCharge" className="block font-medium mb-1">
