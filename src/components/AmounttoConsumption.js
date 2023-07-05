@@ -75,15 +75,15 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 <div className="w-4/12">
                   <label className='p-2'>Energy Charge</label>
                 </div>
-                <div className="w-4/12">
+                <div className="w-4/12 p-2">
                 <input className="bg-red-100 p-2 border-none rounded shadow-sm leading-tight 
-        focus:outline-none m-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
               value={EnergyChargeSocial}
             />
                 </div>
-                <div className="w-4/12">
+                <div className="w-4/12 p-2">
                 <input className="bg-red-100 p-2 border-none rounded shadow-sm leading-tight 
-        focus:outline-none m-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
               value={EnergyCharge} 
             />
                 </div>
@@ -94,13 +94,13 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 <div className="w-4/12">
                   <label className='p-2'>10% GST</label>
                 </div>
-                <div className="w-4/12">
+                <div className="w-4/12 p-2">
                 <input className="bg-red-100 p-2 border-none rounded shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="GSTenergyChargeSocial"
               value={GSTEnergyChargeSocial}
             />
                 </div>
-                <div className="w-4/12">
+                <div className="w-4/12 p-2">
                 <input className="bg-red-100 p-2 border-none rounded shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="GSTenergyCharge"
               value={GSTEnergyCharge} 
@@ -115,7 +115,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
           <div className="w-8/12">
             <input className="bg-red-200 p-2 border-none rounded shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
-              value={totalAmount} onChange={(e) => setTotalAmount(e.target.value)}
+              value={EnergyCharge} 
 
             />
           </div></div>
