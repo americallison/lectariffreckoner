@@ -188,12 +188,12 @@ export default function CalculationPage() {
             newEnergyCharge = Number(newEnergyCharge.toFixed(2))
         }
         else if (consumerType === "Residential" && ConsumptionKwhFirst <= 25 && preferenceIsActive.name === "consumption_preference") {
-            newEnergyChargeSocial = (ConsumptionKwhFirst * 0.15) 
+            newEnergyChargeSocial = ConsumptionKwhFirst * 0.15
             newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(2))
             
         }
         else if (consumerType === "Residential" && ConsumptionKwhFirst > 25 && preference.isActive.name === "consumption_preference") {
-            newEnergyChargeSocial = (25 * 0.15) + (ConsumptionKwhFirst - 25) * (0.24) 
+            newEnergyChargeSocial = 25 * 0.15 + ((ConsumptionKwhFirst - 25) * (0.24))
             newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(2))
           
         }
@@ -374,7 +374,7 @@ useEffect(() => {
                              handleSubmitAmount={handleSubmitAmount}
                              months={months} years={years} />) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
-                            setConsumptionKwhFirst={setConsumptionKwhFirst}
+                            setConsumptionKwhFirst={setConsumptionKwhFirst} EnergyChargeSocial={EnergyChargeSocial}
                             EnergyCharge={EnergyCharge} vendingDate={vendingMonth}
                             setVendingMonth={setVendingMonth} months={months} years={years}
                             vendingYear={vendingYear} setVendingYear={setVendingYear}
