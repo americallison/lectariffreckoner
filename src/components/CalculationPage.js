@@ -192,7 +192,7 @@ export default function CalculationPage() {
             newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(2))
             
         }
-        else if (consumerType === "Residential" && ConsumptionKwhFirst > 25 && preference.isActive.name === "consumption_preference") {
+        else if (consumerType === "Residential" && ConsumptionKwhFirst > 25 && preferenceIsActive.name === "consumption_preference") {
             newEnergyChargeSocial = 25 * 0.15 + ((ConsumptionKwhFirst - 25) * (0.24))
             newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(2))
           
