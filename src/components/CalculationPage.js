@@ -169,8 +169,8 @@ export default function CalculationPage() {
     /* Logic for Energy Charge start */
     useEffect(() => {
 
-        let newEnergyCharge = 0;
-        let newEnergyChargeSocial = 0;
+        let newEnergyCharge;
+        let newEnergyChargeSocial;
 
        if (monthNumber == 0 && totalAmount <= 0) {
         newEnergyCharge = 0;
