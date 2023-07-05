@@ -77,13 +77,13 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 </div>
                 <div className="w-4/12">
                 <input className="bg-red-100 p-2 border-none rounded shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
+        focus:outline-none m-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
               value={EnergyChargeSocial}
             />
                 </div>
                 <div className="w-4/12">
                 <input className="bg-red-100 p-2 border-none rounded shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
+        focus:outline-none m-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
               value={EnergyCharge} 
             />
                 </div>
