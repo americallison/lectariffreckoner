@@ -64,8 +64,12 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                           consumerType === "Residential" ? 
                           (<>
                              <div className="flex justify-between">
+                              <div className="w-4/12"></div>
                               <div className="w-4/12">
-                                
+                                <p className='font-medium m-2'>Social</p>
+                              </div>
+                              <div className="w-4/12">
+                                <p className='font-medium m-2'>Residential</p>
                               </div>
                              </div>
                           </>) : (<div>
