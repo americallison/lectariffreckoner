@@ -164,6 +164,8 @@ export default function CalculationPage() {
         setPreference(event.target.value)
     }
 
+
+    let SocialFixedChargePerMonth = "-";
    let presentDate = new Date();
 
     /* Logic for Energy Charge start */
@@ -351,6 +353,7 @@ useEffect(() => {
                             setVendingTime={setVendingTime} ConsumptionKwh={ConsumptionKwh}
                             setConsumptionKwh={setConsumptionKwh} socialConsumptionKwh={socialConsumptionKwh}
                              consumerType={consumerType} EnergyChargeSocial={EnergyChargeSocial} 
+                             SocialFixedChargePerMonth={SocialFixedChargePerMonth}
                              months={months} years={years} />) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst}

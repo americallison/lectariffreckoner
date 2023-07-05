@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 
 export default function AmounttoConsumption({ vendingMonth, setVendingMonth, vendingYear, setVendingYear,
   totalAmount, setTotalAmount, EnergyChargeSocial, EnergyCharge, GSTEnergyCharge, GSTEnergyChargeSocial,
-  FixedChargePerMonth, ConsumptionKwh, socialConsumptionKwh, consumerType, negtotal,
+  FixedChargePerMonth, SocialFixedChargePerMonth, ConsumptionKwh, socialConsumptionKwh, consumerType, negtotal,
   negconsumption, months, years
 }) {
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmitAmount}>
         <div className="flex mb-4">
           <div className="w-1/2 mr-2">
             <label htmlFor="lastVendingMonth" className="block font-medium mb-1">
@@ -97,7 +97,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyChargeSocial"
-              value={FixedChargePerMonth}
+              value={SocialFixedChargePerMonth}
             />
                 </div>
                 <div className="w-4/12 p-2">
