@@ -33,13 +33,18 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
           <label htmlFor="lastVendingYear" className="block font-medium mb-1">
             Last Vending Year
           </label>
-          <input
+          <select
             type="number"
             id="vendingYear"
             value={vendingYear}
             onChange={(e) => setVendingYear(e.target.value)}
             className="w-full border-none bg-slate-200 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-black-500"
-          />
+          >
+            {years.map((year) => (
+                <option key={year.id} value={year.label}>{year.label}</option>
+            ))}
+        
+          </select>
         </div>
       </div>
 
