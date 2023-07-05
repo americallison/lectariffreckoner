@@ -108,11 +108,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 </div>
               </div>
             </>) : (<div>
-
-            </div>)
-        }
-
-        <div className='flex justify-between'>
+              <div className='flex justify-between'>
           <div className='w-4/12'>
             <label className='p-2'>Energy Charge:</label>
           </div>
@@ -123,6 +119,10 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
 
             />
           </div></div>
+            </div>)
+        }
+
+      
 
 
 

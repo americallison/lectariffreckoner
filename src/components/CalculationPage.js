@@ -29,17 +29,17 @@ export default function CalculationPage() {
     const [vendingMonth, setVendingMonth] = useState("June");
     const [vendingYear, setVendingYear] = useState("2023");
     const [vendingtime, setVendingTime] = useState("Yes");
-    const [totalAmount, setTotalAmount] = useState(0);
-    const [EnergyCharge, setEnergyCharge] = useState(0);
+    const [totalAmount, setTotalAmount] = useState('');
+    const [EnergyCharge, setEnergyCharge] = useState('');
     const [monthNumber, setMonthNumber] = useState(0);
-    const [FixedChargePerMonth, setFixedChargePerMonth] = useState(0);
-    const [GSTEnergyCharge, setGSTEnergyCharge] = useState(0);
-    const [EnergyChargeSocial, setEnergyChargeSocial] = useState(0);
-    const [ConsumptionKwh, setConsumptionKwh] = useState(0);
+    const [FixedChargePerMonth, setFixedChargePerMonth] = useState('');
+    const [GSTEnergyCharge, setGSTEnergyCharge] = useState('');
+    const [EnergyChargeSocial, setEnergyChargeSocial] = useState('');
+    const [ConsumptionKwh, setConsumptionKwh] = useState('');
     const [ConsumptionKwhFirst, setConsumptionKwhFirst] = useState(0);
     const [totalAmountLast, setTotalAmountLast] = useState(0);
-    const [socialConsumptionKwh, setSocialConsumptionKwh] = useState(0);
-    const [SocialtotalAmount, setSocialtotalAmount] = useState(0);
+    const [socialConsumptionKwh, setSocialConsumptionKwh] = useState('');
+    const [SocialtotalAmount, setSocialtotalAmount] = useState('');
     
 
     /* change preference type */
