@@ -97,7 +97,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyChargeSocial"
-              value={SocialFixedChargePerMonth}
+              value={SocialFixedChargePerMonth} 
             />
                 </div>
                 <div className="w-4/12 p-2">
@@ -181,7 +181,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
 
           <div className='flex justify-between'>
           <div className='w-4/12'>
-            <label className='p-2'>10% GST:</label>
+            <label className='p-2'>Consumption (KwH):</label>
           </div>
           <div className="w-8/12">
             <input className="bg-[96E899] p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
