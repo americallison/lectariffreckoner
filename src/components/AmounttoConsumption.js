@@ -64,10 +64,10 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
               <div className="flex justify-between">
                 <div className="w-4/12"></div>
                 <div className="w-4/12">
-                  <p className='font-medium m-2'>Social</p>
+                  <p className='font-medium m-2 text-center'>Social</p>
                 </div>
                 <div className="w-4/12">
-                  <p className='font-medium m-2'>Residential</p>
+                  <p className='font-medium m-2 text-center'>Residential</p>
                 </div>
               </div>
 
@@ -192,7 +192,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
             </div>)
         }
 
-<div>
+<hr /><div>
   <button>Calculate</button>
 </div>
 
