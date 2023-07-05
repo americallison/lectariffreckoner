@@ -310,6 +310,10 @@ useEffect(() => {
      setGSTEnergyCharge(newGSTEnergyCharge);
     }, [totalAmount, consumerType, vendingMonth, monthNumber])
 
+function handleSubmitAmount(event) {
+    event.preventDefault
+}
+
     return (
         <div className="flex p-2">
             <div className="md:w-3/12"></div>
@@ -353,7 +357,8 @@ useEffect(() => {
                             setVendingTime={setVendingTime} ConsumptionKwh={ConsumptionKwh}
                             setConsumptionKwh={setConsumptionKwh} socialConsumptionKwh={socialConsumptionKwh}
                              consumerType={consumerType} EnergyChargeSocial={EnergyChargeSocial} 
-                             SocialFixedChargePerMonth={SocialFixedChargePerMonth}
+                             SocialFixedChargePerMonth={SocialFixedChargePerMonth} 
+                             handleSubmitAmount={handleSubmitAmount}
                              months={months} years={years} />) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst}
