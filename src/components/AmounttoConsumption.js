@@ -73,7 +73,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
 
               <div className="flex justify-between">
                 <div className="w-4/12">
-                  <label className='p-2'>Energy Charge</label>
+                  <label className='p-2'>Energy Charge (USD)</label>
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border-none rounded shadow-sm leading-tight 
@@ -89,6 +89,24 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 </div>
               </div>
 
+
+              <div className="flex justify-between">
+                <div className="w-4/12">
+                  <label className='p-2'>Fixed Charge (USD)</label>
+                </div>
+                <div className="w-4/12 p-2">
+                <input className="bg-white p-2 border-none rounded shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="GSTenergyChargeSocial"
+              value={FixedChargePerMonth}
+            />
+                </div>
+                <div className="w-4/12 p-2">
+                <input className="bg-white p-2 border-none rounded shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="GSTenergyCharge"
+              value={FixedChargePerMonth} 
+            />
+                </div>
+              </div>
 
               <div className="flex justify-between">
                 <div className="w-4/12">
