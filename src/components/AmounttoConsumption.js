@@ -43,18 +43,29 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
         </div>
       </div>
 
-      <div className="mb-2">
-        <label htmlFor="amount" className="block font-medium mb-1">
-          Total Amount
-        </label>
-        <input
-          type="number"
-          id="amount"
-          value={totalAmount}
-          onChange={(e) => setTotalAmount(e.target.value)}
-          className="w-full border-gray-300 border rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
+      <div className='flex justify-between'>
+                            <div className='w-4/12'>
+                    <label className='p-2'>Total Amount:</label>
+                    </div>
+                    <div className="w-8/12">
+                        <input className="bg-slate-200 p-2 border-none rounded shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id={totalAmount}
+                            value={totalAmount} onChange={(e) => setTotalAmount(e.target.value)}
+                           
+                        />
+                        </div></div>
+                
+                        <div className='flex justify-between'>
+                            <div className='w-4/12'>
+                    <label className='p-2'>Energy Charge:</label>
+                    </div>
+                    <div className="w-8/12">
+                        <input className="bg-slate-200 p-2 border-none rounded shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" id="energyCharge"
+                            value={totalAmount} onChange={(e) => setTotalAmount(e.target.value)}
+                           
+                        />
+                        </div></div>
 
       <div className="mb-4">
         <label htmlFor="energyCharge" className="block font-medium mb-1">
