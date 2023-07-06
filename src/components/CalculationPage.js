@@ -160,12 +160,43 @@ export default function CalculationPage() {
         setPreference(event.target.value)
     }
 
+      /* top level function to calculate total amount from total consumption starts */
+    function handleSubmitConsumption (event) {
+        event.preventDefault();
+
+        let newtotalAmountLast = 0;
+
+        handleEnergyChargeConsumption();
+    }
+
+    /* function to calculate energy charge social for consumption to total amount starts */
+
+    function handleEnergyChargeConsumption() {
+        let newEnergyChargeConsumptionSocial = 0;
+
+        if (consumerType === "Residential" && ConsumptionKwhFirst <= 25 && preferenceIsActive.name === "consumption_preference") {
+            newEnergyChargeConsumptionSocial = ConsumptionKwhFirst * (0.15);
+            newEnergyChargeConsumptionSocial = Number(newEnergyChargeConsumptionSocial.toFixed(3))
+        }
+        else if (consumerType === "Residential" && ConsumptionKwhFirst > 25 && preferenceIsActive.name === "consumption_preference") {
+            newEnergyChargeConsumptionSocial = 25 * (0.15) + (ConsumptionKwhFirst - 25) * (0.24)
+            newEnergyChargeConsumptionSocial= Number(newEnergyChargeConsumptionSocial.toFixed(3));
+        }
+
+        setEnergyChargeSocial(newEnergyChargeConsumptionSocial);
+    }
+
+    /* function to calculate energy charge for consumption to total amount starts */
+
+
+     
+
+
    /* top level function to calculate total consumption from total amount starts */
     function handleSubmitAmount(event) {
         event.preventDefault();
 
         let newSocialConsumptionKwh = 0;
-
 
         if (totalAmount <= 4.125) {
             newSocialConsumptionKwh = totalAmount / (0.15 * 1.1);
@@ -176,7 +207,6 @@ export default function CalculationPage() {
             newSocialConsumptionKwh = (4.125 / (0.15 * 1.1)) + (totalAmount - 4.125) / (0.24 * 1.1)
             newSocialConsumptionKwh = Number(newSocialConsumptionKwh).toFixed(1)
         }
-
 
         setSocialConsumptionKwh(newSocialConsumptionKwh);
 
@@ -223,7 +253,6 @@ export default function CalculationPage() {
         }
         setEnergyChargeSocial(newEnergyChargeSocial);
     }
-
 
     function handleChangeNotSocial() {
 
