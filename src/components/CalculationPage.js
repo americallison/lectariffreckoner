@@ -144,18 +144,13 @@ export default function CalculationPage() {
 
     ]
 
-/* hook to reset all variables when total amount or total consumption has not been entered by user */
-    useEffect (() => {
-          if (!totalAmount || !ConsumptionKwhFirst) {
-            setEnergyCharge('');
-            setEnergyChargeSocial('');
-            setGSTEnergyChargeSocial('');
-            setTotalAmountLast('');
-            setConsumptionKwh('');
-            setSocialConsumptionKwh('');
-          }
-    }, [totalAmount, ConsumptionKwhFirst, monthNumber])
 
+useEffect (() => {
+    setFixedChargePerMonth('');
+    setEnergyCharge('');
+    setTotalAmount('');
+    setGSTEnergyCharge('');
+}, [preferenceIsActive.name])
 
     let significantDigits = 3; // Replace with the desired number of significant digits
     let multiplier = Math.pow(10, significantDigits);
@@ -176,26 +171,35 @@ export default function CalculationPage() {
     function handleSubmitConsumption (event) {
         event.preventDefault();
 
-        let newtotalAmountLast = 0;
+       
         let newSocialTotalAmount = 0;
 
 
         if (ConsumptionKwhFirst > 0) {
-            newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
+           
             newSocialTotalAmount = Number(EnergyChargeSocial) + Number(GSTEnergyChargeSocial);
         }
 
-
+       
         setSocialtotalAmount(newSocialTotalAmount);
-        setTotalAmountLast(newtotalAmountLast);
-
-
-        handleEnergyChargeConsumption();
+       
+        handleFixedChargeChange();
+        handleTotalAmountNotSocial();
         handleEnergyChargeConsumptionNotSocial();
+        handleEnergyChargeConsumption();
     }
 
     console.log(SocialtotalAmount)
     /* function to calculate energy charge social for consumption to total amount starts */
+
+    function handleTotalAmountNotSocial () {
+        let newtotalAmountLast = 0;
+
+        if (ConsumptionKwhFirst > 0) {
+        newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
+        }
+        setTotalAmountLast(newtotalAmountLast);
+    }
 
     function handleEnergyChargeConsumption() {
         let newEnergyChargeConsumptionSocial = 0;
