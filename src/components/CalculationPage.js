@@ -150,6 +150,8 @@ useEffect (() => {
     setEnergyCharge('');
     setTotalAmount('');
     setGSTEnergyCharge('');
+    setEnergyChargeSocial('');
+    setGSTEnergyChargeSocial('');
 }, [preferenceIsActive.name])
 
     let significantDigits = 3; // Replace with the desired number of significant digits
