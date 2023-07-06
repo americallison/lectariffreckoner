@@ -160,7 +160,21 @@ export default function CalculationPage() {
     function handleSubmitAmount(event) {
         event.preventDefault();
         
-        
+        let newSocialConsumptionKwh = '';
+
+        if (totalAmount  <=4.125) {
+            newSocialConsumptionKwh = totalAmount / (0.15 * 1.1);
+            newSocialConsumptionKwh = Number(newSocialConsumptionKwh).toFixed(1)
+        }
+
+        else if (totalAmount > 4.125) {
+            newSocialConsumptionKwh = totalAmount / (0.15 * 1.1) + (totalAmount - 4.125) / (0.24 * 1.1)
+            newSocialConsumptionKwh = Number(newSocialConsumptionKwh).toFixed(1)
+        }
+
+        setSocialConsumptionKwh(newSocialConsumptionKwh);
+
+        handleEnergyCharge();
     }
 
     let SocialFixedChargePerMonth = "-";
@@ -169,22 +183,17 @@ export default function CalculationPage() {
    console.log(calculation_preference.label)
    
     /* Logic for Energy Charge start */
-    useEffect(() => {
-
+    function handleEnergyCharge() {
         let newEnergyCharge;
         let newEnergyChargeSocial;
 
-       if (monthNumber == 0 && totalAmount < 1 && (preferenceIsActive === "amount_preference" || preferenceIsActive === "consumption_preference")) {
-        newEnergyCharge = 0;
-        newEnergyChargeSocial = 0;
-       }
-        else if (consumerType === "Residential" && totalAmount <= 4.125 && preferenceIsActive === "amount_preference") {
-            newEnergyChargeSocial = socialConsumptionKwh * (0.15 + (0.15/10));
+        if (consumerType === "Residential" && totalAmount <= 4.125 && preferenceIsActive === "amount_preference") {
+            newEnergyChargeSocial = ConsumptionKwh * 0.15 * 1.1;
         }
         else if (consumerType === "Residential" && totalAmount > 4.125 && preferenceIsActive.name === "amount_preference") {
-            newEnergyChargeSocial = (0.15 *1.1 * 25) + ((socialConsumptionKwh - 25) * (0.24 * 1.1))
+            newEnergyChargeSocial = (0.15 * 1.1 * 25) + ((socialConsumptionKwh - 25) * (0.15 * 1.1))
             newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(2))
-            newEnergyCharge = (0.15 + (0.15 / 10) * 25) + (ConsumptionKwh - 25) * (0.24 + (0.24 / 10))
+            newEnergyCharge = (0.15 + (0.15 / 10) * 25) + (socialConsumptionKwh - 25) * (0.24 + (0.24 / 10))
             newEnergyCharge = Number(newEnergyCharge.toFixed(2))
         }
         else if (consumerType === "Residential" && ConsumptionKwhFirst <= 25 && preferenceIsActive.name === "consumption_preference") {
@@ -204,10 +213,9 @@ export default function CalculationPage() {
             newEnergyCharge = 0.19;
         }
 
-
         setEnergyCharge(newEnergyCharge);
         setEnergyChargeSocial(newEnergyChargeSocial);
-    }, [consumerType, supplyType, totalAmount, ConsumptionKwhFirst]);
+    };
     
     console.log(preferenceIsActive.name, '', ConsumptionKwhFirst)
   
