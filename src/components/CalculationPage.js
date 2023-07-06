@@ -162,6 +162,7 @@ export default function CalculationPage() {
         event.preventDefault();
         
         let newSocialConsumptionKwh = 0;
+        let newConsumptionKwh = 0;
 
         if (totalAmount  <= 4.125) {
             newSocialConsumptionKwh = totalAmount / (0.15 * 1.1);
@@ -169,17 +170,24 @@ export default function CalculationPage() {
         }
 
         else if (totalAmount > 4.125) {
-            newSocialConsumptionKwh = (totalAmount / (0.15 * 1.1)) + (totalAmount - 4.125) / (0.24 * 1.1)
+            newSocialConsumptionKwh = (4.125 / (0.15 * 1.1)) + (totalAmount - 4.125) / (0.24 * 1.1)
             newSocialConsumptionKwh = Number(newSocialConsumptionKwh).toFixed(1)
         }
 
-        setSocialConsumptionKwh(newSocialConsumptionKwh);
+        else if (preferenceIsActive.name === "amount_preference" && consumerType === "Residential" && totalAmount >= 1) {
+            newConsumptionKwh = totalAmount - (FixedChargePerMonth * 1.1)
+        }
 
+      
+        setConsumptionKwh(newConsumptionKwh);
+        setSocialConsumptionKwh(newSocialConsumptionKwh);
+ 
+        handleChange();
         
         console.log(socialConsumptionKwh)
     }
 
-    let SocialFixedChargePerMonth = "-";
+    let SocialFixedChargePerMonth = "";
    let presentDate = new Date();
 
    console.log(calculation_preference.label)
@@ -187,27 +195,29 @@ export default function CalculationPage() {
     /* Logic for Energy Charge start */
    
 
-        useEffect(() => {
+      function handleChange() {
 
         let newEnergyCharge;
         let newEnergyChargeSocial;
 
         if (consumerType === "Residential" && totalAmount <= 4.125 && preferenceIsActive.name === "amount_preference") {
-            newEnergyChargeSocial = (totalAmount / (0.15 * 1.1)) * 0.15 * 1.1;
+            newEnergyChargeSocial = (totalAmount / (0.150 * 1.1)) * 0.15 * 1.1;
+            newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(3))
         }
         else if (consumerType === "Residential" && totalAmount > 4.125 && preferenceIsActive.name === "amount_preference") {
-            newEnergyChargeSocial = (0.15 + (0.15/10) * 25) + ((totalAmount / (0.15 * 1.1)) - 25) * (0.24 + (0.24/10))
-            newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(2))
-            
+            newEnergyChargeSocial = (0.15 + (0.15/10) * 25) + ((4.125 / (0.15*1.1)) + ((totalAmount -4.125)/(0.24*1.1))-25) * (0.24 + (0.24/10))
+            newEnergyChargeSocial = Number(newEnergyChargeSocial.toFixed(3))
         }
-
+        else if (consumerType === "Residential" && preferenceIsActive.name === "amount_preference" && ConsumptionKwh > 0) {
+           newEnergyCharge = 0.24 * ConsumptionKwh
+        }
         
         setEnergyCharge(newEnergyCharge);
         
         setEnergyChargeSocial(newEnergyChargeSocial);
 
 
-    }, [totalAmount, consumerType]);
+    }
 
     
 
@@ -311,7 +321,7 @@ else if (consumerType === "Residential" && supplyType === "Prepaid" && monthNumb
     newFixedChargePerMonth = 50 * monthNumber;
  }
  setFixedChargePerMonth(newFixedChargePerMonth);
-}, [totalAmount, consumerType, vendingMonth, monthNumber])
+}, [totalAmount, consumerType, vendingMonth, monthNumber, supplyType])
 
 
 /*Logic for 10% GST start */
@@ -319,11 +329,12 @@ useEffect(() => {
     let newGSTEnergyCharge = 0;
     let newSocialGSTCharge = 0;
     
-    if (FixedChargePerMonth == 0 || EnergyChargeSocial == 0) {
-        newSocialGSTCharge = 0;
+    if (!SocialFixedChargePerMonth && !EnergyChargeSocial) {
+        newSocialGSTCharge = '-';
     }
     else {
-        newSocialGSTCharge = (EnergyChargeSocial + FixedChargePerMonth) / 10
+        newSocialGSTCharge = (EnergyChargeSocial + SocialFixedChargePerMonth) / 10;
+        newSocialGSTCharge = Number(newSocialGSTCharge).toFixed(3)
     }
      setGSTEnergyCharge(newGSTEnergyCharge);
      setGSTEnergyChargeSocial(newSocialGSTCharge);
@@ -368,7 +379,7 @@ useEffect(() => {
                 {
                     preferenceIsActive.isActive && preferenceIsActive.name === 'amount_preference' ?
                         (<AmounttoConsumption totalAmount={totalAmount} setTotalAmount={setTotalAmount}
-                            EnergyCharge={EnergyCharge} GSTEnergyCharge={GSTEnergyCharge}
+                            EnergyCharge={EnergyCharge} GSTEnergyCharge={GSTEnergyCharge} GSTEnergyChargeSocial={GSTEnergyChargeSocial}
                             vendingMonth={vendingMonth} setVendingMonth={setVendingMonth}
                             vendingYear={vendingYear} setVendingYear={setVendingYear}
                             FixedChargePerMonth={FixedChargePerMonth} vendingtime={vendingtime}
