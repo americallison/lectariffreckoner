@@ -382,7 +382,7 @@ useEffect(() => {
             newEnergyCharge = 0.19 * (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1)
         }
         else if (consumerType === "Residential" && preferenceIsActive.name === "consumption_preference" &&
-        ConsumptionKwh &&  (0.24 * (totalAmount - (FixedChargePerMonth * 1.1)) / (0.24 * 1.1) > 0)) {
+        ConsumptionKwh && (0.24 * (totalAmount - (FixedChargePerMonth * 1.1)) / (0.24 * 1.1) > 0)) {
           newEnergyCharge = 0.22 * (totalAmount - (FixedChargePerMonth * 1.1)) / (0.22 * 1.1)
       }
         else {
@@ -391,7 +391,7 @@ useEffect(() => {
         setEnergyCharge(newEnergyCharge);
         
         
-    },[ConsumptionKwh, FixedChargePerMonth])
+    },[])
 
 
     useEffect(() => {
