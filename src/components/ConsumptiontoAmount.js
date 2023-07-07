@@ -57,7 +57,8 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, handl
           </div>
           <div className="w-8/12">
             <input className="bg-slate-200 p-2 border-none rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" min="1" id="ConsumptionKwhFirst"
+        focus:outline-none mb-2 text-gray-700 font-light w-full" 
+        placeholder="Enter total consumption (Kwh)" type="number" min="1" id="ConsumptionKwhFirst"
               value={ConsumptionKwhFirst} onChange={(e) => setConsumptionKwhFirst(e.target.value)}
 
             />

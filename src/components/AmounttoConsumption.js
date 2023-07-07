@@ -53,7 +53,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
           <div className="w-8/12">
             <input className="bg-slate-200 p-2 border-none rounded-md shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" 
-        placeholder='Enter total amount' autoFocus min="1" id={totalAmount}
+        placeholder='Enter total amount (USD)' autoFocus min="1" id={totalAmount}
               value={totalAmount} onChange={(e) => setTotalAmount(e.target.value)}
 
             />
