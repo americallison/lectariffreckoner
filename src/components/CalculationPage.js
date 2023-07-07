@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ConsumerSupplyType from "./ConsumerSupplyTypes";
 import ConsumptiontoAmount from "./ConsumptiontoAmount";
 import AmounttoConsumption from "./AmounttoConsumption";
@@ -280,8 +280,9 @@ useEffect(() => {
 
 
    /* top level function to calculate total consumption from total amount starts */
-   function handleSubmitAmount(event) {
-    event.preventDefault();
+   
+
+    const handleSubmitAmount = useCallback (() => {
   
     let newConsumptionKwh = 0;
 
@@ -325,7 +326,8 @@ useEffect(() => {
   
     console.log(ConsumptionKwh);
     console.log(EnergyCharge,'',FixedChargePerMonth)
-  }
+
+  },[socialConsumptionKwh, totalAmount, ConsumptionKwh])
 /* top level function to calculate total consumption from total amount ends */
 
     let SocialFixedChargePerMonth = "";
