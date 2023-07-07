@@ -282,7 +282,8 @@ useEffect(() => {
    /* top level function to calculate total consumption from total amount starts */
    
 
-   const handleSubmitAmount = useCallback(() => {
+   const handleSubmitAmount = useCallback((e) => {
+    e.preventDefault();
     let newConsumptionKwh = 0;
   
     if (preferenceIsActive.name === "amount_preference" && consumerType === "Residential" && totalAmount >= 1) {
@@ -314,7 +315,7 @@ useEffect(() => {
   
     console.log(ConsumptionKwh);
     console.log(EnergyCharge, '', FixedChargePerMonth);
-  }, [totalAmount, preferenceIsActive.name, consumerType, handleChange]);
+  }, [preferenceIsActive.name, consumerType, handleChange]);
   
   // ...
   
