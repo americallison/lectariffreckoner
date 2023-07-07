@@ -197,7 +197,6 @@ useEffect(() => {
 
         let newSocialTotalAmount = 0;
 
-
         if (ConsumptionKwhFirst > 0) {
            
             newSocialTotalAmount = Number(EnergyChargeSocial) + Number(GSTEnergyChargeSocial);
@@ -213,6 +212,17 @@ useEffect(() => {
         }
     console.log(SocialtotalAmount)
     /* function to calculate energy charge social for consumption to total amount starts */
+    useEffect (() => {
+    let newSocialTotalAmount = 0;
+
+    if (ConsumptionKwhFirst > 0) {
+       
+        newSocialTotalAmount = Number(EnergyChargeSocial) + Number(GSTEnergyChargeSocial);
+    }
+
+   
+    setSocialtotalAmount(newSocialTotalAmount);
+    },[ConsumptionKwhFirst])
 
   useEffect (() => {
         let newtotalAmountLast = 0;
