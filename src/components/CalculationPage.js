@@ -293,6 +293,8 @@ useEffect(() => {
       newConsumptionKwh = newConsumptionKwh.toFixed(1);
     }
 
+    setConsumptionKwh(newConsumptionKwh);
+
     handleChange();
   
     let newSocialConsumptionKwh = 0;
@@ -327,6 +329,8 @@ function handleChange () {
 }
 setEnergyChargeSocial(newSocialEnergyCharge)
 }
+
+
   useEffect(() => {
     let newConsumptionKwh;
   
@@ -374,7 +378,7 @@ setEnergyChargeSocial(newSocialEnergyCharge)
         setEnergyCharge(newEnergyCharge);
         
         
-    },[socialConsumptionKwh,ConsumptionKwh, totalAmount, FixedChargePerMonth])
+    },[socialConsumptionKwh, ConsumptionKwh, totalAmount, FixedChargePerMonth])
 
 
     useEffect(() => {
