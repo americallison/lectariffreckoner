@@ -298,7 +298,6 @@ useEffect(() => {
         newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1);
         newConsumptionKwh = newConsumptionKwh.toFixed(1);
     }
-    setConsumptionKwh(newConsumptionKwh);
 
     // Call other functions
     
