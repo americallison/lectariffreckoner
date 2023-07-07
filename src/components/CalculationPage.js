@@ -145,19 +145,6 @@ export default function CalculationPage() {
     ]
 
 
-useEffect (() => {
-    setGSTEnergyCharge('');
-    setEnergyCharge('');
-    setEnergyChargeSocial('');
-    setGSTEnergyChargeSocial('');
-    setFixedChargePerMonth('');
-    setConsumptionKwh('');
-    setSocialConsumptionKwh('');
-    setTotalAmountLast('');
-    setSocialtotalAmount('');
-    
-}, [preferenceIsActive.name, consumerType, vendingMonth, 
-    vendingYear, totalAmount, supplyType, ConsumptionKwhFirst])
 
 useEffect(() => {
     setTotalAmount('');
