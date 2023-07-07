@@ -284,7 +284,7 @@ useEffect(() => {
 
    const handleSubmitAmount = useCallback((e) => {
     e.preventDefault();
-    let newConsumptionKwh = 0;
+    /*let newConsumptionKwh = 0;
   
     if (preferenceIsActive.name === "amount_preference" && consumerType === "Residential" && totalAmount >= 1) {
       newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.24 * 1.1);
@@ -295,11 +295,11 @@ useEffect(() => {
     } else if (preferenceIsActive.name === "amount_preference" && consumerType === "Medium Voltage" && totalAmount >= 1) {
       newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1);
       newConsumptionKwh = newConsumptionKwh.toFixed(1);
-    }
+    }*/
   
     handleChange();
   
-    let newSocialConsumptionKwh = 0;
+  /*  let newSocialConsumptionKwh = 0;
   
     if (totalAmount > 0 && totalAmount <= 4.125) {
       newSocialConsumptionKwh = totalAmount / (0.15 * 1.1);
@@ -311,7 +311,7 @@ useEffect(() => {
       alert("Please enter total amount");
     }
   
-    setSocialConsumptionKwh(newSocialConsumptionKwh);
+    setSocialConsumptionKwh(newSocialConsumptionKwh);*/
   
     console.log(ConsumptionKwh);
     console.log(EnergyCharge, '', FixedChargePerMonth);
