@@ -529,10 +529,12 @@ useEffect(() => {
         <div className="flex p-2">
             <div className="md:w-3/12"></div>
             <div className="md:w-6/12 w-full shadow rounded p-3">
-                <div className="flex items-center p-2 justify-center">
+                <div className="flex justify-center">
+                <div className="">
                     <img src={LEC_LOGO} className="w-auto h-20" alt="LEC Logo" />
                 </div>
                 <h3 className="text-2xl mb-1 text-center container p-1">LEC Tariff Reckoner</h3>
+                </div>
                 {
                     preferenceIsActive.isActive && preferenceIsActive.name === 'amount_preference' ?
                         (<AmounttoConsumptionTitle />) : (<ConsumptiontoAmountTitle />)
