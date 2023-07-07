@@ -326,7 +326,8 @@ useEffect (() => {
     }
     else if (totalAmount > 4.125 && preferenceIsActive.name === "amount_preference" && socialConsumptionKwh 
     && (0.15 * (totalAmount - (FixedChargePerMonth * 1.1)) / (0.15 * 1.1) > 0)) {
-    newSocialEnergyCharge = (0.15 * (totalAmount - (FixedChargePerMonth * 1.1)) / (0.15 * 1.1))
+    newSocialEnergyCharge = (0.15 + (0.15/10)*25)+((4.125/(0.15*1.1))+((totalAmount-4.125)/(0.24*1.1))-25)*(0.24+(0.24/10));
+    newSocialEnergyCharge = Math.round(newSocialEnergyCharge * multiplier) / multiplier;
 }
 setEnergyChargeSocial(newSocialEnergyCharge)
 },[socialConsumptionKwh])
