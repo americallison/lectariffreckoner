@@ -497,7 +497,7 @@ setEnergyChargeSocial(newSocialEnergyCharge)
 
         let newSocialGSTCharge;
 
-       if (EnergyChargeSocial > 0) {
+       if (socialConsumptionKwh > 0) {
             newSocialGSTCharge = (EnergyChargeSocial + SocialFixedChargePerMonth) / 10;
             newSocialGSTCharge = Math.round(newSocialGSTCharge * multiplier) / multiplier;
         }
