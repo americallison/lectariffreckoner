@@ -8,7 +8,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
 }) {
   return (
     <>
-      <form onSubmit={handleSubmitAmount}>
+      <form>
         <div className="flex mb-4">
           <div className="w-1/2 mr-2">
             <label htmlFor="lastVendingMonth" className="block mb-1">
@@ -193,14 +193,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
             </div>)
         }
 
-<hr />
-<div className='flex justify-center'>
-<div className='mt-3 md:w-4/12'></div>
-<div className='mt-3 md:w-4/12 flex justify-center'>
-  <button className='bg-[#02073E] text-center text-white rounded-md p-3'>Calculate</button>
-</div>
-<div className='mt-3 md:w-4/12'></div>
-</div>
+
 
       </form>
     </>

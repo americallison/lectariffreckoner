@@ -5,11 +5,11 @@ export default function ConsumptiontoAmount({
     EnergyCharge, EnergyChargeSocial, GSTEnergyCharge, GSTEnergyChargeSocial, FixedChargePerMonth, 
     SocialFixedChargePerMonth, todaysDate, consumerType,
     ConsumptionKwhFirst, setConsumptionKwhFirst, totalAmountLast, SocialtotalAmount,
-vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, handleSubmitConsumption }) {
+vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years }) {
 
     return (
         <div>
-            <form onSubmit={handleSubmitConsumption}>
+            <form>
 
             <div className="flex mb-4">
           <div className="w-1/2 mr-2">
@@ -201,13 +201,7 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, handl
         }
 
 <hr />
-<div className='flex justify-center'>
-<div className='mt-3 md:w-4/12'></div>
-<div className='mt-3 md:w-4/12 flex justify-center'>
-  <button className='bg-[#02073E] text-center text-white rounded-md p-3'>Calculate</button>
-</div>
-<div className='mt-3 md:w-4/12'></div>
-</div>
+
 
             </form>
         </div>

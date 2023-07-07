@@ -152,25 +152,13 @@ export default function CalculationPage() {
     ]
 
 
+
 useEffect (() => {
-    setGSTEnergyCharge('');
     setEnergyCharge('');
     setEnergyChargeSocial('');
-    setGSTEnergyChargeSocial('');
     setFixedChargePerMonth('');
-    setConsumptionKwh('');
-    setSocialConsumptionKwh('');
-    setTotalAmountLast('');
-    setSocialtotalAmount('');
-    
-}, [preferenceIsActive.name, consumerType, vendingMonth, 
-    vendingYear, totalAmount, supplyType, ConsumptionKwhFirst])
-
-useEffect(() => {
-    setTotalAmount('');
-    setTotalAmountLast('');
-},[consumerType, preferenceIsActive.name, vendingMonth, vendingYear])
-
+    setConsumptionKwhFirst('');
+}, [preferenceIsActive.name])
 
     let significantDigits = 3; // Replace with the desired number of significant digits
     let multiplier = Math.pow(10, significantDigits);
@@ -187,28 +175,32 @@ useEffect(() => {
     }
 
       /* top level function to calculate total amount from total consumption starts */
-    function handleSubmitConsumption (event) {
-        event.preventDefault();
-        let newtotalAmountLast = 0;
+    useEffect (() => {
+        let newtotalAmountLast;
 
         if (ConsumptionKwhFirst > 0) {
         newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
         newtotalAmountLast = newtotalAmountLast.toFixed(1);
         }
+        else {
+            newtotalAmountLast = '';
+        }
         setTotalAmountLast(newtotalAmountLast);
+    },[EnergyCharge, FixedChargePerMonth])
 
-        handleEnergyChargeConsumption(event);
 
-        let newSocialTotalAmount = 0;
+    useEffect (() => {
+        let newSocialTotalAmount;
 
         if (ConsumptionKwhFirst > 0) {  
             newSocialTotalAmount = Number(EnergyChargeSocial) + Number(GSTEnergyChargeSocial);
             newSocialTotalAmount = newSocialTotalAmount.toFixed(1);
         }
-
-       
+       else {
+        newSocialTotalAmount = '';
+       }
         setSocialtotalAmount(newSocialTotalAmount);
-        }
+    }, [ConsumptionKwhFirst, EnergyChargeSocial])
 
 
     console.log(SocialtotalAmount)
@@ -232,8 +224,7 @@ useEffect(() => {
         setTotalAmountLast(newtotalAmountLast);
     },[EnergyCharge, ConsumptionKwhFirst, GSTEnergyCharge])
 
-    function handleEnergyChargeConsumption(event) {
-        event.preventDefault();
+  useEffect(() => {
 
         
         let newEnergyChargeConsumptionSocial = 0;
@@ -248,7 +239,7 @@ useEffect(() => {
         }
 
         setEnergyChargeSocial(newEnergyChargeConsumptionSocial);
-    }
+    },[ConsumptionKwhFirst])
 
     /* function to calculate energy charge for consumption to total amount starts */
 
@@ -278,9 +269,8 @@ useEffect(() => {
    /* top level function to calculate total consumption from total amount starts */
    
 
-   function handleSubmitAmount (e) {
-    e.preventDefault()
-    let newConsumptionKwh = 0;
+  useState (() => {
+    let newConsumptionKwh;
   
     if (preferenceIsActive.name === "amount_preference" && consumerType === "Residential" && totalAmount >= 1) {
       newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.24 * 1.1);
@@ -292,10 +282,15 @@ useEffect(() => {
       newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1);
       newConsumptionKwh = newConsumptionKwh.toFixed(1);
     }
+    else {
+        newConsumptionKwh = '';
+    }
 
     setConsumptionKwh(newConsumptionKwh);
 
-    
+  },[totalAmount, FixedChargePerMonth, EnergyCharge])
+
+  useEffect (() => {
   
     let newSocialConsumptionKwh = 0;
   
@@ -305,15 +300,15 @@ useEffect(() => {
     } else if (totalAmount > 4.125) {
       newSocialConsumptionKwh = (4.125 / (0.15 * 1.1)) + ((totalAmount - 4.125) / (0.24 * 1.1));
       newSocialConsumptionKwh = newSocialConsumptionKwh.toFixed(1);
-    } else {
-      alert("Please enter total amount");
-    }
-  
+    } 
+   else {
+    newSocialConsumptionKwh = '';
+   }
     setSocialConsumptionKwh(newSocialConsumptionKwh);
   
     console.log(ConsumptionKwh);
     console.log(EnergyCharge, '', FixedChargePerMonth);
-  };
+  }, [totalAmount]);
   
   let SocialFixedChargePerMonth;
   
@@ -321,15 +316,17 @@ useEffect(() => {
 useEffect (() => {
     let newSocialEnergyCharge;
     
-    if (totalAmount <= 4.125 && preferenceIsActive.name === "amount_preference" && socialConsumptionKwh) {
+    if (totalAmount <= 4.125 && preferenceIsActive.name === "amount_preference" && totalAmount >= 1) {
         newSocialEnergyCharge =  totalAmount / (0.15 * 1.1) * (0.15*1.1)
     }
-    else if (totalAmount > 4.125 && preferenceIsActive.name === "amount_preference" && socialConsumptionKwh 
-    && (0.15 * (totalAmount - (FixedChargePerMonth * 1.1)) / (0.15 * 1.1) > 0)) {
+    else if (totalAmount > 4.125 && preferenceIsActive.name === "amount_preference" && totalAmount >= 1 ) {
     newSocialEnergyCharge = (0.15 + (0.15/10)*25)+((4.125/(0.15*1.1))+((totalAmount-4.125)/(0.24*1.1))-25)*(0.24+(0.24/10));
     newSocialEnergyCharge = Math.round(newSocialEnergyCharge * multiplier) / multiplier;
 }
-setEnergyChargeSocial(newSocialEnergyCharge)
+else {
+    newSocialEnergyCharge = '';
+}
+setEnergyChargeSocial(newSocialEnergyCharge, totalAmount)
 },[socialConsumptionKwh])
 
 
@@ -346,10 +343,13 @@ setEnergyChargeSocial(newSocialEnergyCharge)
       newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1);
       newConsumptionKwh = newConsumptionKwh.toFixed(1);
     }
-  
+   else {
+    newConsumptionKwh = "";
+   }
     setConsumptionKwh(newConsumptionKwh);
-  }, [FixedChargePerMonth, preferenceIsActive.name, consumerType]);
+  }, [FixedChargePerMonth, preferenceIsActive.name, consumerType, totalAmount]);
   
+
     useEffect (() =>  {
 
         let newEnergyCharge;
@@ -380,7 +380,7 @@ setEnergyChargeSocial(newSocialEnergyCharge)
         setEnergyCharge(newEnergyCharge);
         
         
-    },[socialConsumptionKwh, ConsumptionKwh, totalAmount, FixedChargePerMonth])
+    },[socialConsumptionKwh, ConsumptionKwh, totalAmount, FixedChargePerMonth, GSTEnergyCharge])
 
 
     useEffect(() => {
@@ -463,34 +463,32 @@ setEnergyChargeSocial(newSocialEnergyCharge)
     useEffect (() => {
         let newFixedChargePerMonth;
 
-        if (consumerType === "Residential" && supplyType === "Prepaid" && monthNumber && totalAmount > 0 && 
-        (ConsumptionKwh || totalAmountLast)) {
+        if (consumerType === "Residential" && supplyType === "Prepaid" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst)) {
             newFixedChargePerMonth = 2.48 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
-        else if (consumerType === "Residential" && supplyType === "Postpaid" && monthNumber && totalAmount > 0
-        && ConsumptionKwh) {
+        else if (consumerType === "Residential" && supplyType === "Postpaid" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst)) {
             newFixedChargePerMonth = 4.47 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
-        else if (consumerType === "Non-Residential" && supplyType === "Prepaid" && monthNumber && totalAmount > 0
-        && (ConsumptionKwh || totalAmountLast )) {
+        else if (consumerType === "Non-Residential" && supplyType === "Prepaid" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst)) {
             newFixedChargePerMonth = 10 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
-        else if (consumerType === "Non-Residential" && supplyType === "Postpaid" && monthNumber && totalAmount > 0
-        && ConsumptionKwh) {
+        else if (consumerType === "Non-Residential" && supplyType === "Postpaid" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst)) {
             newFixedChargePerMonth = 12 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
-        else if (consumerType === "Medium Voltage" && monthNumber && totalAmount > 0 
-        && ConsumptionKwh) {
+        else if (consumerType === "Medium Voltage" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst > 0)) {
             newFixedChargePerMonth = 50 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
-        else newFixedChargePerMonth = '';
+        else {
+            newFixedChargePerMonth = '';
+        }
+
         setFixedChargePerMonth(newFixedChargePerMonth);
-    },[ConsumptionKwh, monthNumber, consumerType, supplyType, totalAmount])
+    },[ConsumptionKwh, monthNumber, consumerType, supplyType, totalAmount, totalAmountLast, ConsumptionKwhFirst])
 
 
     /*Logic for 10% GST start */
@@ -498,26 +496,32 @@ setEnergyChargeSocial(newSocialEnergyCharge)
 
         let newSocialGSTCharge;
 
-       if (EnergyChargeSocial > 0) {
-            newSocialGSTCharge = (EnergyChargeSocial + SocialFixedChargePerMonth) / 10;
+       if (totalAmount > 0 || ConsumptionKwhFirst > 0) {
+            newSocialGSTCharge = EnergyChargeSocial / 10;
             newSocialGSTCharge = Math.round(newSocialGSTCharge * multiplier) / multiplier;
         }
-
+else {
+    newSocialGSTCharge = '';
+}
         setGSTEnergyChargeSocial(newSocialGSTCharge);
 
-    }, [totalAmount, consumerType, EnergyChargeSocial, SocialFixedChargePerMonth])
+    }, [EnergyChargeSocial, socialConsumptionKwh, supplyType])
 
 
     useEffect (() => {
         let newGSTEnergyCharge;
         
-        if (EnergyCharge > 0) {
+        if (totalAmount > 0 || ConsumptionKwhFirst > 0) {
             newGSTEnergyCharge = (FixedChargePerMonth + EnergyCharge) / 10;
-            newGSTEnergyCharge = Math.round(newGSTEnergyCharge* multiplier) / multiplier;
+            newGSTEnergyCharge = Math.round(newGSTEnergyCharge * multiplier) / multiplier;
+        }
+        else {
+            newGSTEnergyCharge = '';
         }
         setGSTEnergyCharge(newGSTEnergyCharge);
 
-    },[EnergyCharge,FixedChargePerMonth])
+    },[totalAmount, EnergyCharge, supplyType])
+
 
     return (
         <div className="flex p-2">
@@ -565,7 +569,6 @@ setEnergyChargeSocial(newSocialEnergyCharge)
                             setConsumptionKwh={setConsumptionKwh} socialConsumptionKwh={socialConsumptionKwh}
                             consumerType={consumerType} EnergyChargeSocial={EnergyChargeSocial}
                             SocialFixedChargePerMonth={SocialFixedChargePerMonth}
-                            handleSubmitAmount={handleSubmitAmount}
                             months={months} years={years} />) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst} EnergyChargeSocial={EnergyChargeSocial}
@@ -577,7 +580,7 @@ setEnergyChargeSocial(newSocialEnergyCharge)
                             totalAmountLast={totalAmountLast} setTotalAmountLast={setTotalAmountLast}
                             FixedChargePerMonth={FixedChargePerMonth} SocialtotalAmount={SocialtotalAmount}
                             setSocialtotalAmount={setSocialtotalAmount}
-                            consumerType={consumerType} handleSubmitConsumption={handleSubmitConsumption}/>)
+                            consumerType={consumerType} />)
                 }
             </div>
             <div className="md:w-3/12">
