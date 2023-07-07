@@ -46,7 +46,7 @@ export default function CalculationPage() {
         },
         {
             id: 2,
-            label: "Consumption (Kwh)",
+            label: "Consumption (KWh)",
             value: "consumption_kwh",
             name: "consumption_preference",
         },
