@@ -318,7 +318,11 @@ useEffect(() => {
 
 function handleChange () {
     let newSocialEnergyCharge = 0;
-
+    
+    if (totalAmount <= 4.125 && preferenceIsActive.name === "amount_preference" && socialConsumptionKwh) {
+        newSocialEnergyCharge =  totalAmount / (0.15 * 1.1) * (0.15*1.1)
+    }
+    else if (totalAmount > 4.125 && preferenceIsActive.name === "amount_preference" && socialConsumptionKwh)
     
 }
 
