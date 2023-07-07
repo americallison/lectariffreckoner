@@ -169,7 +169,7 @@ useEffect (() => {
 useEffect(() => {
     setTotalAmount('');
     setTotalAmountLast('');
-},[consumerType, preferenceIsActive.name, vendingMonth, vendingYear])
+},[consumerType, preferenceIsActive.name, supplyType, vendingMonth, vendingYear])
 
 
     let significantDigits = 3; // Replace with the desired number of significant digits
@@ -502,7 +502,7 @@ setEnergyChargeSocial(newSocialEnergyCharge)
 
         setGSTEnergyChargeSocial(newSocialGSTCharge);
 
-    }, [totalAmount, consumerType, EnergyChargeSocial, SocialFixedChargePerMonth])
+    }, [totalAmount, consumerType, EnergyChargeSocial, socialConsumptionKwh])
 
 
     useEffect (() => {
