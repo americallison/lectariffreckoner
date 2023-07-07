@@ -169,7 +169,7 @@ useEffect (() => {
 useEffect(() => {
     setTotalAmount('');
     setTotalAmountLast('');
-},[consumerType, preferenceIsActive.name, supplyType, vendingMonth, vendingYear])
+},[consumerType, preferenceIsActive.name, vendingMonth, vendingYear])
 
 
     let significantDigits = 3; // Replace with the desired number of significant digits
@@ -280,7 +280,7 @@ useEffect(() => {
 
    function handleSubmitAmount (e) {
     e.preventDefault()
-    let newConsumptionKwh;
+    let newConsumptionKwh = 0;
   
     if (preferenceIsActive.name === "amount_preference" && consumerType === "Residential" && totalAmount >= 1) {
       newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.24 * 1.1);
@@ -295,7 +295,9 @@ useEffect(() => {
 
     setConsumptionKwh(newConsumptionKwh);
 
-    let newSocialConsumptionKwh;
+    
+  
+    let newSocialConsumptionKwh = 0;
   
     if (totalAmount > 0 && totalAmount <= 4.125) {
       newSocialConsumptionKwh = totalAmount / (0.15 * 1.1);
@@ -502,7 +504,7 @@ setEnergyChargeSocial(newSocialEnergyCharge)
 
         setGSTEnergyChargeSocial(newSocialGSTCharge);
 
-    }, [totalAmount, consumerType, EnergyChargeSocial, socialConsumptionKwh])
+    }, [totalAmount, consumerType, EnergyChargeSocial, SocialFixedChargePerMonth])
 
 
     useEffect (() => {
