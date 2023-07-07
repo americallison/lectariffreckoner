@@ -323,7 +323,7 @@ function handleChange () {
         newSocialEnergyCharge =  totalAmount / (0.15 * 1.1) * (0.15*1.1)
     }
     else if (totalAmount > 4.125 && preferenceIsActive.name === "amount_preference" && socialConsumptionKwh) {
-    newSocialEnergyCharge = (0.15+(0.15/10)*25)+(socialConsumptionKwh-25)*(0.24+(0.24/10))
+    newSocialEnergyCharge = (0.15+(0.15/10)*25)+(4.125 / (0.15 * 1.1))*(0.24+(0.24/10))
 }
 setEnergyChargeSocial(newSocialEnergyCharge)
 }
