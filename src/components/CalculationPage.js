@@ -154,6 +154,7 @@ useEffect (() => {
     setConsumptionKwh('');
     setSocialConsumptionKwh('');
     setTotalAmountLast('');
+    setSocialtotalAmount('');
     
 }, [preferenceIsActive.name, consumerType, monthNumber, totalAmount, supplyType, ConsumptionKwhFirst])
 
@@ -437,7 +438,7 @@ useEffect(() => {
             newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
-
+    
 
         setMonthNumber(newmonthNumber)
     }, [vendingMonth, vendingYear])
