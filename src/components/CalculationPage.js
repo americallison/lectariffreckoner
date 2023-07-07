@@ -191,6 +191,7 @@ useEffect(() => {
 
         if (ConsumptionKwhFirst > 0) {
         newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
+        newtotalAmountLast = newtotalAmountLast.toFixed(1);
         }
         setTotalAmountLast(newtotalAmountLast);
 
@@ -201,6 +202,7 @@ useEffect(() => {
         if (ConsumptionKwhFirst > 0) {
            
             newSocialTotalAmount = Number(EnergyChargeSocial) + Number(GSTEnergyChargeSocial);
+            newSocialTotalAmount = newSocialTotalAmount.toFixed(1);
         }
 
        
