@@ -7,13 +7,20 @@ import ConsumptiontoAmountTitle from './ConsumptiontoAmountTitle';
 import LEC_LOGO from '../images/lec_logo.jpg';
 
 
+const monthss = [
+    'January', 'February', 'March', 'April',
+    'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'
+  ];
 
+let presentDate = new Date();
+let presentmonth = new Date().getMonth() 
 
 export default function CalculationPage() {
     /*declare variables to be used in calculation */
     const [consumerType, setConsumerType] = useState("Residential");
     const [supplyType, setSupplyType] = useState("Prepaid");
-    const [vendingMonth, setVendingMonth] = useState("June");
+    const [vendingMonth, setVendingMonth] = useState(monthss[presentmonth - 1]);
     const [vendingYear, setVendingYear] = useState("2023");
     const [vendingtime, setVendingTime] = useState("Yes");
     const [totalAmount, setTotalAmount] = useState('');
@@ -145,7 +152,7 @@ export default function CalculationPage() {
     ]
 
 
-/*useEffect (() => {
+useEffect (() => {
     setGSTEnergyCharge('');
     setEnergyCharge('');
     setEnergyChargeSocial('');
@@ -158,7 +165,7 @@ export default function CalculationPage() {
     
 }, [preferenceIsActive.name, consumerType, vendingMonth, 
     vendingYear, totalAmount, supplyType, ConsumptionKwhFirst])
-*/
+
 useEffect(() => {
     setTotalAmount('');
     setTotalAmountLast('');
@@ -176,17 +183,12 @@ useEffect(() => {
             isActive: true,
             name: event.target.value,
         })
-
         setPreference(event.target.value)
     }
 
       /* top level function to calculate total amount from total consumption starts */
-
-     
     function handleSubmitConsumption (event) {
         event.preventDefault();
-
-       
         let newtotalAmountLast = 0;
 
         if (ConsumptionKwhFirst > 0) {
@@ -199,37 +201,31 @@ useEffect(() => {
 
         let newSocialTotalAmount = 0;
 
-        if (ConsumptionKwhFirst > 0) {
-           
+        if (ConsumptionKwhFirst > 0) {  
             newSocialTotalAmount = Number(EnergyChargeSocial) + Number(GSTEnergyChargeSocial);
             newSocialTotalAmount = newSocialTotalAmount.toFixed(1);
         }
 
        
         setSocialtotalAmount(newSocialTotalAmount);
-       
-        
-        
-       
-    
         }
+
+
     console.log(SocialtotalAmount)
     /* function to calculate energy charge social for consumption to total amount starts */
     useEffect (() => {
     let newSocialTotalAmount = 0;
 
     if (ConsumptionKwhFirst >= 1) {
-       
         newSocialTotalAmount = Number(EnergyChargeSocial) + Number(GSTEnergyChargeSocial);
     }
 
-   
     setSocialtotalAmount(newSocialTotalAmount);
     },[EnergyChargeSocial, GSTEnergyChargeSocial, ConsumptionKwhFirst])
 
+
   useEffect (() => {
         let newtotalAmountLast = 0;
-
         if (ConsumptionKwhFirst > 0) {
         newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
         }
@@ -282,7 +278,7 @@ useEffect(() => {
    /* top level function to calculate total consumption from total amount starts */
    
 
-   const handleSubmitAmount = useCallback((e) => {
+   function handleSubmitAmount (e) {
     e.preventDefault()
     let newConsumptionKwh = 0;
   
@@ -296,7 +292,7 @@ useEffect(() => {
       newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1);
       newConsumptionKwh = newConsumptionKwh.toFixed(1);
     }
-  
+
     handleChange();
   
     let newSocialConsumptionKwh = 0;
@@ -315,10 +311,17 @@ useEffect(() => {
   
     console.log(ConsumptionKwh);
     console.log(EnergyCharge, '', FixedChargePerMonth);
-  }, [preferenceIsActive.name, consumerType, handleChange]);
+  };
   
-  // ...
+  let SocialFixedChargePerMonth;
   
+
+function handleChange () {
+    let newSocialEnergyCharge = 0;
+
+    
+}
+
   useEffect(() => {
     let newConsumptionKwh;
   
@@ -366,7 +369,7 @@ useEffect(() => {
         setEnergyCharge(newEnergyCharge);
         
         
-    },[ConsumptionKwh, totalAmount, FixedChargePerMonth])
+    },[socialConsumptionKwh,ConsumptionKwh, totalAmount, FixedChargePerMonth])
 
 
     useEffect(() => {
