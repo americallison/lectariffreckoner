@@ -326,7 +326,7 @@ useEffect(() => {
     console.log(ConsumptionKwh);
     console.log(EnergyCharge,'',FixedChargePerMonth)
 
-  },[totalAmount])
+  },[ConsumptionKwh, ConsumptionKwhFirst])
 /* top level function to calculate total consumption from total amount ends */
 
     let SocialFixedChargePerMonth = "";
@@ -355,7 +355,7 @@ useEffect(() => {
             newConsumptionKwh = newConsumptionKwh.toFixed(1);
         }
         setConsumptionKwh(newConsumptionKwh);
-    }, [FixedChargePerMonth])
+    }, [handleSubmitAmount])
     /* function to handle social energy change */
     function handleChange() {
 
