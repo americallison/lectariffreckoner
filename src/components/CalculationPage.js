@@ -391,7 +391,7 @@ useEffect(() => {
         setEnergyCharge(newEnergyCharge);
         
         
-    },[ConsumptionKwh, totalAmount, FixedChargePerMonth])
+    },[ConsumptionKwh, FixedChargePerMonth])
 
 
     useEffect(() => {
