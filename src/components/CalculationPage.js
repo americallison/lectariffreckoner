@@ -212,7 +212,8 @@ useEffect(() => {
         setTotalAmountLast(newtotalAmountLast);
     }
 
-    function handleEnergyChargeConsumption() {
+    function handleEnergyChargeConsumption(event) {
+        event.preventDefault();
         let newEnergyChargeConsumptionSocial = 0;
 
         if (consumerType === "Residential" && ConsumptionKwhFirst <= 25 && preferenceIsActive.name === "consumption_preference") {
@@ -256,6 +257,8 @@ useEffect(() => {
    function handleSubmitAmount(event) {
     event.preventDefault();
   
+
+
     // Call other functions
     handleConsumptionNotSocial();
     handleChange();
@@ -264,13 +267,19 @@ useEffect(() => {
   
     // Perform calculations
     let newSocialConsumptionKwh = 0;
-  
-    if (totalAmount <= 4.125) {
+     
+
+    
+
+     if (totalAmount > 0 && totalAmount <= 4.125) {
       newSocialConsumptionKwh = totalAmount / (0.15 * 1.1);
       newSocialConsumptionKwh = newSocialConsumptionKwh.toFixed(1);
     } else if (totalAmount > 4.125) {
       newSocialConsumptionKwh = (4.125 / (0.15 * 1.1)) + ((totalAmount - 4.125) / (0.24 * 1.1));
       newSocialConsumptionKwh = newSocialConsumptionKwh.toFixed(1);
+    }
+    else {
+        alert("Please enter total amount");
     }
   
     // Update state or perform further actions
@@ -343,7 +352,9 @@ useEffect(() => {
             newEnergyCharge = '';
         }
         setEnergyCharge(newEnergyCharge);
-    },[ConsumptionKwh, monthNumber, consumerType])
+        
+        
+    },[ConsumptionKwh])
 
 
     useEffect(() => {
