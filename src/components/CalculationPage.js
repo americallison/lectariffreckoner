@@ -483,7 +483,7 @@ useEffect(() => {
         let newFixedChargePerMonth;
 
         if (consumerType === "Residential" && supplyType === "Prepaid" && monthNumber && totalAmount > 0 && 
-        ConsumptionKwh) {
+        (ConsumptionKwh || totalAmountLast)) {
             newFixedChargePerMonth = 2.48 * monthNumber;
         }
         else if (consumerType === "Residential" && supplyType === "Postpaid" && monthNumber && totalAmount > 0
@@ -491,7 +491,7 @@ useEffect(() => {
             newFixedChargePerMonth = 4.47 * monthNumber;
         }
         else if (consumerType === "Non-Residential" && supplyType === "Prepaid" && monthNumber && totalAmount > 0
-        && ConsumptionKwh) {
+        && (ConsumptionKwh || totalAmountLast )) {
             newFixedChargePerMonth = 10 * monthNumber;
         }
         else if (consumerType === "Non-Residential" && supplyType === "Postpaid" && monthNumber && totalAmount > 0
