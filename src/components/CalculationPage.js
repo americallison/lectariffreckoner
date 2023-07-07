@@ -283,13 +283,16 @@ useEffect(() => {
     let newConsumptionKwh = 0;
 
     if (preferenceIsActive.name === "amount_preference" && consumerType === "Residential" && totalAmount >= 1) {
-        newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.24 * 1.1)
+        newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.24 * 1.1);
+        newConsumptionKwh = newConsumptionKwh.toFixed(1);
     }
     else if (preferenceIsActive.name === "amount_preference" && consumerType === "Non-Residential" && totalAmount >= 1) {
-        newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.22 * 1.1)
+        newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.22 * 1.1);
+        newConsumptionKwh = newConsumptionKwh.toFixed(1);
     }
     else if (preferenceIsActive.name === "amount_preference" && consumerType === "Medium Voltage" && totalAmount >= 1) {
-        newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1)
+        newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1);
+        newConsumptionKwh = newConsumptionKwh.toFixed(1);
     }
     setConsumptionKwh(newConsumptionKwh);
 
