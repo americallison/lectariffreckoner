@@ -351,7 +351,7 @@ useEffect(() => {
             newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1)
         }
         setConsumptionKwh(newConsumptionKwh);
-    }, [EnergyCharge])
+    }, [ConsumptionKwh])
     /* function to handle social energy change */
     function handleChange() {
 
