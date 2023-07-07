@@ -156,12 +156,13 @@ useEffect (() => {
     setTotalAmountLast('');
     setSocialtotalAmount('');
     
-}, [preferenceIsActive.name, consumerType, monthNumber, totalAmount, supplyType, ConsumptionKwhFirst])
+}, [preferenceIsActive.name, consumerType, vendingMonth, 
+    vendingYear, totalAmount, supplyType, ConsumptionKwhFirst])
 
 useEffect(() => {
     setTotalAmount('');
-},[consumerType, preferenceIsActive.name])
-
+    setTotalAmountLast('');
+},[consumerType, preferenceIsActive.name, vendingMonth, vendingYear])
 
 
     let significantDigits = 3; // Replace with the desired number of significant digits
