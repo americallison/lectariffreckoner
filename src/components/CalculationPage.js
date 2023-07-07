@@ -280,7 +280,7 @@ useEffect(() => {
 
    function handleSubmitAmount (e) {
     e.preventDefault()
-    let newConsumptionKwh = 0;
+    let newConsumptionKwh;
   
     if (preferenceIsActive.name === "amount_preference" && consumerType === "Residential" && totalAmount >= 1) {
       newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.24 * 1.1);
