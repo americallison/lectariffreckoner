@@ -155,7 +155,7 @@ useEffect (() => {
     setSocialConsumptionKwh('');
     setTotalAmountLast('');
     setSocialtotalAmount('');
-    
+    setConsumptionKwhFirst
 }, [preferenceIsActive.name, consumerType, vendingMonth, 
     vendingYear, totalAmount, supplyType, ConsumptionKwhFirst])
 
