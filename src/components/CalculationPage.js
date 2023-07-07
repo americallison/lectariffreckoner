@@ -534,7 +534,7 @@ useEffect(() => {
             <div className="md:w-6/12 w-full shadow rounded p-3">
                 <div className="flex justify-center">
                 <div className="p-2">
-                    <img src={LEC_LOGO} className="w-auto h-18 md:h-20" alt="LEC Logo" />
+                    <img src={LEC_LOGO} className="w-auto h-20" alt="LEC Logo" />
                 </div>
                 <h3 className="text-2xl mt-2 text-center container p-1">LEC Tariff Reckoner</h3>
                 </div>
