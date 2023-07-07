@@ -295,9 +295,7 @@ useEffect(() => {
 
     setConsumptionKwh(newConsumptionKwh);
 
-    
-  
-    let newSocialConsumptionKwh = 0;
+    let newSocialConsumptionKwh;
   
     if (totalAmount > 0 && totalAmount <= 4.125) {
       newSocialConsumptionKwh = totalAmount / (0.15 * 1.1);
