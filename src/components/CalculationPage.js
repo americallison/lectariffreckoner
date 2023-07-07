@@ -154,11 +154,13 @@ useEffect (() => {
     setConsumptionKwh('');
     setSocialConsumptionKwh('');
     
-}, [preferenceIsActive.name, consumerType, monthNumber, vendingMonth, totalAmount])
+}, [preferenceIsActive.name, consumerType, monthNumber, vendingMonth, totalAmount, supplyType])
 
 useEffect(() => {
     setTotalAmount('');
-},[consumerType])
+},[consumerType, preferenceIsActive.name])
+
+
 
     let significantDigits = 3; // Replace with the desired number of significant digits
     let multiplier = Math.pow(10, significantDigits);
@@ -349,7 +351,7 @@ useEffect(() => {
             newEnergyCharge = 0.19 * (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1)
         }
         else {
-            newEnergyCharge = '';
+            newEnergyCharge = 0;
         }
         setEnergyCharge(newEnergyCharge);
         
@@ -435,25 +437,26 @@ useEffect(() => {
 
     /*function for fixed charge start */
     useEffect (() => {
-        let newFixedChargePerMonth = 0;
+        let newFixedChargePerMonth;
 
-        if (consumerType === "Residential" && supplyType === "Prepaid" && monthNumber) {
+        if (consumerType === "Residential" && supplyType === "Prepaid" && monthNumber && totalAmount) {
             newFixedChargePerMonth = 2.48 * monthNumber;
         }
-        else if (consumerType === "Residential" && supplyType === "Postpaid" && monthNumber) {
+        else if (consumerType === "Residential" && supplyType === "Postpaid" && monthNumber && totalAmount) {
             newFixedChargePerMonth = 4.47 * monthNumber;
         }
-        else if (consumerType === "Non-Residential" && supplyType === "Prepaid" && monthNumber) {
+        else if (consumerType === "Non-Residential" && supplyType === "Prepaid" && monthNumber && totalAmount) {
             newFixedChargePerMonth = 10 * monthNumber;
         }
-        else if (consumerType === "Non-Residential" && supplyType === "Postpaid" && monthNumber) {
+        else if (consumerType === "Non-Residential" && supplyType === "Postpaid" && monthNumber && totalAmount) {
             newFixedChargePerMonth = 12 * monthNumber;
         }
-        else if (consumerType === "Medium Voltage" && monthNumber) {
+        else if (consumerType === "Medium Voltage" && monthNumber && totalAmount) {
             newFixedChargePerMonth = 50 * monthNumber;
         }
+        else newFixedChargePerMonth = '';
         setFixedChargePerMonth(newFixedChargePerMonth);
-    },[ConsumptionKwh, monthNumber, consumerType])
+    },[ConsumptionKwh, monthNumber, consumerType, supplyType, totalAmount])
 
 
     /*Logic for 10% GST start */
@@ -477,12 +480,13 @@ useEffect(() => {
     useEffect (() => {
         let newGSTEnergyCharge;
         
+        if (EnergyCharge) {
             newGSTEnergyCharge = (FixedChargePerMonth + EnergyCharge) / 10;
-        
+        }
 
         setGSTEnergyCharge(newGSTEnergyCharge);
 
-    },[EnergyCharge])
+    },[EnergyCharge,FixedChargePerMonth])
 
     return (
         <div className="flex p-2">
