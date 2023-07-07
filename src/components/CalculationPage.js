@@ -160,6 +160,7 @@ useEffect (() => {
     vendingYear, totalAmount, supplyType, ConsumptionKwhFirst])
 
 useEffect(() => {
+    setTotalAmount('');
     setTotalAmountLast('');
 },[consumerType, preferenceIsActive.name, vendingMonth, vendingYear])
 
@@ -283,21 +284,8 @@ useEffect(() => {
 
     const handleSubmitAmount = useCallback (() => {
   
-    let newConsumptionKwh = 0;
-
-    if (preferenceIsActive.name === "amount_preference" && consumerType === "Residential" && totalAmount >= 1) {
-        newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.24 * 1.1);
-        newConsumptionKwh = newConsumptionKwh.toFixed(1);
-    }
-    else if (preferenceIsActive.name === "amount_preference" && consumerType === "Non-Residential" && totalAmount >= 1) {
-        newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.22 * 1.1);
-        newConsumptionKwh = newConsumptionKwh.toFixed(1);
-    }
-    else if (preferenceIsActive.name === "amount_preference" && consumerType === "Medium Voltage" && totalAmount >= 1) {
-        newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1);
-        newConsumptionKwh = newConsumptionKwh.toFixed(1);
-    }
-    setConsumptionKwh(newConsumptionKwh);
+    
+   
 
     // Call other functions
     
@@ -326,7 +314,7 @@ useEffect(() => {
     console.log(ConsumptionKwh);
     console.log(EnergyCharge,'',FixedChargePerMonth)
 
-  },[ConsumptionKwh, ConsumptionKwhFirst])
+  },[FixedChargePerMonth])
 /* top level function to calculate total consumption from total amount ends */
 
     let SocialFixedChargePerMonth = "";
@@ -352,10 +340,10 @@ useEffect(() => {
         }
         else if (preferenceIsActive.name === "amount_preference" && consumerType === "Medium Voltage" && totalAmount >= 1) {
             newConsumptionKwh = (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1);
-            newConsumptionKwh = newConsumptionKwh.toFixed(1);
+            newConsumptionKwh = newConsumptionKwh.toFixed(1)
         }
         setConsumptionKwh(newConsumptionKwh);
-    }, [handleSubmitAmount])
+    }, [])
     /* function to handle social energy change */
     function handleChange() {
 
