@@ -222,7 +222,7 @@ useEffect(() => {
 
    
     setSocialtotalAmount(newSocialTotalAmount);
-    },[ConsumptionKwhFirst])
+    },[EnergyChargeSocial, SocialFixedChargePerMonth])
 
   useEffect (() => {
         let newtotalAmountLast = 0;
