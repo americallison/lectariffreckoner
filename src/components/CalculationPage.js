@@ -326,7 +326,7 @@ useEffect(() => {
     console.log(ConsumptionKwh);
     console.log(EnergyCharge,'',FixedChargePerMonth)
 
-  },[socialConsumptionKwh, totalAmount, ConsumptionKwh])
+  },[totalAmount])
 /* top level function to calculate total consumption from total amount ends */
 
     let SocialFixedChargePerMonth = "";
