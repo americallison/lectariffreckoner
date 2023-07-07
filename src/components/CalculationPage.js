@@ -295,7 +295,7 @@ useEffect(() => {
 
     setConsumptionKwh(newConsumptionKwh);
 
-    handleChange();
+    
   
     let newSocialConsumptionKwh = 0;
   
@@ -318,7 +318,7 @@ useEffect(() => {
   let SocialFixedChargePerMonth;
   
 
-function handleChange () {
+useEffect (() => {
     let newSocialEnergyCharge = 0;
     
     if (totalAmount <= 4.125 && preferenceIsActive.name === "amount_preference" && socialConsumptionKwh) {
@@ -328,7 +328,7 @@ function handleChange () {
     newSocialEnergyCharge = (0.15+(0.15/10)*25)+(4.125 / (0.15 * 1.1))*(0.24+(0.24/10))
 }
 setEnergyChargeSocial(newSocialEnergyCharge)
-}
+},[socialConsumptionKwh])
 
 
   useEffect(() => {
