@@ -495,12 +495,9 @@ setEnergyChargeSocial(newSocialEnergyCharge)
     /*Logic for 10% GST start */
     useEffect(() => {
 
-        let newSocialGSTCharge = 0;
+        let newSocialGSTCharge;
 
-        if (!SocialFixedChargePerMonth && !EnergyChargeSocial) {
-            newSocialGSTCharge = '-';
-        }
-        else {
+       if (EnergyChargeSocial > 0) {
             newSocialGSTCharge = (EnergyChargeSocial + SocialFixedChargePerMonth) / 10;
             newSocialGSTCharge = Math.round(newSocialGSTCharge * multiplier) / multiplier;
         }
