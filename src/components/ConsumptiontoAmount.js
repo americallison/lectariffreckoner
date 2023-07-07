@@ -53,7 +53,7 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, handl
                
         <div className='flex justify-between'>
           <div className='w-4/12'>
-            <label className='p-2'>Consumption (Kwh):</label>
+            <label className='p-2'>Consumption (KWh):</label>
           </div>
           <div className="w-8/12">
             <input className="bg-slate-200 p-2 border-none rounded-md shadow-sm leading-tight 
