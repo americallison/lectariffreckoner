@@ -160,7 +160,6 @@ useEffect (() => {
     vendingYear, totalAmount, supplyType, ConsumptionKwhFirst])
 
 useEffect(() => {
-    setTotalAmount('');
     setTotalAmountLast('');
 },[consumerType, preferenceIsActive.name, vendingMonth, vendingYear])
 
