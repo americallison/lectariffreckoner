@@ -186,6 +186,15 @@ useEffect(() => {
         event.preventDefault();
 
        
+        let newtotalAmountLast = 0;
+
+        if (ConsumptionKwhFirst > 0) {
+        newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
+        }
+        setTotalAmountLast(newtotalAmountLast);
+
+        handleEnergyChargeConsumption(event);
+
         let newSocialTotalAmount = 0;
 
 
@@ -198,25 +207,26 @@ useEffect(() => {
         setSocialtotalAmount(newSocialTotalAmount);
        
         
-        handleTotalAmountNotSocial(event);
-        handleEnergyChargeConsumption(event);
+        
+       
     
         }
     console.log(SocialtotalAmount)
     /* function to calculate energy charge social for consumption to total amount starts */
 
-    function handleTotalAmountNotSocial (event) {
-        event.preventDefault();
+  useEffect (() => {
         let newtotalAmountLast = 0;
 
         if (ConsumptionKwhFirst > 0) {
         newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
         }
         setTotalAmountLast(newtotalAmountLast);
-    }
+    },[])
 
     function handleEnergyChargeConsumption(event) {
         event.preventDefault();
+
+        
         let newEnergyChargeConsumptionSocial = 0;
 
         if (consumerType === "Residential" && ConsumptionKwhFirst <= 25 && preferenceIsActive.name === "consumption_preference") {
@@ -276,14 +286,9 @@ useEffect(() => {
     // Call other functions
     
     handleChange();
-
-    
   
     // Perform calculations
     let newSocialConsumptionKwh = 0;
-     
-
-    
 
      if (totalAmount > 0 && totalAmount <= 4.125) {
       newSocialConsumptionKwh = totalAmount / (0.15 * 1.1);
