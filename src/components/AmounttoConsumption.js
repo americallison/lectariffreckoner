@@ -190,7 +190,16 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
               value={ConsumptionKwh} 
             />
           </div></div>
-            </div>)
+            </div>) ? ({ConsumptionKwh} < 0) :  <div className='flex justify-between'>
+          <div className='w-4/12'>
+            <label className='p-2'>Consumption (KwH):</label>
+          </div>
+          <div className="w-8/12">
+            <input className="bg-red-100 p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+              value={ConsumptionKwh} 
+            />
+          </div></div> 
         }
 
 
