@@ -56,7 +56,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
               value={totalAmount} onChange={(e) => setTotalAmount(e.target.value)}
 
             />
-          </div></div>
+          </div></div><hr className='mt-2'/>
 
         {
           consumerType === "Residential" ?
@@ -96,7 +96,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="fixedchargesocial"
+        focus:outline-none mb-2 text-black-700 font-light w-full" type="number" disabled id="fixedchargesocial"
               value={SocialFixedChargePerMonth} 
             />
                 </div>
