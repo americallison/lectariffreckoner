@@ -221,6 +221,7 @@ setEnergyChargeSocial('')
 
     if (ConsumptionKwhFirst >= 1) {
         newSocialTotalAmount = Number(EnergyChargeSocial) + Number(GSTEnergyChargeSocial);
+        newSocialTotalAmount = newSocialTotalAmount.toFixed(1);
     }
  else {
     newSocialTotalAmount = '';
@@ -233,6 +234,7 @@ setEnergyChargeSocial('')
         let newtotalAmountLast;
         if (ConsumptionKwhFirst > 0) {
         newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
+        newtotalAmountLast = newtotalAmountLast.toFixed(1);
         }
         else {
             newtotalAmountLast = '';
