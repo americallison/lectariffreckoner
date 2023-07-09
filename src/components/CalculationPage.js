@@ -162,6 +162,7 @@ useEffect (() => {
 
 useEffect (() => {
     setTotalAmount('');
+    setSocialtotalAmount('');
 }, [preferenceIsActive.name, supplyType, vendingMonth, vendingYear, consumerType])
 
 
