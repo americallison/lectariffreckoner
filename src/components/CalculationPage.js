@@ -176,7 +176,7 @@ useEffect (() => {
 useEffect (() => {
 setEnergyCharge('');
 setEnergyChargeSocial('')
-},[ConsumptionKwhFirst, GSTEnergyCharge, GSTEnergyChargeSocial])
+},[ConsumptionKwhFirst])
 
     let significantDigits = 3; // Replace with the desired number of significant digits
     let multiplier = Math.pow(10, significantDigits);
@@ -271,7 +271,7 @@ setEnergyChargeSocial('')
 
  /* function to calculate energy charge social for consumption to total amount starts */
     useEffect(() => {
-        let newEnergyChargeConsumptionNotSocial = 0;
+        let newEnergyChargeConsumptionNotSocial;
 
         if (consumerType === "Residential" && ConsumptionKwhFirst > 0 && preferenceIsActive.name === "consumption_preference") {
             newEnergyChargeConsumptionNotSocial = ConsumptionKwhFirst * (0.24);
@@ -281,7 +281,7 @@ setEnergyChargeSocial('')
             newEnergyChargeConsumptionNotSocial = ConsumptionKwhFirst * (0.22);
             newEnergyChargeConsumptionNotSocial= Number(newEnergyChargeConsumptionNotSocial.toFixed(3));
         }
-        else if (consumerType === "Non-Residential" && preferenceIsActive.name === "consumption_preference") {
+        else if (consumerType === "Medium Voltage" && preferenceIsActive.name === "consumption_preference") {
             newEnergyChargeConsumptionNotSocial = ConsumptionKwhFirst * (0.19);
             newEnergyChargeConsumptionNotSocial= Number(newEnergyChargeConsumptionNotSocial.toFixed(3));
         }
@@ -423,9 +423,7 @@ setEnergyChargeSocial(newSocialEnergyCharge, totalAmount)
             newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
-        else if (newmonthNumber > presentDate.getMonth() && vendingYear >= presentDate.getFullYear()) {
-            console.log("FUTURE DATE IS NOT ALLOWED")
-        }
+        
         else if (vendingMonth === "February") {
             newmonthNumber = 2;
             newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
@@ -487,6 +485,7 @@ setEnergyChargeSocial(newSocialEnergyCharge, totalAmount)
     }, [vendingMonth, vendingYear])
 
     console.log("Month number: ", monthNumber)
+    console.log("month label:", months.label)
 
 
 
@@ -499,29 +498,29 @@ setEnergyChargeSocial(newSocialEnergyCharge, totalAmount)
             newFixedChargePerMonth = 2.48 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
-        else if (consumerType === "Residential" && supplyType === "Postpaid" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst)) {
+        else if (consumerType === "Residential" && supplyType === "Postpaid" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst > 0)) {
             newFixedChargePerMonth = 4.47 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
-        else if (consumerType === "Non-Residential" && supplyType === "Prepaid" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst)) {
+        else if (consumerType === "Non-Residential" && supplyType === "Prepaid" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst > 0)) {
             newFixedChargePerMonth = 10 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
-        else if (consumerType === "Non-Residential" && supplyType === "Postpaid" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst)) {
+        else if (consumerType === "Non-Residential" && supplyType === "Postpaid" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst > 0)) {
             newFixedChargePerMonth = 12 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
-        else if (consumerType === "Medium Voltage" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst > 0)) {
+        else if (consumerType === "Medium Voltage" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst)) {
             newFixedChargePerMonth = 50 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
         else {
             newFixedChargePerMonth = '';
         }
-
         setFixedChargePerMonth(newFixedChargePerMonth);
-    },[monthNumber, consumerType, supplyType, totalAmount, totalAmountLast, 
-        EnergyCharge, GSTEnergyCharge, supplyType. ConsumptionKwhFirst])
+
+    }, [monthNumber, consumerType, supplyType, totalAmount, totalAmountLast, 
+        EnergyCharge, GSTEnergyCharge, supplyType. ConsumptionKwhFirst, preferenceIsActive.name])
 
 
     /*Logic for 10% GST start */
@@ -544,7 +543,7 @@ else {
     useEffect (() => {
         let newGSTEnergyCharge;
         
-        if (totalAmount > 0 || ConsumptionKwhFirst > 0) {
+        if (totalAmount > 0 || ConsumptionKwhFirst) {
             newGSTEnergyCharge = (FixedChargePerMonth + EnergyCharge) / 10;
             newGSTEnergyCharge = Math.round(newGSTEnergyCharge * multiplier) / multiplier;
         }
@@ -554,7 +553,7 @@ else {
         setGSTEnergyCharge(newGSTEnergyCharge);
         console.log(FixedChargePerMonth)
 
-    },[totalAmount, EnergyCharge, supplyType, ConsumptionKwhFirst, preferenceIsActive.name])
+    },[totalAmount, EnergyCharge, supplyType, FixedChargePerMonth, ConsumptionKwhFirst, preferenceIsActive.name])
 
 
     return (
@@ -603,7 +602,7 @@ else {
                             setConsumptionKwh={setConsumptionKwh} socialConsumptionKwh={socialConsumptionKwh}
                             consumerType={consumerType} EnergyChargeSocial={EnergyChargeSocial}
                             SocialFixedChargePerMonth={SocialFixedChargePerMonth}
-                            months={months} years={years} />) :
+                            months={months} years={years} monthss={monthss} presentmonth={presentmonth}/>) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst} EnergyChargeSocial={EnergyChargeSocial}
                             EnergyCharge={EnergyCharge} vendingMonth={vendingMonth}
