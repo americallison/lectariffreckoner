@@ -166,6 +166,11 @@ useEffect (() => {
 }, [preferenceIsActive.name, supplyType, vendingMonth, vendingYear, consumerType])
 
 
+useEffect (() => {
+setEnergyCharge('');
+setEnergyChargeSocial('')
+},[ConsumptionKwhFirst])
+
     let significantDigits = 3; // Replace with the desired number of significant digits
     let multiplier = Math.pow(10, significantDigits);
 
@@ -212,20 +217,25 @@ useEffect (() => {
     console.log(SocialtotalAmount)
     /* function to calculate energy charge social for consumption to total amount starts */
     useEffect (() => {
-    let newSocialTotalAmount = 0;
+    let newSocialTotalAmount;
 
     if (ConsumptionKwhFirst >= 1) {
         newSocialTotalAmount = Number(EnergyChargeSocial) + Number(GSTEnergyChargeSocial);
     }
-
+ else {
+    newSocialTotalAmount = '';
+ }
     setSocialtotalAmount(newSocialTotalAmount);
     },[EnergyChargeSocial, GSTEnergyChargeSocial, ConsumptionKwhFirst])
 
 
   useEffect (() => {
-        let newtotalAmountLast = 0;
+        let newtotalAmountLast;
         if (ConsumptionKwhFirst > 0) {
         newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
+        }
+        else {
+            newtotalAmountLast = '';
         }
         setTotalAmountLast(newtotalAmountLast);
     },[EnergyCharge, ConsumptionKwhFirst, GSTEnergyCharge])
@@ -233,7 +243,7 @@ useEffect (() => {
   useEffect(() => {
 
         
-        let newEnergyChargeConsumptionSocial = 0;
+        let newEnergyChargeConsumptionSocial;
 
         if (consumerType === "Residential" && ConsumptionKwhFirst <= 25 && preferenceIsActive.name === "consumption_preference") {
             newEnergyChargeConsumptionSocial = ConsumptionKwhFirst * (0.15);
@@ -298,7 +308,7 @@ useEffect (() => {
 
   useEffect (() => {
   
-    let newSocialConsumptionKwh = 0;
+    let newSocialConsumptionKwh;
   
     if (totalAmount > 0 && totalAmount <= 4.125) {
       newSocialConsumptionKwh = totalAmount / (0.15 * 1.1);
@@ -585,7 +595,7 @@ else {
                             months={months} years={years} />) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst} EnergyChargeSocial={EnergyChargeSocial}
-                            EnergyCharge={EnergyCharge} vendingDate={vendingMonth}
+                            EnergyCharge={EnergyCharge} vendingMonth={vendingMonth}
                             setVendingMonth={setVendingMonth} months={months} years={years}
                             vendingYear={vendingYear} setVendingYear={setVendingYear} 
                             GSTEnergyChargeSocial={GSTEnergyChargeSocial}

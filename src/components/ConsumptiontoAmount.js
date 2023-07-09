@@ -17,7 +17,7 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years }) {
               Last Vending Month
             </label>
             <select
-              id="vendingMonth"
+              id="vendingMonth1"
               value={vendingMonth}
               onChange={(e) => setVendingMonth(e.target.value)}
               className="w-full border-none bg-slate-200 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
