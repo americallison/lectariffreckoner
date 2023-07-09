@@ -237,7 +237,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
 {
   ConsumptionKwh >= 0 && (consumerType === "Non-Residential" || consumerType === "Medium Voltage") && 
   <div>
-    <div className='flex justify-between'>
+    <div className='flex mt-3 justify-between'>
 <div className='w-4/12'>
   <label className='p-2'>Energy Charge:</label>
 </div>
@@ -297,7 +297,6 @@ focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled 
   <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
 focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
     value={EnergyCharge} 
-
   />
 </div></div>
 
