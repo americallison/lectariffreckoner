@@ -283,7 +283,7 @@ setEnergyChargeSocial('')
         }
         else if (consumerType === "Medium Voltage" && preferenceIsActive.name === "consumption_preference") {
             newEnergyChargeConsumptionNotSocial = ConsumptionKwhFirst * (0.19);
-            newEnergyChargeConsumptionNotSocial= Number(newEnergyChargeConsumptionNotSocial.toFixed(3));
+            newEnergyChargeConsumptionNotSocial= newEnergyChargeConsumptionNotSocial.toFixed(3);
         }
 
         setEnergyCharge(newEnergyChargeConsumptionNotSocial);
