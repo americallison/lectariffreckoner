@@ -60,8 +60,7 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
           </div></div><hr className='mt-2'/>
 
         {
-          consumerType === "Residential" ?
-            (<>
+          (consumerType === "Residential" && ConsumptionKwh >= 0) && <>
               <div className="flex justify-between">
                 <div className="w-4/12"></div>
                 <div className="w-4/12">
@@ -144,45 +143,187 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
             />
                 </div>
               </div>
-            </>) : (<div>
-              <div className='flex justify-between'>
-          <div className='w-4/12'>
-            <label className='p-2'>Energy Charge:</label>
-          </div>
-          <div className="w-8/12">
-            <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+            </>}
+
+
+            {
+          (consumerType === "Residential" && ConsumptionKwh < 0) && <>
+              <div className="flex justify-between">
+                <div className="w-4/12"></div>
+                <div className="w-4/12">
+                  <p className='font-medium m-2 text-center'>Social</p>
+                </div>
+                <div className="w-4/12">
+                  <p className='font-medium m-2 text-center'>Residential</p>
+                </div>
+              </div>
+
+              <div className="flex justify-between">
+                <div className="w-4/12">
+                  <label className='p-2'>Energy Charge (USD):</label>
+                </div>
+                <div className="w-4/12 p-2">
+                <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+              value={EnergyChargeSocial}
+            />
+                </div>
+                <div className="w-4/12 p-2">
+                <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
               value={EnergyCharge} 
-
             />
-          </div></div>
+                </div>
+              </div>
 
-          <div className='flex justify-between'>
-          <div className='w-4/12'>
-            <label className='p-2'>Fixed Charge (USD):</label>
-          </div>
-          <div className="w-8/12">
-            <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+
+              <div className="flex justify-between">
+                <div className="w-4/12">
+                  <label className='p-2'>Fixed Charge (USD):</label>
+                </div>
+                <div className="w-4/12 p-2">
+                <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+        focus:outline-none mb-2 text-black-700 font-light w-full" type="number" disabled id="fixedchargesocial"
+              value={SocialFixedChargePerMonth} 
+            />
+                </div>
+                <div className="w-4/12 p-2">
+                <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyCharge"
               value={FixedChargePerMonth} 
             />
-          </div></div>
+                </div>
+              </div>
+
+              <div className="flex justify-between">
+                <div className="w-4/12">
+                  <label className='p-2'>10% GST:</label>
+                </div>
+                <div className="w-4/12 p-2">
+                <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyChargeSocial"
+              value={GSTEnergyChargeSocial}
+            />
+                </div>
+                <div className="w-4/12 p-2">
+                <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyCharge"
+              value={GSTEnergyCharge} 
+            />
+                </div>
+              </div>
+
+              <div className="flex justify-between">
+                <div className="w-4/12">
+                  <label className='p-2'>Consumption (KWh):</label>
+                </div>
+                <div className="w-4/12 p-2">
+                <input className="bg-[#96E899] p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyChargeSocial"
+              value={socialConsumptionKwh}
+            />
+                </div>
+                <div className="w-4/12 p-2">
+                <input className="bg-red-100 p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="consumptionkwh"
+              value={ConsumptionKwh} 
+            />
+                </div>
+              </div>
+            </>}
+
+                    
+
+{
+  ConsumptionKwh >= 0 && (consumerType === "Non-Residential" || consumerType === "Medium Voltage") && 
+  <div>
+    <div className='flex justify-between'>
+<div className='w-4/12'>
+  <label className='p-2'>Energy Charge:</label>
+</div>
+<div className="w-8/12">
+  <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+    value={EnergyCharge} 
+
+  />
+</div></div>
+
+<div className='flex justify-between'>
+<div className='w-4/12'>
+  <label className='p-2'>Fixed Charge (USD):</label>
+</div>
+<div className="w-8/12">
+  <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+    value={FixedChargePerMonth} 
+  />
+</div></div>
+
+<div className='flex justify-between'>
+<div className='w-4/12'>
+  <label className='p-2'>10% GST:</label>
+</div>
+<div className="w-8/12">
+  <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="gstenergyCharge"
+    value={GSTEnergyCharge} 
+
+  />
+</div></div>
 
           <div className='flex justify-between'>
           <div className='w-4/12'>
-            <label className='p-2'>10% GST:</label>
+            <label className='p-2'>Consumption (KwH):</label>
           </div>
           <div className="w-8/12">
-            <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="gstenergyCharge"
-              value={GSTEnergyCharge} 
-
+            <input className="bg-[#96E899] p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+              value={ConsumptionKwh} 
             />
-          </div></div>
-</div>)}
+          </div></div> 
+             </div>
+}  
+
 
 {
-  ConsumptionKwh < 0  && (consumerType === "Non-Residential" || consumerType === "Medium Voltage") ?
+  ConsumptionKwh < 0 && (consumerType === "Non-Residential" || consumerType === "Medium Voltage") && 
+  <div>
+    <div className='flex justify-between'>
+<div className='w-4/12'>
+  <label className='p-2'>Energy Charge:</label>
+</div>
+<div className="w-8/12">
+  <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+    value={EnergyCharge} 
+
+  />
+</div></div>
+
+<div className='flex justify-between'>
+<div className='w-4/12'>
+  <label className='p-2'>Fixed Charge (USD):</label>
+</div>
+<div className="w-8/12">
+  <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+    value={FixedChargePerMonth} 
+  />
+</div></div>
+
+<div className='flex justify-between'>
+<div className='w-4/12'>
+  <label className='p-2'>10% GST:</label>
+</div>
+<div className="w-8/12">
+  <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="gstenergyCharge"
+    value={GSTEnergyCharge} 
+
+  />
+</div></div>
+
           <div className='flex justify-between'>
           <div className='w-4/12'>
             <label className='p-2'>Consumption (KwH):</label>
@@ -192,17 +333,8 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
               value={ConsumptionKwh} 
             />
-          </div></div> : <div className='flex justify-between'>
-          <div className='w-4/12'>
-            <label className='p-2'>Consumption (KwH):</label>
-          </div>
-          <div className="w-8/12">
-            <input className="bg-[#96E899] p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
-              value={ConsumptionKwh} 
-            />
-          </div></div>
-             
+          </div></div> 
+             </div>
 }  
 
 
