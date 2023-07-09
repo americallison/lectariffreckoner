@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function ConsumptiontoAmount({ 
     EnergyCharge, EnergyChargeSocial, GSTEnergyCharge, GSTEnergyChargeSocial, FixedChargePerMonth, 
-    SocialFixedChargePerMonth, todaysDate, consumerType,
+    SocialFixedChargePerMonth, consumerType,
     ConsumptionKwhFirst, setConsumptionKwhFirst, totalAmountLast, SocialtotalAmount,
 vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years }) {
 
