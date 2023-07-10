@@ -573,12 +573,14 @@ console.log("GST:", GSTEnergyCharge)
     return (
         <div className="flex p-2">
             <div className="md:w-3/12"></div>
-            <div className="md:w-6/12 w-full shadow rounded p-3">
-                <div className="flex justify-evenly">
-                <div className="p-2">
-                    <img src={LEC_LOGO} className="w-40 md:w-full h-20" alt="LEC Logo" />
+            <div className="md:w-6/12 w-full shadow rounded p-2">
+                <div className="flex">
+                <div className="p-1">
+                <div className="w-20 h-20">
+                    <img src={LEC_LOGO} className="object-cover w-full h-full" alt="LEC Logo" />
                 </div>
-                <h3 className="text-2xl mt-2 text-center container p-1">LEC Tariff Reckoner</h3>
+                </div>
+                <h3 className="md:text-3xl text-2xl mt-2 font-bold text-center container p-1">LEC Tariff Reckoner</h3>
                 </div>
                 {
                     preferenceIsActive.isActive && preferenceIsActive.name === 'amount_preference' ?
@@ -587,7 +589,7 @@ console.log("GST:", GSTEnergyCharge)
 
                 <div className="flex justify-between mt-2">
                     <div className="md:w-4/12 w-6/12">
-                        <label className="p-2 text-sm md:text-base">Calculation Preference:</label>
+                        <label className="p-2 text-base">Calculation Preference:</label>
                     </div>
                     <div className="md:w-8/12 w-6/12">
                         <select className="mb-2 bg-slate-200 rounded border-none shadow-sm leading-tight focus:outline-none 
