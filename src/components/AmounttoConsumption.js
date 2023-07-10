@@ -254,8 +254,9 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                   <div className='w-4/12'>
                 <div className="bg-white p-2 shadow m-1">
                   <p className='text-red-500'>
-                    You owe ${serviceChargeDebt} in service charge for {monthNumber} month (s). Therefore 
-                    you must purchase an amount in excess of ${serviceChargeDebt}.
+                    You owe <span className="font-bold text-red-700 rounded p-1">${serviceChargeDebt}</span> in service charge for 
+                    <span className="font-bold text-red-700 rounded p-1">{monthNumber} month (s)</span>. Therefore 
+                    you must purchase an amount in excess of<span className="font-bold text-red-700 rounded p-1">${serviceChargeDebt}</span>.
                   </p>
                   </div>
                </div>
