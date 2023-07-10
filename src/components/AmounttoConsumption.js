@@ -94,13 +94,13 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+        focus:outline-none mb-2 text-gray-700 font-light opacity-100 w-full" type="number" disabled id="energyCharge"
               value={EnergyChargeSocial}
             />
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+        focus:outline-none mb-2 text-gray-700 font-light opacity-100 w-full" type="number" disabled id="energyCharge"
               value={EnergyCharge} 
             />
                 </div>
@@ -113,13 +113,13 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-black-700 font-light w-full" type="number" disabled id="fixedchargesocial"
+        focus:outline-none mb-2 text-black-700 font-light opacity-100 w-full" type="number" disabled id="fixedchargesocial"
               value={SocialFixedChargePerMonth} 
             />
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyCharge"
+        focus:outline-none mb-2 text-gray-700 font-light opacity-100 w-full" type="number" disabled id="GSTenergyCharge"
               value={FixedChargePerMonth} 
             />
                 </div>
@@ -131,13 +131,13 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyChargeSocial"
+        focus:outline-none mb-2 text-gray-700 font-light opacity-100 w-full" type="number" disabled id="GSTenergyChargeSocial"
               value={GSTEnergyChargeSocial}
             />
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyCharge"
+        focus:outline-none mb-2 text-gray-700 font-light opacity-100 w-full" type="number" disabled id="GSTenergyCharge"
               value={GSTEnergyCharge} 
             />
                 </div>
@@ -149,13 +149,13 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-[#96E899] p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyChargeSocial"
+        focus:outline-none mb-2 text-gray-700 font-light opacity-100 w-full" type="number" disabled id="GSTenergyChargeSocial"
               value={socialConsumptionKwh}
             />
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-[#96E899] p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="consumptionkwh"
+        focus:outline-none mb-2 text-gray-700 font-light opacity-100 w-full" type="number" disabled id="consumptionkwh"
               value={ConsumptionKwh} 
             />
                 </div>
@@ -181,13 +181,13 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+        focus:outline-none mb-2 text-gray-700 font-light opacity-100 w-full" type="number" disabled id="energyCharge"
               value={EnergyChargeSocial}
             />
                 </div>
                 <div className="w-4/12 p-2">
                 <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="energyCharge"
+        focus:outline-none mb-2 text-gray-700 font-light opacity-100 w-full" type="number" disabled id="energyCharge"
               value={EnergyCharge} 
             />
                 </div>
