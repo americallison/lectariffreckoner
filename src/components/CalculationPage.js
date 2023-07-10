@@ -204,9 +204,9 @@ setEnergyChargeSocial('')
     useEffect (() => {
         let newtotalAmountLast;
 
-        if (ConsumptionKwhFirst > 0) {
+        if (ConsumptionKwhFirst >= 1) {
         newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
-        newtotalAmountLast = newtotalAmountLast.toFixed(1);
+        newtotalAmountLast = newtotalAmountLast.toFixed(2);
         }
         else {
             newtotalAmountLast = '';
@@ -214,19 +214,6 @@ setEnergyChargeSocial('')
         setTotalAmountLast(newtotalAmountLast);
     },[EnergyCharge, FixedChargePerMonth, ConsumptionKwhFirst])
 
-
-    useEffect (() => {
-        let newSocialTotalAmount;
-
-        if (ConsumptionKwhFirst > 0) {  
-            newSocialTotalAmount = Number(EnergyChargeSocial) + Number(GSTEnergyChargeSocial);
-            newSocialTotalAmount = newSocialTotalAmount.toFixed(1);
-        }
-       else {
-        newSocialTotalAmount = '';
-       }
-        setSocialtotalAmount(newSocialTotalAmount);
-    }, [ConsumptionKwhFirst, EnergyChargeSocial])
 
 
 
@@ -245,20 +232,9 @@ setEnergyChargeSocial('')
     },[EnergyChargeSocial, GSTEnergyChargeSocial, ConsumptionKwhFirst])
 
 
-  useEffect (() => {
-        let newtotalAmountLast;
-        if (ConsumptionKwhFirst > 0) {
-        newtotalAmountLast = Number(EnergyCharge) + Number(FixedChargePerMonth) + Number(GSTEnergyCharge);
-        newtotalAmountLast = newtotalAmountLast.toFixed(2);
-        }
-        else {
-            newtotalAmountLast = '';
-        }
-        setTotalAmountLast(newtotalAmountLast);
-    },[EnergyCharge, ConsumptionKwhFirst, GSTEnergyCharge])
+
 
   useEffect(() => {
-
         
         let newEnergyChargeConsumptionSocial;
 
@@ -552,13 +528,8 @@ else {
     useEffect (() => {
         let newGSTEnergyCharge;
         
-        if (totalAmount > 0 || ConsumptionKwhFirst > 0) {
+        if (totalAmount >= 1 || ConsumptionKwhFirst >= 1) {
             newGSTEnergyCharge = (FixedChargePerMonth + EnergyCharge) / 10;
-            newGSTEnergyCharge = Math.round(newGSTEnergyCharge * multiplier) / multiplier;
-        }
-       else if ((totalAmount > 0 || ConsumptionKwhFirst > 0) && consumerType === "Medium Voltage" && 
-       preferenceIsActive.name === "consumption_preference") {
-            newGSTEnergyCharge = ((FixedChargePerMonth + EnergyCharge) / 10);
             newGSTEnergyCharge = Math.round(newGSTEnergyCharge * multiplier) / multiplier;
         }
         else {
