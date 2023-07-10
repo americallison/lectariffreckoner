@@ -173,11 +173,10 @@ useEffect (() => {
     }
 })
 
-useEffect (() => {
-    let month_index;
-    month_index = (presentmonth - monthss.indexOf(vendingMonth)) < 0
-    console.log(month_index)
-})
+function handleCloseAlert () {
+    setVendingMonth(monthss[presentmonth-1])
+}
+
 
 useEffect (() => {
 setEnergyCharge('');
@@ -614,7 +613,8 @@ console.log("GST:", GSTEnergyCharge)
                             setConsumptionKwh={setConsumptionKwh} socialConsumptionKwh={socialConsumptionKwh}
                             consumerType={consumerType} EnergyChargeSocial={EnergyChargeSocial}
                             SocialFixedChargePerMonth={SocialFixedChargePerMonth}
-                            months={months} years={years} monthss={monthss} presentmonth={presentmonth}/>) :
+                            months={months} years={years} monthss={monthss} presentmonth={presentmonth} 
+                            handleCloseAlert={handleCloseAlert}/>) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst} EnergyChargeSocial={EnergyChargeSocial}
                             EnergyCharge={EnergyCharge} vendingMonth={vendingMonth}

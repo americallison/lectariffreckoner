@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 export default function AmounttoConsumption({ vendingMonth, setVendingMonth, vendingYear, setVendingYear,
   totalAmount, setTotalAmount, EnergyChargeSocial, EnergyCharge, GSTEnergyCharge, GSTEnergyChargeSocial,
   FixedChargePerMonth, SocialFixedChargePerMonth, ConsumptionKwh, socialConsumptionKwh, consumerType, negtotal,
-  negconsumption, presentmonth, months, years, monthss
+  negconsumption, presentmonth, months, years, monthss, handleCloseAlert
 }) {
   return (
     <>
@@ -49,13 +49,17 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
           </div>
  
         </div>
-        {
-  (presentmonth - monthss.indexOf(vendingMonth)) < 0 ? 
-     <div className="p-4 bg-red-200 border-l-4">
+        {presentmonth - monthss.indexOf(vendingMonth) < 0 ? (
+  <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+    <div className="p-4 bg-red-200 border-l-4">
       <p className="font-bold">Error:</p>
       <p>Future Date is not allowed!!</p>
-  </div> : ""
-}
+      <button className="mt-4 px-4 py-2 bg-red-500 text-white rounded" onClick={handleCloseAlert}>
+        Close
+      </button>
+    </div>
+  </div>
+) : null}
         <div className='flex justify-between'>
           <div className='w-4/12'>
             <label className='p-2'>Total Amount:</label>
