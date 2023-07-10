@@ -5,7 +5,7 @@ export default function ConsumptiontoAmount({
     EnergyCharge, EnergyChargeSocial, GSTEnergyCharge, GSTEnergyChargeSocial, FixedChargePerMonth, 
     SocialFixedChargePerMonth, consumerType,
     ConsumptionKwhFirst, setConsumptionKwhFirst, totalAmountLast, SocialtotalAmount,
-vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years }) {
+vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, monthss, presentDate, presentmonth, handleCloseAlert}) {
 
     return (
         <div>
@@ -48,8 +48,19 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years }) {
             </select>
           </div>
         </div>
-
-
+        {
+        (presentmonth - monthss.indexOf(vendingMonth) < 0) && (vendingYear == presentDate.getFullYear()) ? (
+  <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-70">
+    <div className="p-4 bg-red-400 rounded-lg shadow">
+      <p className="font-bold bg-white text-red-400 text-center p-1 m-1 text-xl">ERROR</p>
+      <p className="text-base text-white">FUTURE DATE IS NOT ALLOWED!!</p>
+      <p className="text-base text-white">Please select a month before {monthss[presentmonth + 1]}</p>
+      <button className="mt-4 px-4 py-2 bg-black text-white rounded" onClick={handleCloseAlert}>
+        Close
+      </button>
+    </div>
+  </div>
+) : null}
                
         <div className='flex justify-between'>
           <div className='w-4/12'>
@@ -127,8 +138,8 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years }) {
             />
                 </div>
                 <div className="w-4/12 p-2">
-                <input className="bg-stone-300 p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
-        focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyCharge"
+                <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+        focus:outline-none mb-2 text-black font-light w-full" type="number" disabled id="GSTenergyCharge"
               value={GSTEnergyCharge} 
             />
                 </div>

@@ -14,14 +14,16 @@ const monthss = [
   ];
 
 let presentDate = new Date();
-let presentmonth = new Date().getMonth() 
+let currentYear = presentDate.getFullYear();
+let presentmonth = new Date().getMonth(); 
+let currentMonth = monthss[presentmonth - 1];
 
 export default function CalculationPage() {
     /*declare variables to be used in calculation */
     const [consumerType, setConsumerType] = useState("Residential");
     const [supplyType, setSupplyType] = useState("Prepaid");
-    const [vendingMonth, setVendingMonth] = useState(monthss[presentmonth - 1]);
-    const [vendingYear, setVendingYear] = useState("2023");
+    const [vendingMonth, setVendingMonth] = useState(currentMonth);
+    const [vendingYear, setVendingYear] = useState(currentYear);
     const [vendingtime, setVendingTime] = useState("Yes");
     const [totalAmount, setTotalAmount] = useState('');
     const [EnergyCharge, setEnergyCharge] = useState('');
@@ -614,7 +616,7 @@ console.log("GST:", GSTEnergyCharge)
                             consumerType={consumerType} EnergyChargeSocial={EnergyChargeSocial}
                             SocialFixedChargePerMonth={SocialFixedChargePerMonth}
                             months={months} years={years} monthss={monthss} presentmonth={presentmonth} 
-                            handleCloseAlert={handleCloseAlert}/>) :
+                            handleCloseAlert={handleCloseAlert} presentDate={presentDate} />) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst} EnergyChargeSocial={EnergyChargeSocial}
                             EnergyCharge={EnergyCharge} vendingMonth={vendingMonth}
@@ -624,7 +626,8 @@ console.log("GST:", GSTEnergyCharge)
                             setVendingTime={setVendingTime} GSTEnergyCharge={GSTEnergyCharge}
                             totalAmountLast={totalAmountLast} setTotalAmountLast={setTotalAmountLast}
                             FixedChargePerMonth={FixedChargePerMonth} SocialtotalAmount={SocialtotalAmount}
-                            setSocialtotalAmount={setSocialtotalAmount}
+                            setSocialtotalAmount={setSocialtotalAmount} monthss={monthss} presentDate={presentDate}
+                            presentmonth={presentmonth} handleCloseAlert={handleCloseAlert}
                             consumerType={consumerType} />)
                 }
             </div>

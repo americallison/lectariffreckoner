@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 export default function AmounttoConsumption({ vendingMonth, setVendingMonth, vendingYear, setVendingYear,
   totalAmount, setTotalAmount, EnergyChargeSocial, EnergyCharge, GSTEnergyCharge, GSTEnergyChargeSocial,
   FixedChargePerMonth, SocialFixedChargePerMonth, ConsumptionKwh, socialConsumptionKwh, consumerType, negtotal,
-  negconsumption, presentmonth, months, years, monthss, handleCloseAlert
+  negconsumption, presentmonth, months, years, monthss, handleCloseAlert, presentDate
 }) {
   return (
     <>
@@ -49,17 +49,21 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
           </div>
  
         </div>
-        {presentmonth - monthss.indexOf(vendingMonth) < 0 ? (
-  <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-    <div className="p-4 bg-red-200 border-l-4">
-      <p className="font-bold">Error:</p>
-      <p>Future Date is not allowed!!</p>
-      <button className="mt-4 px-4 py-2 bg-red-500 text-white rounded" onClick={handleCloseAlert}>
+
+        {
+        (presentmonth - monthss.indexOf(vendingMonth) < 0) && (vendingYear == presentDate.getFullYear()) ? (
+  <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-70">
+    <div className="p-4 bg-red-400 rounded-lg shadow">
+      <p className="font-bold bg-white text-red-400 text-center p-1 m-1 text-xl">ERROR</p>
+      <p className="text-base text-white">FUTURE DATE IS NOT ALLOWED!!</p>
+      <p className="text-base text-white">Please select a month before {monthss[presentmonth + 1]}</p>
+      <button className="mt-4 px-4 py-2 bg-black text-white rounded" onClick={handleCloseAlert}>
         Close
       </button>
     </div>
   </div>
 ) : null}
+
         <div className='flex justify-between'>
           <div className='w-4/12'>
             <label className='p-2'>Total Amount:</label>
