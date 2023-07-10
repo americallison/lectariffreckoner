@@ -55,8 +55,8 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
   <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-70">
     <div className="p-4 bg-red-400 rounded-lg shadow">
       <p className="font-bold bg-white text-red-400 text-center p-1 m-1 text-xl">FUTURE DATE IS NOT ALLOWED!!</p>
-      <p className="text-base text-white text-center mt-3">Please select a month before {monthss[presentmonth + 1]}</p>
-      <button className="mt-4 px-4 py-2 bg-black w-full justify-center items-center text-white rounded" onClick={handleCloseAlert}>
+      <p className="text-base text-white p-1 mt-3">Please select a month before {monthss[presentmonth + 1]}</p>
+      <button className="mt-4 px-4 py-2 bg-black justify-center items-center text-white rounded" onClick={handleCloseAlert}>
         Close
       </button>
     </div>
