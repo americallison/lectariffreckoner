@@ -50,11 +50,10 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, month
         </div>
         {
         (presentmonth - monthss.indexOf(vendingMonth) < 0) && (vendingYear === presentDate.getFullYear()) ? (
-  <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-70">
-    <div className="p-4 bg-red-400 rounded-lg shadow">
-      <p className="font-bold bg-white text-red-400 text-center p-1 m-1 text-xl">ERROR</p>
-      <p className="text-base text-white">FUTURE DATE IS NOT ALLOWED!!</p>
-      <p className="text-base text-white">Please select a month before {monthss[presentmonth + 1]}</p>
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-70">
+          <div className="p-4 bg-red-400 rounded-lg shadow">
+            <p className="font-bold bg-white text-red-400 text-center p-1 m-1 text-xl">FUTURE DATE IS NOT ALLOWED!!</p>
+            <p className="text-base text-white text-center mt-3">Please select a month before {monthss[presentmonth + 1]}</p>
       <button className="mt-4 px-4 py-2 bg-black text-white rounded" onClick={handleCloseAlert}>
         Close
       </button>
@@ -62,7 +61,7 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, month
   </div>
 ) : null}
                
-        <div className='flex justify-between'>
+        <div className='flex justify-between mb-2'>
           <div className='w-4/12'>
             <label className='p-2'>Consumption (KWh):</label>
           </div>
@@ -73,14 +72,14 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, month
               value={ConsumptionKwhFirst} onChange={(e) => setConsumptionKwhFirst(e.target.value)}
 
             />
-          </div></div> 
+          </div></div> <hr />
 
 
 
           {
           consumerType === "Residential" ?
             (<>
-              <div className="flex justify-between">
+              <div className="flex justify-between mt-2">
                 <div className="w-4/12"></div>
                 <div className="w-4/12">
                   <p className='font-medium m-2 text-center'>Social</p>
@@ -163,7 +162,7 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, month
                 </div>
               </div>
             </>) : (<div>
-              <div className='flex justify-between'>
+              <div className='flex justify-between mt-3'>
           <div className='w-4/12'>
             <label className='p-2'>Energy Charge:</label>
           </div>
