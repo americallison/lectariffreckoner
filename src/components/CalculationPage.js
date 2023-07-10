@@ -174,6 +174,12 @@ useEffect (() => {
 })
 
 useEffect (() => {
+    let month_index;
+    month_index = (presentmonth - monthss.indexOf(vendingMonth)) < 0
+    console.log(month_index)
+})
+
+useEffect (() => {
 setEnergyCharge('');
 setEnergyChargeSocial('')
 },[ConsumptionKwhFirst])
@@ -510,7 +516,8 @@ setEnergyChargeSocial(newSocialEnergyCharge, totalAmount)
             newFixedChargePerMonth = 12 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
-        else if (consumerType === "Medium Voltage" && monthNumber && (totalAmount > 0 || ConsumptionKwhFirst)) {
+        else if (consumerType === "Medium Voltage" && monthNumber && 
+        (supplyType === "Prepaid" || supplyType === "Postpaid") && (totalAmount > 0 || ConsumptionKwhFirst > 0)) {
             newFixedChargePerMonth = 50 * monthNumber;
             newFixedChargePerMonth = Math.round(newFixedChargePerMonth * multiplier) / multiplier;
         }
@@ -543,19 +550,24 @@ else {
     useEffect (() => {
         let newGSTEnergyCharge;
         
-        if (totalAmount > 0 || ConsumptionKwhFirst) {
+        if (totalAmount > 0 || ConsumptionKwhFirst > 0) {
             newGSTEnergyCharge = (FixedChargePerMonth + EnergyCharge) / 10;
+            newGSTEnergyCharge = Math.round(newGSTEnergyCharge * multiplier) / multiplier;
+        }
+       else if ((totalAmount > 0 || ConsumptionKwhFirst > 0) && consumerType === "Medium Voltage" && 
+       preferenceIsActive.name === "consumption_preference") {
+            newGSTEnergyCharge = ((FixedChargePerMonth + EnergyCharge) / 10);
             newGSTEnergyCharge = Math.round(newGSTEnergyCharge * multiplier) / multiplier;
         }
         else {
             newGSTEnergyCharge = '';
         }
         setGSTEnergyCharge(newGSTEnergyCharge);
-        console.log(FixedChargePerMonth)
+        console.log("Fixed Chargw:", FixedChargePerMonth)
 
-    },[totalAmount, EnergyCharge, supplyType, FixedChargePerMonth, ConsumptionKwhFirst, preferenceIsActive.name])
+    },[totalAmount, EnergyCharge, supplyType, FixedChargePerMonth, consumerType, ConsumptionKwhFirst, preferenceIsActive.name])
 
-
+console.log("GST:", GSTEnergyCharge)
     return (
         <div className="flex p-2">
             <div className="md:w-3/12"></div>

@@ -127,7 +127,7 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years }) {
             />
                 </div>
                 <div className="w-4/12 p-2">
-                <input className="bg-white p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
+                <input className="bg-stone-300 p-2 border border-slate-200 rounded-md shadow-sm leading-tight 
         focus:outline-none mb-2 text-gray-700 font-light w-full" type="number" disabled id="GSTenergyCharge"
               value={GSTEnergyCharge} 
             />
