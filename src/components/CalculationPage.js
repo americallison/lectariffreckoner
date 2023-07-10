@@ -153,7 +153,8 @@ export default function CalculationPage() {
 
     ]
 
-
+    let serviceChargeDebt;
+    serviceChargeDebt = Number(FixedChargePerMonth + GSTEnergyCharge).toFixed(3);
 
 
 useEffect (() => {
@@ -616,7 +617,8 @@ console.log("GST:", GSTEnergyCharge)
                             consumerType={consumerType} EnergyChargeSocial={EnergyChargeSocial}
                             SocialFixedChargePerMonth={SocialFixedChargePerMonth}
                             months={months} years={years} monthss={monthss} presentmonth={presentmonth} 
-                            handleCloseAlert={handleCloseAlert} presentDate={presentDate} />) :
+                            handleCloseAlert={handleCloseAlert} presentDate={presentDate} monthNumber={monthNumber} 
+                            serviceChargeDebt={serviceChargeDebt} />) :
                         (<ConsumptiontoAmount ConsumptionKwhFirst={ConsumptionKwhFirst}
                             setConsumptionKwhFirst={setConsumptionKwhFirst} EnergyChargeSocial={EnergyChargeSocial}
                             EnergyCharge={EnergyCharge} vendingMonth={vendingMonth}

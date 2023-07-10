@@ -49,7 +49,7 @@ vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, month
           </div>
         </div>
         {
-        (presentmonth - monthss.indexOf(vendingMonth) < 0) && (vendingYear == presentDate.getFullYear()) ? (
+        (presentmonth - monthss.indexOf(vendingMonth) < 0) && (vendingYear === presentDate.getFullYear()) ? (
   <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-70">
     <div className="p-4 bg-red-400 rounded-lg shadow">
       <p className="font-bold bg-white text-red-400 text-center p-1 m-1 text-xl">ERROR</p>

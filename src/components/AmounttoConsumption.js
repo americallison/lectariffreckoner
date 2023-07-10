@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 export default function AmounttoConsumption({ vendingMonth, setVendingMonth, vendingYear, setVendingYear,
   totalAmount, setTotalAmount, EnergyChargeSocial, EnergyCharge, GSTEnergyCharge, GSTEnergyChargeSocial,
   FixedChargePerMonth, SocialFixedChargePerMonth, ConsumptionKwh, socialConsumptionKwh, consumerType, negtotal,
-  negconsumption, presentmonth, months, years, monthss, handleCloseAlert, presentDate
+  negconsumption, presentmonth, months, years, monthss, handleCloseAlert, presentDate, monthNumber, serviceChargeDebt
 }) {
   return (
     <>
@@ -247,6 +247,18 @@ export default function AmounttoConsumption({ vendingMonth, setVendingMonth, ven
               value={ConsumptionKwh} 
             />
                 </div>
+                </div>
+                <div className='flex'>
+                  <div className='w-4/12'></div>
+                  <div className='w-4/12'></div>
+                  <div className='w-4/12'>
+                <div className="bg-white p-2 shadow m-1">
+                  <p className='text-red-500'>
+                    You owe ${serviceChargeDebt} in service charge for {monthNumber} month (s). Therefore 
+                    you must purchase an amount in excess of ${serviceChargeDebt}.
+                  </p>
+                  </div>
+               </div>
               </div>
             </>}
 
