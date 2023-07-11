@@ -54,7 +54,9 @@ export default function ConsumerSupplyType({ consumerType, setConsumerType, supp
     return (
         <div>
 
-            <form className='mb-2'>
+       {
+        consumerType === "Medium Voltage" ?
+            (<form className='mb-2'>
                 <div className="flex justify-between">
                 <div className="md:w-4/12 w-6/12">
                   <label className="p-2">Consumer Type:</label>
@@ -71,6 +73,24 @@ export default function ConsumerSupplyType({ consumerType, setConsumerType, supp
                         </select>
                         </div>
                         </div>
+</form>) : (<form className='mb-2'>
+                <div className="flex justify-between">
+                <div className="md:w-4/12 w-6/12">
+                  <label className="p-2">Consumer Type:</label>
+                  </div>
+                  <div className="md:w-8/12 w-6/12">
+                        <select className="mb-2 bg-slate-200 p-2 border-none rounded shadow-sm leading-tight 
+        focus:outline-none text-gray-700 font-light w-full"
+                            id={consumer_type.name}
+                            value={consumerType}
+                            onChange={(e) => setConsumerType(e.target.value)} >
+                            {consumer_type.map((consumer) => (
+                                <option key={consumer.id} value={consumer.label}>{consumer.label}</option>
+                            ))}
+                        </select>
+                        </div>
+                        </div>
+
                         <div className='flex justify-between'>
                             <div className='w-6/12 md:w-4/12'>
                     <label className='p-2'>Supply Type:</label>
@@ -85,7 +105,7 @@ export default function ConsumerSupplyType({ consumerType, setConsumerType, supp
                         </select>
                         </div></div>
                 
-            </form>
+            </form>)}
         </div>
     )
 }

@@ -231,13 +231,16 @@ setEnergyChargeSocial('')
         
         let newEnergyChargeConsumptionSocial;
 
-        if (consumerType === "Residential" && ConsumptionKwhFirst <= 25 && preferenceIsActive.name === "consumption_preference") {
+        if (consumerType === "Residential" && ConsumptionKwhFirst > 0 && ConsumptionKwhFirst <= 25 && preferenceIsActive.name === "consumption_preference") {
             newEnergyChargeConsumptionSocial = ConsumptionKwhFirst * (0.15);
             newEnergyChargeConsumptionSocial= Math.round(newEnergyChargeConsumptionSocial * multiplier) / multiplier;
         }
         else if (consumerType === "Residential" && ConsumptionKwhFirst > 25 && preferenceIsActive.name === "consumption_preference") {
             newEnergyChargeConsumptionSocial = 25 * (0.15) + (ConsumptionKwhFirst - 25) * (0.24)
             newEnergyChargeConsumptionSocial= Math.round(newEnergyChargeConsumptionSocial * multiplier) / multiplier;
+        }
+        else {
+            newEnergyChargeConsumptionSocial = '';
         }
 
         setEnergyChargeSocial(newEnergyChargeConsumptionSocial);
@@ -461,11 +464,7 @@ setEnergyChargeSocial(newSocialEnergyCharge, totalAmount)
         setMonthNumber(newmonthNumber)
     }, [vendingMonth, vendingYear])
 
-    console.log("Month number: ", monthNumber)
-    console.log("month label:", months.label)
-
-
-
+    
 
     /*function for fixed charge start */
     useEffect (() => {
