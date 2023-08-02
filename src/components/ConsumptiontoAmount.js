@@ -5,7 +5,8 @@ export default function ConsumptiontoAmount({
   EnergyCharge, EnergyChargeSocial, GSTEnergyCharge, GSTEnergyChargeSocial, FixedChargePerMonth,
   SocialFixedChargePerMonth, consumerType,
   ConsumptionKwhFirst, setConsumptionKwhFirst, totalAmountLast, SocialtotalAmount,
-  vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, monthss, presentDate, presentmonth, handleCloseAlert }) {
+  vendingMonth, setVendingMonth, vendingYear, setVendingYear, months, years, monthss, presentDate, 
+  presentmonth, handleCloseAlert }) {
 
   return (
     <div>
