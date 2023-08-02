@@ -157,23 +157,24 @@ export default function CalculationPage() {
     serviceChargeDebt = Number(FixedChargePerMonth + GSTEnergyCharge).toFixed(3);
 
 
+    /* reset variables to blank when user changes options */
     useEffect(() => {
         setConsumptionKwhFirst('');
         setTotalAmount('');
         setSocialtotalAmount('');
     }, [preferenceIsActive.name, vendingMonth, supplyType, consumerType, vendingYear])
 
-
-    function handleCloseAlert() {
-        setVendingMonth(monthss[presentmonth - 1])
-    }
-
-
+    /* reset variables to blank when user changes options */
     useEffect(() => {
         setEnergyCharge('');
         setEnergyChargeSocial('')
     }, [ConsumptionKwhFirst])
 
+
+   /* function to reset month to previous month after user closes error message */
+    function handleCloseAlert() {
+        setVendingMonth(monthss[presentmonth - 1])
+    }
 
     let significantDigits = 3; // Replace with the desired number of significant digits
     let multiplier = Math.pow(10, significantDigits);
@@ -264,13 +265,11 @@ export default function CalculationPage() {
 
         setEnergyCharge(newEnergyChargeConsumptionNotSocial);
     }, [totalAmountLast, ConsumptionKwhFirst, FixedChargePerMonth, consumerType, preferenceIsActive.name])
-    /* function to calculate energy charge for consumption to total amount starts */
+
 
 
     /* top level function to calculate total consumption from total amount starts */
-
-
-    useState(() => {
+    useEffect(() => {
         let newConsumptionKwh;
 
         if (preferenceIsActive.name === "amount_preference" && consumerType === "Residential" && totalAmount >= 1) {
@@ -370,18 +369,6 @@ export default function CalculationPage() {
             newEnergyCharge = 0.19 * (totalAmount - (FixedChargePerMonth * 1.1)) / (0.19 * 1.1)
             newEnergyCharge = Math.round(newEnergyCharge * multiplier) / multiplier;
         }
-        /* else if (consumerType === "Residential" && preferenceIsActive.name === "consumption_preference") {
-           newEnergyCharge = 0.24 * ConsumptionKwhFirst
-           newEnergyCharge = Math.round(newEnergyCharge * multiplier) / multiplier;
-       }
-       else if (consumerType === "Non-Residential" && preferenceIsActive.name === "consumption_preference") {
-           newEnergyCharge = 0.22 * ConsumptionKwhFirst
-           newEnergyCharge = Math.round(newEnergyCharge * multiplier) / multiplier;
-       }
-       else if (consumerType === "Medium Voltage" && preferenceIsActive.name === "consumption_preference") {
-         newEnergyCharge = 0.19 * ConsumptionKwhFirst
-         newEnergyCharge = Math.round(newEnergyCharge * multiplier) / multiplier;
-     }*/
         else {
             newEnergyCharge = '';
         }
@@ -456,10 +443,8 @@ export default function CalculationPage() {
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
 
-
         setMonthNumber(newmonthNumber)
     }, [vendingMonth, vendingYear])
-
 
 
     /*function for fixed charge start */
@@ -530,6 +515,7 @@ export default function CalculationPage() {
     }, [totalAmount, EnergyCharge, supplyType, FixedChargePerMonth, consumerType, ConsumptionKwhFirst, preferenceIsActive.name])
 
     console.log("GST:", GSTEnergyCharge)
+    
     return (
         <div className="flex p-2">
             <div className="md:w-3/12"></div>

@@ -1,5 +1,4 @@
 import './App.css';
-import NavBar from './components/NavBar';
 import CalculationPage from './components/CalculationPage';
 import ConsumerSupplyType from './components/ConsumerSupplyTypes';
 import ConsumptiontoAmount from './components/ConsumptiontoAmount';
@@ -16,7 +15,6 @@ export default function App() {
     <Router>
     <Routes>
     <Route exact path="/" element={<CalculationPage />} />
-    <Route exact path="/navbar" element={<NavBar />} />
     <Route exact path="/consumersupplytype" element={<ConsumerSupplyType />} />
     <Route exact path="/amount-consumption" element={<AmounttoConsumption />} />
     <Route exact path="/conmsumption-amount" element={<ConsumptiontoAmount />} />
