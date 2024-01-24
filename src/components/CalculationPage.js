@@ -181,7 +181,9 @@ export default function CalculationPage() {
         if (monthss[presentmonth] == 0) {
             setVendingMonth(monthss[presentmonth + 10])
         }
+        else {
         setVendingMonth(monthss[presentmonth - 1])
+        }
     }
 
     let significantDigits = 3; // Replace with the desired number of significant digits
