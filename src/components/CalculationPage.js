@@ -179,10 +179,10 @@ export default function CalculationPage() {
    /* function to reset month to previous month after user closes error message */
     function handleCloseAlert() {
         if (monthss[presentmonth] == 0) {
-            setVendingMonth(monthss[presentmonth + 10])
+            setVendingMonth(monthss[presentmonth]);
         }
         else {
-        setVendingMonth(monthss[presentmonth - 1])
+        setVendingMonth(monthss[presentmonth - 1]);
         }
     }
 
