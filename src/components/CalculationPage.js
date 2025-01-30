@@ -186,13 +186,14 @@ export default function CalculationPage() {
    /* function to reset month to previous month after user closes error message */
     function handleCloseAlert() {
        
-        if (vendingMonth === 'January') {
-            setVendingMonth(monthss[11])
-            setVendingYear(previousYear)
+        if (vendingMonth === monthss[1]) {
+            setVendingMonth(months[11])
+            setVendingYear(vendingYear - 1)
         }
         else {
         setVendingMonth(monthss[presentmonth - 1]);
         }
+        console.log(vendingMonth, vendingYear)
     }
 
     let significantDigits = 3; // Replace with the desired number of significant digits
