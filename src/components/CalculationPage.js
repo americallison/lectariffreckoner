@@ -16,6 +16,7 @@ const monthss = [
 let presentDate = new Date();
 let currentYear = presentDate.getFullYear();
 let presentmonth = new Date().getMonth();
+console.log(presentmonth)
 let currentMonth = monthss[presentmonth - 1];
 
 export default function CalculationPage() {
@@ -185,7 +186,7 @@ export default function CalculationPage() {
     function handleCloseAlert() {
        
         if (vendingMonth == 'January') {
-            setVendingMonth(monthss[12])
+            setVendingMonth(monthss[11])
             
         }
         else {
