@@ -422,52 +422,52 @@ export default function CalculationPage() {
         }
         else if (vendingMonth === "March") {
             newmonthNumber = 3;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
         else if (vendingMonth === "April") {
             newmonthNumber = 4;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
         else if (vendingMonth === "May") {
             newmonthNumber = 5;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
         else if (vendingMonth === "June") {
             newmonthNumber = 6;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
         else if (vendingMonth === "July") {
             newmonthNumber = 7;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
         else if (vendingMonth === "August") {
             newmonthNumber = 8;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
         else if (vendingMonth === "September") {
             newmonthNumber = 9;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
         else if (vendingMonth === "October") {
             newmonthNumber = 10;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
         else if (vendingMonth === "November") {
             newmonthNumber = 11;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
         else if (vendingMonth === "December") {
             newmonthNumber = 12;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
 
