@@ -15,7 +15,6 @@ const monthss = [
 
 let presentDate = new Date();
 let currentYear = presentDate.getFullYear();
-let previousYear = currentYear - 1;
 let presentmonth = new Date().getMonth();
 
 let currentMonth = monthss[presentmonth - 1];
@@ -418,7 +417,7 @@ export default function CalculationPage() {
 
         else if (vendingMonth === "February") {
             newmonthNumber = 2;
-            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 +
+            newmonthNumber = (presentDate.getFullYear() - Number(vendingYear)) * 12 -
                 Math.abs((presentDate.getMonth() + 1) - newmonthNumber);
         }
         else if (vendingMonth === "March") {
@@ -539,7 +538,7 @@ export default function CalculationPage() {
             newGSTEnergyCharge = '';
         }
         setGSTEnergyCharge(newGSTEnergyCharge);
-        console.log("Fixed Chargw:", FixedChargePerMonth)
+        console.log("Fixed Charge:", FixedChargePerMonth)
 
     }, [totalAmount, EnergyCharge, supplyType, FixedChargePerMonth, consumerType, ConsumptionKwhFirst, preferenceIsActive.name])
 
