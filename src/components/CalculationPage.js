@@ -186,13 +186,24 @@ export default function CalculationPage() {
    /* function to reset month to previous month after user closes error message */
     function handleCloseAlert() {
        
-        if (vendingMonth === monthss[0]) {
-            setVendingMonth(monthss[11])
-            setVendingYear(vendingYear - 1)
-        }
-        else {
-        setVendingMonth(monthss[presentmonth - 1]);
-        }
+        // if (vendingMonth === monthss[0]) {
+        //     setVendingMonth(monthss[11])
+        //     setVendingYear(vendingYear - 1)
+        // }
+        // else {
+        // setVendingMonth(monthss[presentmonth - 1]);
+        // }
+
+        let previousMonth = presentmonth - 1;
+        let previousYear = currentYear; // Assume you have a variable storing the current year
+
+    if (presentmonth === 0) { // If the current month is January (index 0)
+        previousMonth = 11; // Set to December (index 11)
+        previousYear -= 1; // Move to the previous year
+    }
+
+    setVendingMonth(monthss[previousMonth])
+    setVendingYear(previousYear);
         
     }
 
@@ -532,7 +543,6 @@ export default function CalculationPage() {
 
     }, [totalAmount, EnergyCharge, supplyType, FixedChargePerMonth, consumerType, ConsumptionKwhFirst, preferenceIsActive.name])
 
-    console.log("GST:", GSTEnergyCharge)
     
     return (
         <div className="flex p-2">

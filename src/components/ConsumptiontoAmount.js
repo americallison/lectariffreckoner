@@ -50,7 +50,9 @@ export default function ConsumptiontoAmount({
           </div>
         </div>
         {
-          (presentmonth - monthss.indexOf(vendingMonth) < 0) && (vendingYear == presentDate.getFullYear()) ? (
+          
+          
+          ((presentmonth - monthss.indexOf(vendingMonth) < 0) && (vendingYear == presentDate.getFullYear())) ? (
             <div className="fixed top-50-md top-40 left-0 w-full flex items-center justify-center z-10">
               <div className="p-4 bg-white rounded-lg border-4 border-b-4 border-red-300 shadow-lg">
                 <p className="font-bold bg-white text-black text-center p-1 m-1 text-xl">FUTURE DATE IS NOT ALLOWED!!</p>
