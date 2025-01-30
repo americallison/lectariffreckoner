@@ -15,8 +15,9 @@ const monthss = [
 
 let presentDate = new Date();
 let currentYear = presentDate.getFullYear();
+let previousYear = currentYear - 1;
 let presentmonth = new Date().getMonth();
-console.log(presentmonth)
+
 let currentMonth = monthss[presentmonth - 1];
 
 export default function CalculationPage() {
@@ -185,9 +186,9 @@ export default function CalculationPage() {
    /* function to reset month to previous month after user closes error message */
     function handleCloseAlert() {
        
-        if (vendingMonth == 'January') {
+        if (vendingMonth === 'January') {
             setVendingMonth(monthss[11])
-            
+            setVendingYear(previousYear)
         }
         else {
         setVendingMonth(monthss[presentmonth - 1]);
