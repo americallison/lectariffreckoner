@@ -201,7 +201,7 @@ export default function CalculationPage() {
         previousYear -= 1; // Move to the previous year
     }
 
-    setVendingMonth(monthss[presentmonth])
+    setVendingMonth(monthss[previousMonth])
     setVendingYear(currentYear);
         
     }
