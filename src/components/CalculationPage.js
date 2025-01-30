@@ -184,8 +184,13 @@ export default function CalculationPage() {
    /* function to reset month to previous month after user closes error message */
     function handleCloseAlert() {
        
+        if (vendingMonth == 'January') {
+            setVendingMonth(monthss[12])
+            
+        }
+        else {
         setVendingMonth(monthss[presentmonth - 1]);
-        
+        }
     }
 
     let significantDigits = 3; // Replace with the desired number of significant digits
