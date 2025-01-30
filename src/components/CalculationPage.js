@@ -185,8 +185,14 @@ export default function CalculationPage() {
 
    /* function to reset month to previous month after user closes error message */
     function handleCloseAlert() {
-        
+       
+        if (vendingMonth === monthss[0]) {
+            setVendingMonth(monthss[11])
+            setVendingYear(vendingYear - 1)
+        }
+        else {
         setVendingMonth(monthss[presentmonth - 1]);
+        }
         
     }
 
@@ -217,8 +223,6 @@ export default function CalculationPage() {
         }
         setTotalAmountLast(newtotalAmountLast);
     }, [EnergyCharge, FixedChargePerMonth, ConsumptionKwhFirst, GSTEnergyCharge])
-
-
 
 
     /* function to calculate energy charge social for consumption to total amount starts */
